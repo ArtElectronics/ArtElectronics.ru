@@ -2,7 +2,7 @@ windows:
   - name: "ArtElectronics"
     root: "~/rails/opensource/ArtElectronics"
     filters:
-      before: "rvm use ruby-2.0.0-p353; rvm gemset use art_electronics --create"
+      before: "rvm use ruby-2.1.0-preview2; rvm gemset use art_electronics --create"
     layout: tiled
     panes:
       - cmd: "clear;"
