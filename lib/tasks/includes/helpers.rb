@@ -156,3 +156,60 @@ def puts_error obj, index, obj_count
   puts "#{obj.errors.to_a.to_s.red} => #{index+1}/#{obj_count}"
   puts ''
 end
+
+def create_tags old_article, new_article
+  tags = get_tags_by_context old_article, :names, :titles, :words
+  new_article.name_list  = tags[:names ].join ','
+  new_article.title_list = tags[:titles].join ','
+  new_article.word_list  = tags[:words ].join ','
+  new_article.save
+end
+
+def get_tags_by_context old_article, *contexts
+  tags = {}
+  contexts.each do | context |
+    tags[ context ] = []
+    result = AE_FullDatabase.connection.execute "select name from tags inner join taggings on tags.id = taggings.tag_id where taggable_id = #{old_article.id} and taggable_type='Article' and context='#{ context.to_s }'"
+    result.each(as: :array)  do | row |
+      row[0].gsub!( /\"/, "~" ) # "incompatible character encodings: ASCII-8BIT and UTF-8" monkey path for tags: Отель "Новая Роза", R'n"B, Метод Д"Апполито
+      row[0].gsub!( /'/, "~" ) # "incompatible character encodings: ASCII-8BIT and UTF-8" monkey path for tags:
+=begin 
+      "198" "R'n'B"
+      "271" "R'n""B"
+      "364" "Destiny's Child"
+      "442" "Raison d'etre"
+      "806" "Метод Д'Апполито"
+      "1864"  "Шинед О'Коннор"
+      "1922"  "Dan D'Agostino"
+=end
+
+
+      tags[ context ]+= row
+    end
+  end
+  tags
+end
+
+def compare_articles_quantity old_articles, new_articles
+  old_count = old_articles.count
+  new_count = new_articles.count
+  if old_count == new_count
+    0
+  else
+    [old_count, new_count]
+  end
+end
+
+def compare_article_tags old_article, new_article
+    tags = get_tags_by_context old_article, :names, :titles, :words
+    if  
+      (old_article.title  == new_article.title          ) && 
+      (tags[:names ].sort == new_article.name_list.sort ) &&
+      (tags[:words ].sort == new_article.word_list.sort ) &&
+      (tags[:titles].sort == new_article.title_list.sort) 
+    then
+      true
+    else
+      false
+    end
+end

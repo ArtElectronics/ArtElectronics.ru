@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119095510) do
+ActiveRecord::Schema.define(version: 20140127075019) do
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -238,12 +238,11 @@ ActiveRecord::Schema.define(version: 20131119095510) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
   create_table "tags", force: true do |t|
     t.string "name"
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "login",                                              null: false

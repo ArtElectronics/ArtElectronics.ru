@@ -129,3 +129,7 @@ class AE_Tagging < ActiveRecord::Base
   establish_connection CONNECTION_PARAMS_AE
   self.table_name = :taggings
 end
+
+class AE_FullDatabase < ActiveRecord::Base
+  establish_connection CONNECTION_PARAMS_AE
+end
