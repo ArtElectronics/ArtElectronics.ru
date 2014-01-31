@@ -314,6 +314,97 @@ namespace :ae do
   task tags_start: :environment do
   end
 
+  desc "Перетягивем  авторов и проверяем корректность"
+  task :authors_start  do
+      %w[
+        drag_authors
+        compare_authors_equality
+      ].each { |task| Rake::Task["ae:#{task}"].invoke}
+  end
+
+  desc "Перетягиваем авторов"
+  task drag_authors: :environment do
+    puts ''
+    puts "Перетягиваем авторов"
+    puts ''
+    puts "Авторы очищены" if Author.destroy_all
+    puts "Join таблица \"посты-авторы\" очищена" if Authorship.destroy_all
+    ae_authors = AE_Author.all
+    # ae_authors = AE_Author.limit 2
+    articles_count = 0
+    author_count = ae_authors.count
+
+    ae_authors.each_with_index do |ae_author, index|
+      author = Author.new(
+        name: ae_author.name,
+        description: ae_author.description,
+        short_description: ae_author.short_description,
+        created_at: ae_author.created_at,
+        updated_at: ae_author.updated_at,
+      )
+
+      if author.save
+        print '*'
+      else
+        puts_error ae_author, index, author_count
+        next
+      end
+
+      ae_titles = get_article_titles( ae_author )
+
+      ae_titles.each do | ae_title |
+        post = find_post Post.where( title: ae_title ).first
+        post.authors << author
+        articles_count += 1
+      end
+    end
+    puts ''
+    puts "Articles assigment: #{ articles_count }"
+  end
+
+  desc "Проверка корректность переноса авторов"
+  task compare_authors_equality: :environment do  
+    puts "Проверяем корректность ассоциации перенесенных авторов с постами".blue
+    # ae_articles = AE_Article.find [13, 58]
+    ae_articles = AE_Article.all
+    ae_articles_count = ae_articles.count
+ 
+    ae_articles.each_with_index do | ae_article, index |
+      # in the bases not unique fields, because I looking for by :title
+      post = Post.where title: ae_article.title
+      
+      if post.count == 0 then
+        puts "post for article #{ae_article.id} not found".red; 
+        next;
+      end
+
+      if post.count > 1
+        puts "Stop. Title for old article not unique in new base.".red
+        puts "#{ ae_article.inspect }".yellow
+        exit
+      end
+
+      post = post[0]
+      authors = post.authors
+      
+      if authors == []  
+        puts "Author for article #{ ae_article.id } no exist. ".red
+        next
+      end  
+
+      ae_author = AE_Author.find( ae_article.author_id )
+      if  ( authors.count == 1 ) && 
+          ( authors.first.name == ae_author.name ) &&
+          ( authors.first.description == ae_author.description )
+      then 
+        print '.'.green
+      else
+        puts "Post #{ post.id } for article #{ ae_article.id } has incorrect author".red
+      end
+    end
+    puts ''
+  end
+
   # rake ae:data_move
   desc "data moving"
   task data_move: :environment do
@@ -328,6 +419,7 @@ namespace :ae do
       blogs_start
       comment_start
       tags_start
+      authors_start
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
     # uploaded_files_start
   end

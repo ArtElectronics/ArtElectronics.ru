@@ -183,7 +183,6 @@ def get_tags_by_context old_article, *contexts
       "1922"  "Dan D'Agostino"
 =end
 
-
       tags[ context ]+= row
     end
   end
@@ -212,4 +211,32 @@ def compare_article_tags old_article, new_article
     else
       false
     end
+end
+
+# in this bases have not unique fields for post and articles, because I looking for by :title
+def find_post ae_article
+  post = Post.where title: ae_article.title
+  
+  if post.count == 0 then
+    puts "Stop. Post for article #{ae_article.id} not found".red; 
+    exit
+  end
+
+  if post.count > 1
+    puts "Stop. Title for old article not unique in new base.".red
+    puts "#{ ae_article.inspect }".yellow
+    exit
+  end
+  post.first
+end
+
+def get_article_titles author
+  articles_titles = []  
+  sql="select articles.title from articles inner join authors on authors.id = articles.author_id where authors.id = #{ author.id }"
+  result = AE_FullDatabase.connection.execute(sql)
+  
+  result.each do |row| 
+    articles_titles += row
+  end 
+  articles_titles
 end
