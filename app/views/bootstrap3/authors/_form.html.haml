@@ -1,0 +1,26 @@
+= form_for(@author) do |f|
+  -if @author.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@author.errors.count, "error")} prohibited this author from being saved:"
+      %ul
+        - @author.errors.full_messages.each do |msg|
+          .alert.alert-danger
+            %li= msg
+            
+  %table.table.table-bordered
+    = f.submit t('authors.save'), class: 'btn btn-info'
+    %tr
+      %td      
+        = f.label t('authors.name')
+      %td      
+        = f.text_field :name, class: 'form-control'
+    %tr
+      %td  
+        = f.label t('authors.description')
+      %td      
+        = f.text_area :description, class: 'form-control', rows: '8'
+    %tr
+      %td 
+        = f.label t('authors.short_description')
+      %td 
+        = f.text_area :short_description, class: 'form-control', rows: '8'
