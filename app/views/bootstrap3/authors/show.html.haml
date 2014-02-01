@@ -1,0 +1,24 @@
+%h1= t("authors.show")
+%p#notice= notice
+
+%table.table.table-striped
+  %tbody
+    %tr
+      %td
+        %strong Name:
+      %td
+        = @author.name
+    %tr
+      %td
+        %strong Description:
+      %td
+        = @author.description
+    %tr
+      %td
+        %strong Short description:
+      %td
+        = @author.short_description
+    
+  = link_to t('authors.edit'), edit_author_path(@author)
+  |
+  = link_to t('authors.list'), authors_path

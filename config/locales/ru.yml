@@ -135,6 +135,7 @@ ru:
       hubs_manage: 'Упрвление cтруктурой:'
       pubs_manage: 'Управление публикациями:'
       users_and_roles: 'Пользователи и Роли:'
+      authors: 'Авторы'
 
       new_post: 'Новый Пост'
       new_page: 'Новую страницу'
@@ -154,3 +155,14 @@ ru:
     index: Список пользователей
     create:
       created: Пользователь успешно создан
+  
+  authors:
+    list: Авторы
+    show: Просмотр автора
+    edit: Редактировать автора
+
+    name: Имя
+    description: Описание
+    short_description: Краткое описание
+    user_id: Имя пользователя
+    created_at: Создан

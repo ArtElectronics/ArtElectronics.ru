@@ -43,3 +43,9 @@
   .list-group
     = link_to t('.users'), users_url, class: 'list-group-item'
     = link_to t('.roles'), admin_roles_url, class: 'list-group-item'
+
+- if @user.has_role?(:author, :manage)
+  %h4= t '.authors'
+
+  .list-group
+    = link_to t('.authors'), authors_url, class: 'list-group-item'
