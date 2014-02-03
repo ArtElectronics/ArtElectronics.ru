@@ -1,8 +1,6 @@
 TheApp::Application.routes.draw do
   root to: 'welcome#index'
 
-  resources :authors
-
   # Legacy Urls
   # /recipes/rc56797---lavandovyy-limonad
   # /recipes/tags/milk
@@ -38,6 +36,8 @@ TheApp::Application.routes.draw do
     post :expand_node, on: :collection
     # post :selector,    on: :collection
   end
+
+  resources :authors
 
   # Users
   resources :users, only: [:index, :show, :create] do

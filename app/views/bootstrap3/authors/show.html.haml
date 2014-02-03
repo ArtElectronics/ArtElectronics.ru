@@ -1,24 +1,23 @@
-%h1= t("authors.show")
-%p#notice= notice
+- content_for :express_nav do
+  %p= link_to t('authors.edit'), edit_author_path(@author)
+  %p= link_to t('authors.list'), authors_path
 
-%table.table.table-striped
+%h1= t('authors.show')
+
+%table.table
   %tbody
     %tr
       %td
-        %strong Name:
+        %strong= "#{t('authors.name')}"
       %td
         = @author.name
     %tr
       %td
-        %strong Description:
+        %strong= "#{t('authors.description')}"
       %td
         = @author.description
     %tr
       %td
-        %strong Short description:
+        %strong= "#{t('authors.short_description')}"
       %td
         = @author.short_description
-    
-  = link_to t('authors.edit'), edit_author_path(@author)
-  |
-  = link_to t('authors.list'), authors_path

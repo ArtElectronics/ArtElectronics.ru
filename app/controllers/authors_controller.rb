@@ -1,25 +1,22 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
+  before_action :user_require
+  before_action :role_required
+
   def index
     @authors = Author.all.page params[:page]
-  end
-
-  def show
   end
 
   def new
     @author = Author.new
   end
 
-  def edit
-  end
-
   def create
     @author = Author.new(author_params)
 
     if @author.save
-      redirect_to @author, notice: 'Author was successfully created.'
+      redirect_to url_for([:edit, @author]), notice: t('authors.created')
     else
       render action: 'new' 
     end
@@ -27,7 +24,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
-      redirect_to @author, notice: 'Author was successfully updated.'
+      redirect_to url_for([:edit, @author]), notice: t('authors.updated')
     else
       render action: 'edit'
     end

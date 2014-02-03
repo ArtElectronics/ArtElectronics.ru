@@ -39,6 +39,11 @@ ru:
         main_image_file_size:    "Размер главного изображения"
         main_image: "Главное изображение"
         title: "Загловок"
+      author:
+        name: Имя
+        description: Описание
+        short_description: Краткое описание
+        user_id: Пользователь
 
   hubs:
     new: Новый хаб
@@ -132,10 +137,10 @@ ru:
       create:   'Создать:'
       show:     'Просмотр:'
       comments: 'Комментарии:'
-      hubs_manage: 'Упрвление cтруктурой:'
+      hubs_manage: 'Управление cтруктурой:'
       pubs_manage: 'Управление публикациями:'
       users_and_roles: 'Пользователи и Роли:'
-      authors: 'Авторы'
+      authors: 'Авторы:'
 
       new_post: 'Новый Пост'
       new_page: 'Новую страницу'
@@ -149,22 +154,26 @@ ru:
       hubs: 'Разделы сайта'
       users: 'Пользователи'
       roles: 'Роли'
+      authors_list: 'Авторы'
 
     have_not_role: "У вас не достаточно прав"
     not_authenticated: "Вы должны войти в систему прежде чем увидить данную страницу"
     index: Список пользователей
     create:
       created: Пользователь успешно создан
-  
+
   authors:
+    name: "Имя:"
+    description: "Описание:"
+    short_description: "Краткое описание:"
+    user_id: "Имя пользователя:"
+    created_at: "Создан:"
+
+    updated: "Автор успешно обновлен"
+    created: "Автор успешно создан"
+
     list: Авторы
     show: Просмотр автора
     edit: Редактировать автора
     new:  Новый автор
     save: Сохранить
-
-    name: Имя
-    description: Описание
-    short_description: Краткое описание
-    user_id: Имя пользователя
-    created_at: Создан
