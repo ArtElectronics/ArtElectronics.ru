@@ -3,16 +3,22 @@ def what_find
   # ae_articles       = AE_Article.find([13, 243])
 end
 
-namespace :ae do
-  namespace :tags do
-    desc "Drag tags from old to new base"
-    task :drag  do
-        %w[
-          drag_start
-          compare_equality
-        ].each { |task| Rake::Task["ae:tags:#{task}"].invoke}
-    end
+# =================================
+# How to move tag data to new Engine?
+# =================================
+# rake ae:tags_start
+# =================================
 
+namespace :ae do
+  desc "Drag tags from old to new base"
+  task :tags_start do
+      %w[
+        drag_start
+        compare_equality
+      ].each { |task| Rake::Task["ae:tags:#{task}"].invoke}
+  end
+
+  namespace :tags do
     desc "Перетаскиваем теги"
     task drag_start: :environment do
       puts ''
@@ -31,7 +37,7 @@ namespace :ae do
         create_tags ae_article, post
 
         if post.save
-          puts "Article id #{ae_article.id} draged. (#{index+1}/#{ae_articles_count})".green
+          puts "Article id #{ae_article.id} tags draged. (#{index+1}/#{ae_articles_count})".green
         else
           puts_error post, index, ae_articles_count
         end

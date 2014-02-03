@@ -327,6 +327,7 @@ namespace :ae do
       create_hub_blog
       blogs_start
       comment_start
+      tags_start
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
     # uploaded_files_start
   end
