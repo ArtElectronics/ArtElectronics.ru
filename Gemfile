@@ -10,7 +10,7 @@ gem 'unicorn'
 gem 'mysql2'
 
 # App level
-gem 'sorcery'
+gem 'devise'
 gem 'RedCloth', require: 'redcloth'
 
 # views

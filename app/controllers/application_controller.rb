@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include RedirectBack
-  include SorceryAddons
   include TheRoleAddons
   include TheRole::Controller
   include TheComments::ViewToken
@@ -28,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   before_action :define_user
   after_action  :save_audit
+
+  def require_login
+    true
+  end
 
   private
 

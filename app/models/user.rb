@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  authenticates_with_sorcery!
   include DefineOpenPassword
 
   include TheRole::User

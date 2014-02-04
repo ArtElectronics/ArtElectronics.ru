@@ -48,7 +48,6 @@ RSpec.configure do |config|
 
   # Capybara
   config.include Capybara::DSL
-  include Sorcery::TestHelpers::Rails
 
   # Capybara.javascript_driver = :webkit
 

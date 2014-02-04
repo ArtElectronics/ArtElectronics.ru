@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new params.require(:user).permit(:login, :email, :password)
     if @user.save
-      login(@user.login, @user.open_password, false)
       redirect_to cabinet_url, notice: t('.created')
     else
       render :new
