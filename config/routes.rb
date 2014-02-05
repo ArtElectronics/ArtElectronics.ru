@@ -8,10 +8,11 @@ TheApp::Application.routes.draw do
   get "recipes/tag/:id", to: redirect { |params, request| URI.encode "#{request.protocol + request.host_with_port}/tag/#{params[:id]}" }
 
   # Login system
-  get    "login"    => "sessions#new",     as: :login
-  delete "logout"   => "sessions#destroy", as: :logout
-  get    "signup"   => "users#new",        as: :signup
-  post   "sessions" => "sessions#create",  as: :sessions
+  devise_for :users
+  # get    "login"    => "sessions#new",     as: :login
+  # delete "logout"   => "sessions#destroy", as: :logout
+  # get    "signup"   => "users#new",        as: :signup
+  # post   "sessions" => "sessions#create",  as: :sessions
 
   # Personal
   get "cabinet" => "users#cabinet", as: :cabinet

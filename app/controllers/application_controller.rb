@@ -28,10 +28,6 @@ class ApplicationController < ActionController::Base
   before_action :define_user
   after_action  :save_audit
 
-  def require_login
-    true
-  end
-
   private
 
   def define_user

@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20140130042128) do
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -267,41 +266,37 @@ ActiveRecord::Schema.define(version: 20140130042128) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "login",                                              null: false
     t.string   "username"
-    t.string   "email"
-    t.string   "open_password"
-    t.string   "crypted_password"
-    t.string   "salt"
     t.integer  "role_id"
-    t.integer  "show_count",                      default: 0
-    t.string   "state",                           default: "active"
-    t.integer  "hubs_count",                      default: 0
-    t.integer  "posts_count",                     default: 0
+    t.integer  "show_count",                  default: 0
+    t.string   "state",                       default: "active"
+    t.integer  "hubs_count",                  default: 0
+    t.integer  "posts_count",                 default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
+    t.integer  "all_attached_files_count",    default: 0
+    t.integer  "all_attached_files_size",     default: 0
+    t.integer  "storage_files_count",         default: 0
+    t.integer  "storage_files_size",          default: 0
+    t.integer  "my_draft_comments_count",     default: 0
+    t.integer  "my_published_comments_count", default: 0
+    t.integer  "my_comments_count",           default: 0
+    t.integer  "draft_comcoms_count",         default: 0
+    t.integer  "published_comcoms_count",     default: 0
+    t.integer  "deleted_comcoms_count",       default: 0
+    t.integer  "spam_comcoms_count",          default: 0
+    t.integer  "draft_comments_count",        default: 0
+    t.integer  "published_comments_count",    default: 0
+    t.integer  "deleted_comments_count",      default: 0
+    t.string   "login",                       default: "",       null: false
+    t.string   "email",                       default: "",       null: false
+    t.string   "encrypted_password",          default: "",       null: false
     t.string   "reset_password_token"
-    t.datetime "reset_password_token_expires_at"
-    t.datetime "reset_password_email_sent_at"
-    t.integer  "all_attached_files_count",        default: 0
-    t.integer  "all_attached_files_size",         default: 0
-    t.integer  "storage_files_count",             default: 0
-    t.integer  "storage_files_size",              default: 0
-    t.integer  "my_draft_comments_count",         default: 0
-    t.integer  "my_published_comments_count",     default: 0
-    t.integer  "my_comments_count",               default: 0
-    t.integer  "draft_comcoms_count",             default: 0
-    t.integer  "published_comcoms_count",         default: 0
-    t.integer  "deleted_comcoms_count",           default: 0
-    t.integer  "spam_comcoms_count",              default: 0
-    t.integer  "draft_comments_count",            default: 0
-    t.integer  "published_comments_count",        default: 0
-    t.integer  "deleted_comments_count",          default: 0
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
   end
 
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  include DefineOpenPassword
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   include TheRole::User
   
@@ -26,7 +27,8 @@ class User < ActiveRecord::Base
 
   validates :login,    presence: true, uniqueness: true
   validates :email,    presence: true, uniqueness: true
-  validates :password, presence: true, on: :create
+  #TODO taichiman deleted this
+  # validates :password, presence: true, on: :create
 
   class << self
     def root
