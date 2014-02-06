@@ -25,9 +25,11 @@ class User < ActiveRecord::Base
   # validations
   before_validation :prepare_login, on: :create
 
-  validates :login,    presence: true, uniqueness: true
-  validates :email,    presence: true, uniqueness: true
+  after_create      :calculate_fields!
+
   #TODO taichiman deleted this
+  # validates :login,    presence: true, uniqueness: true
+  # validates :email,    presence: true, uniqueness: true
   # validates :password, presence: true, on: :create
 
   class << self
@@ -104,5 +106,13 @@ class User < ActiveRecord::Base
 
   def prepare_login
     self.login = self.login.to_s.to_slug_param
+  end
+
+  def calculate_fields!
+    part = self.email.split('@')[0].to_s.to_slug_param
+    self.login = part
+    # может быть позже, мы будем получать username при регистрации юзера
+    self.username = part if self.username.blank?
+    self.save
   end
 end

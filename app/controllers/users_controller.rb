@@ -15,12 +15,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new params.require(:user).permit(:login, :email, :password)
-    if @user.save
-      redirect_to cabinet_url, notice: t('.created')
-    else
-      render :new
-    end
+    #TODO taichiman delete it
+    # @user = User.new params.require(:user).permit(:login, :email, :password)
+    # if @user.save
+    #   redirect_to cabinet_url, notice: t('.created')
+    # else
+    #   render :new
+    # end
   end
 
   # secured

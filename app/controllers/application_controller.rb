@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   prepend_view_path "app/views/#{ AppConfig.theme }"
 
   before_filter :staging_auth
-  
+
   def staging_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == 'test' && password == 'test'
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def app_role_access_denied
-    redirect_to login_url, alert: t('users.have_not_role')
+    redirect_to new_user_session_path, alert: t('users.have_not_role')
   end
 
   alias_method :user_require,       :require_login
@@ -49,6 +49,6 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authenticated
-    redirect_to login_url, alert: t('users.not_authenticated')
+    redirect_to new_user_session_path, alert: t('users.not_authenticated')
   end
 end

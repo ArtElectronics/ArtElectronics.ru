@@ -14,8 +14,8 @@
         %li
           = link_to cabinet_url do
             Кабинет (#{ current_user.login })
-        %li= link_to t('sessions.logout'), logout_url, method: :delete
+        %li= link_to t('sessions.logout'), destroy_user_session_path, method: :delete
       - else
-        %li= link_to  'Регистрация', signup_url
-        %li= link_to  'Вход', login_url
+        %li= link_to  'Регистрация', new_user_registration_path
+        %li= link_to  'Вход', new_user_session_path
 
