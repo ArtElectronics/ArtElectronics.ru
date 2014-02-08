@@ -11,7 +11,7 @@ describe "App Base urls" do
 
     %w[ \  users login signup articles videos blogs].each do |path|
       it "/#{path}" do
-        get "/#{path}"
+        get "/#{path}"        
         response.status.should be(200)
       end
     end

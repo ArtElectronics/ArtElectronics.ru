@@ -34,7 +34,8 @@ after 'development:clean' do
       edit:    true,
       update:  true,
       rebuild: true,
-      destroy: true
+      destroy: true,
+      manage:  true
     },
     available_hubs: {
       blogs: true
@@ -51,7 +52,8 @@ after 'development:clean' do
       edit:    true,
       update:  true,
       rebuild: true,
-      destroy: true
+      destroy: true,
+      manage:  true
     },
     available_hubs: {
       blogs:    true,

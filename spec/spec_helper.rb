@@ -5,15 +5,16 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-# require 'capybara/rspec'
-# require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/rails'
 
-# Capybara.configure do |config|
+Capybara.configure do |config|
+  config.exact = true
 #   config.match = :one
 #   config.exact_options = true
 #   config.ignore_hidden_elements = true
 #   config.visible_text_only = true
-# end
+end
 
 # If you're migrating from Capybara 1.x, try:
 

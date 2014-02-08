@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(version: 20140130042128) do
 
   create_table "users", force: true do |t|
     t.string   "username"
+    t.string   "login"
     t.integer  "role_id"
     t.integer  "show_count",                  default: 0
     t.string   "state",                       default: "active"
@@ -288,7 +289,6 @@ ActiveRecord::Schema.define(version: 20140130042128) do
     t.integer  "draft_comments_count",        default: 0
     t.integer  "published_comments_count",    default: 0
     t.integer  "deleted_comments_count",      default: 0
-    t.string   "login",                       default: "",       null: false
     t.string   "email",                       default: "",       null: false
     t.string   "encrypted_password",          default: "",       null: false
     t.string   "reset_password_token"

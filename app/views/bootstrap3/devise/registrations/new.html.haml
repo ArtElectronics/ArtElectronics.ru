@@ -1,12 +1,13 @@
-%h2 Sign up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %div
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: :form }) do |f|
+  .form-group
+    = render partial: "the_notification/form", locals: { object: @user }
+  .form-group
     = f.label :email
-    = f.email_field :email, :autofocus => true
-  %div
+    = f.email_field :email, :autofocus => true, class: 'form-control'
+  .form-group
     = f.label :password
-    = f.password_field :password
-  %div= f.submit "Sign up"
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.submit t('devise.registrations.sign_up'), class: 'btn btn-info'
 
 = render "devise/shared/links"

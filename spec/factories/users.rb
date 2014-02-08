@@ -2,7 +2,7 @@ require 'spec_helper'
 
 FactoryGirl.define do
   factory :admin_user, class: User do
-    login :admin
+    # login :admin
     email "admin@site.com"
     password 'qwerty'
   end

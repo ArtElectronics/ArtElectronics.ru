@@ -6,7 +6,6 @@ after 'development:roles' do
 
     user = User.create!(
       username: name,
-      login:    login,
       email:    email,
       password: "password#{i.next}"
     )

@@ -14,16 +14,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    #TODO taichiman delete it
-    # @user = User.new params.require(:user).permit(:login, :email, :password)
-    # if @user.save
-    #   redirect_to cabinet_url, notice: t('.created')
-    # else
-    #   render :new
-    # end
-  end
-
   # secured
   def cabinet; end
 end

@@ -9,10 +9,6 @@ TheApp::Application.routes.draw do
 
   # Login system
   devise_for :users
-  # get    "login"    => "sessions#new",     as: :login
-  # delete "logout"   => "sessions#destroy", as: :logout
-  # get    "signup"   => "users#new",        as: :signup
-  # post   "sessions" => "sessions#create",  as: :sessions
 
   # Personal
   get "cabinet" => "users#cabinet", as: :cabinet
@@ -41,7 +37,7 @@ TheApp::Application.routes.draw do
   resources :authors
 
   # Users
-  resources :users, only: [:index, :show, :create] do
+  resources :users, only: [ :index, :show ] do
     %w{ hubs pages posts }.each do |name|
       resources name, concerns: :sortable_tree
     end

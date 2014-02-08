@@ -22,11 +22,16 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path, alert: t('users.have_not_role')
   end
 
-  alias_method :user_require,       :require_login
+  alias_method :user_require,       :user_signed_in?
   alias_method :role_access_denied, :app_role_access_denied
 
   before_action :define_user
   after_action  :save_audit
+
+  # override devise redirect path if successfull login
+  def after_sign_in_path_for(resource)
+    cabinet_path
+  end
 
   private
 
