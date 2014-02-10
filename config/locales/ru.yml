@@ -118,19 +118,6 @@ ru:
     image_rotated_on_right: "Изображение повернуто вправо"
     main_image_deleted: "Изображение удалено"
 
-  sessions:
-    new: Вход
-    login: Вход
-    logout: Выход
-    remember_me: Запомнить меня
-
-    create:
-      alert: "Логин или Пароль оказались ошибочными"
-      notice: "Вход"
-
-    destroy:
-      notice: "До скорой встречи!"
-
   users:
     cabinet:
       cabinet: "Кабинет: %{login}"
@@ -157,7 +144,7 @@ ru:
       authors_list: 'Авторы'
 
     have_not_role: "У вас не достаточно прав"
-    not_authenticated: "Вы должны войти в систему прежде чем увидить данную страницу"
+    not_authenticated: "Вы должны войти в систему прежде чем увидеть данную страницу"
     index: Список пользователей
     create:
       created: Пользователь успешно создан

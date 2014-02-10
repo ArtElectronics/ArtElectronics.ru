@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path, alert: t('users.have_not_role')
   end
 
-  alias_method :user_require,       :user_signed_in?
+  alias_method :user_require,       :authenticate_user!
   alias_method :role_access_denied, :app_role_access_denied
 
   before_action :define_user
