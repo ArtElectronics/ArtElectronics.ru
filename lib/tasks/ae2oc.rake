@@ -310,7 +310,7 @@ namespace :ae do
     end
   end
 
-  desc "Перетягиваем теги из AE в Open-cook"
+  desc "Перетягиваем теги из AE в ArtElectronics"
   task tags_start: :environment do
   end
 

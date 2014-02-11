@@ -23,7 +23,7 @@ cd rails4
 Clone project
 
 ```
-git clone git@github.com:open-cook/open-cook.git
+git clone git@github.com:ArtElectronics/ArtElectronics.ru.git
 ```
 
 Clone gems repos
@@ -39,7 +39,7 @@ git clone git@github.com:the-teacher/the_sortable_tree.git
 Change directory
 
 ```
-cd open-cook
+cd ArtElectronics.ru
 ```
 
 RVM config

@@ -1,7 +1,7 @@
 # TheStorages.config.param_name => value
 
 TheStorages.configure do |config|
-  config.watermark_text = 'Open-Cook.ru'
+  config.watermark_text = 'ArtElectronics.ru'
   config.convert_path   = '/usr/bin/convert' # BSD: /usr/local/bin/
 
   config.watermark_font_path = "#{Rails.root.to_s}/vendor/fonts/georgia_italic.ttf"

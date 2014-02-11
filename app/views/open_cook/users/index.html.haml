@@ -1,8 +1,0 @@
-= paginate @users
-
-- @users.each do |user|
-  %p
-    = link_to user.login, user_url(user)
-    = user.role_name
-
-= paginate @users
