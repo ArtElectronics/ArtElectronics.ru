@@ -37,11 +37,13 @@ namespace :ae do
         create_tags ae_article, post
 
         if post.save
-          puts "Article id #{ae_article.id} tags draged. (#{index+1}/#{ae_articles_count})".green
+          print "*"
+          # puts "Article id #{ae_article.id} tags draged. (#{index+1}/#{ae_articles_count})".green
         else
           puts_error post, index, ae_articles_count
         end
       end
+      puts ''
     end
 
     desc "Compare correct articles tags in old and new base"
@@ -98,8 +100,10 @@ namespace :ae do
             puts "(#{index+1}/#{ae_articles_count}) Tags are different for Article id: #{ ae_article.id }. Title #{ ae_article.title }".red
             exit
           end
-          puts "Tags match in article (#{index+1}/#{ae_articles_count})".green
+          print "*"
+          # puts "Tags match in article (#{index+1}/#{ae_articles_count})".green
         end
+        puts ''
         puts 'All tags match.'.green      end
     end
   end
