@@ -104,7 +104,7 @@ namespace :ae do
       login: 'admin',
       username: 'admin',
       email: 'admin@example.com',
-      password: 'admin',
+      password: 'admin1',
       role: Role.with_name(:admin)
     )
 

@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
     def create_admin!
       user = new(
         login: :admin,
+        username: 'admin',
         email: "admin@site.com",
         password: "qwerty",
         role: Role.with_name(:admin)
@@ -108,12 +109,15 @@ class User < ActiveRecord::Base
   end
 
   def calculate_signup_fields!
-    part = self.email.split('@')[0].to_s.to_slug_param
-
-    self.login = part
-    self.role = Role.with_name :blogger
-    # может быть позже, мы будем получать username при регистрации юзера
-    self.username = part if self.username.blank?
-    self.save
+    # здесь пока доинициализация (после devise) нового пользователя, так как он не все нужные мне поля   устанавливает по default
+    if self.role != Role.with_name(:admin)
+      part = self.email.split('@')[0].to_s.to_slug_param
+      
+      self.login = part
+      self.role = Role.with_name :blogger
+      # может быть позже, мы будем получать username при регистрации юзера
+      self.username = part if self.username.blank?
+      self.save
+    end
   end
 end
