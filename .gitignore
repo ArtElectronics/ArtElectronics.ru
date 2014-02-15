@@ -9,13 +9,16 @@ dumps/*
 bin/*
 
 PASSWORDS.txt
+/config/database.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/config/database.yml
+
+# DB
 db/*.db
 db/*.sqlite3
+
 public/uploads/*
 public/old_uploads/*
 public/assets
@@ -24,7 +27,6 @@ public/system
 public/system/*
 
 # local config files
-# Gemfile.lock
 .rvmrc
 .ruby-gemset
 .ruby-version
@@ -33,5 +35,3 @@ public/system/*
 .DS_Store
 .DS_Store?
 Thumbs.db
-
-config/capistrano/templates/database.production.yml
