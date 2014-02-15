@@ -3,17 +3,7 @@ class Post < ActiveRecord::Base
 
   include BasePublication
 
-  class << self
-    def create_post!
-      post = Post.new(
-        friendly_id: 1,
-        title: "test title",
-        slug: "test slug",
-        user: User.find( 1 )
-      )
-      post.save!
-      post
-    end
-  end
-
+  # relations
+  has_many :authorships
+  has_many :authors, through: :authorships
 end

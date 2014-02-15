@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :recipes
   has_many :articles
+  has_one  :author, validate: true
 
   # validations
   before_validation :prepare_login, on: :create

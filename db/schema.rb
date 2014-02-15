@@ -11,8 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127075019) do
 
+ActiveRecord::Schema.define(version: 20140130042128) do
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
     t.integer  "storage_id"
@@ -49,6 +49,30 @@ ActiveRecord::Schema.define(version: 20140127075019) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.text     "short_description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["user_id"], name: "index_authors_on_user_id", using: :btree
+
+  create_table "authorships", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authorships", ["author_id"], name: "index_authorships_on_author_id", using: :btree
+  add_index "authorships", ["post_id"], name: "index_authorships_on_post_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -237,6 +261,7 @@ ActiveRecord::Schema.define(version: 20140127075019) do
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
+
 
   create_table "tags", force: true do |t|
     t.string "name"
