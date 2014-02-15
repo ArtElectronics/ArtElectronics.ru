@@ -2,8 +2,11 @@
   .form-group
     = render partial: "the_notification/form", locals: { object: @user }
   .form-group
+    = f.label :login
+    = f.text_field :login, class: 'form-control'
+  .form-group
     = f.label :email
-    = f.email_field :email, :autofocus => true, class: 'form-control'
+    = f.text_field :email, :autofocus => true, class: 'form-control'
   .form-group
     = f.label :password
     = f.password_field :password, class: 'form-control'

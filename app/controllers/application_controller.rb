@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   prepend_view_path "app/views/#{ AppConfig.theme }"
 
   before_filter :staging_auth
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def staging_auth
     unless Rails.env.development?
@@ -57,5 +58,11 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     redirect_to new_user_session_path, alert: t('users.not_authenticated')
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :login
   end
 end

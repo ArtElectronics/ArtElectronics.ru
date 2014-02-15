@@ -103,7 +103,7 @@ end
 
 group :development do
   gem 'quiet_assets'
-  gem 'sqlite3'
+  gem 'pry'
 end
 
 group :assets do  

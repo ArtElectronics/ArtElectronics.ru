@@ -1,10 +1,11 @@
 after 'development:roles' do
   10.times do |i|
     name  = Faker::Name.name
-    login = name.downcase.gsub(/[\ \._]/, '-')
+    login = Faker::Internet.user_name
     email = "#{login}@gmail.com"
 
     user = User.create!(
+      login: login,
       username: name,
       email:    email,
       password: "password#{i.next}"

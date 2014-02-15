@@ -22,30 +22,16 @@ class User < ActiveRecord::Base
   has_many :articles
   has_one  :author, validate: true, dependent: :nullify
 
-  # validations
+  # Validations
+  validates :login,  presence: true, uniqueness: true
+
+  # Filters
+  after_create :calculate_signup_fields!
   before_validation :prepare_login, on: :create
-
-  #TODO taichiman deleted this
-  # validates :login,    presence: true, uniqueness: true
-
-  # callbacks
-  after_create      :calculate_signup_fields!
 
   class << self
     def root
       @@root ||= User.first
-    end
-
-    def create_admin!
-      user = new(
-        login: :admin,
-        username: 'admin',
-        email: "admin@site.com",
-        password: "qwerty",
-        role: Role.with_name(:admin)
-      )
-      user.save!
-      user
     end
   end
 
@@ -109,12 +95,14 @@ class User < ActiveRecord::Base
   end
 
   def calculate_signup_fields!
-    # здесь пока доинициализация (после devise) нового пользователя, так как он не все нужные мне поля   устанавливает по default
+    # здесь пока доинициализация (после devise) нового пользователя,
+    # так как он не все нужные мне поля   устанавливает по default
     if self.role != Role.with_name(:admin)
       part = self.email.split('@')[0].to_s.to_slug_param
       
       self.login = part
-      self.role = Role.with_name :blogger
+      self.role  = Role.with_name :blogger
+
       # может быть позже, мы будем получать username при регистрации юзера
       self.username = part if self.username.blank?
       self.save

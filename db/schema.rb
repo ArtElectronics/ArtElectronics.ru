@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204145715) do
+ActiveRecord::Schema.define(version: 20140130042128) do
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -269,13 +269,18 @@ ActiveRecord::Schema.define(version: 20140204145715) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
     t.string   "login"
+    t.string   "username",                    default: ""
+    t.string   "email",                       default: "",       null: false
+    t.string   "encrypted_password",          default: "",       null: false
     t.integer  "role_id"
     t.integer  "show_count",                  default: 0
     t.string   "state",                       default: "active"
     t.integer  "hubs_count",                  default: 0
     t.integer  "posts_count",                 default: 0
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "all_attached_files_count",    default: 0
@@ -292,11 +297,6 @@ ActiveRecord::Schema.define(version: 20140204145715) do
     t.integer  "draft_comments_count",        default: 0
     t.integer  "published_comments_count",    default: 0
     t.integer  "deleted_comments_count",      default: 0
-    t.string   "email",                       default: "",       null: false
-    t.string   "encrypted_password",          default: "",       null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
