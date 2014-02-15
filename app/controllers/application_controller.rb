@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   before_filter :staging_auth
 
   def staging_auth
-    authenticate_or_request_with_http_basic do |username, password|
-      username == 'test' && password == 'test'
+    unless Rails.env.development?
+      authenticate_or_request_with_http_basic do |username, password|
+        username == 'test' && password == 'test'
+      end
     end
   end
 
