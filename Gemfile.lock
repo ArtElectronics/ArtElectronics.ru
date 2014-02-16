@@ -13,14 +13,6 @@ GIT
     seedbank (0.3.0)
 
 GIT
-  remote: git://github.com/mbleigh/acts-as-taggable-on.git
-  revision: 9b3f87dd281151f44f685c302b520de3fd5ad6fb
-  branch: master
-  specs:
-    acts-as-taggable-on (3.0.0)
-      rails (>= 3, < 5)
-
-GIT
   remote: git://github.com/open-cook/the_audit.git
   revision: 3ee01ccd0f77ca8d9027375284d469a1dfc87082
   branch: master
@@ -125,6 +117,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.0.1)
+      rails (>= 3, < 5)
     arel (5.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -310,7 +304,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  acts-as-taggable-on!
+  acts-as-taggable-on (~> 3.0.1)
   awesome_nested_set!
   better_errors
   binding_of_caller

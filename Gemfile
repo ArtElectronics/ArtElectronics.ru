@@ -29,9 +29,11 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'sanitize'
 gem 'state_machine', '~> 1.2.0'
 
-gem 'acts-as-taggable-on', 
-  github: "mbleigh/acts-as-taggable-on",
-  branch: "master"
+# gem 'acts-as-taggable-on', 
+#   github: "mbleigh/acts-as-taggable-on",
+#   branch: "master"
+
+gem "acts-as-taggable-on", "~> 3.0.1"
 
 gem 'awesome_nested_set',
   github: "collectiveidea/awesome_nested_set",

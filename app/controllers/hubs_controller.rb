@@ -38,10 +38,11 @@ class HubsController < ApplicationController
   end  
 
   def show
-    @hub      = Hub.friendly_first(params[:id])
+    @hub  = Hub.friendly_first(params[:id])
+    @hubs = Hub.main_articles_hubs
+    @sub_hubs = @hub.children
 
     @root_hub = @hub.root_hub
-    @sub_hubs = @hub.current_level_hubs
     @posts    = @hub.pubs.published_set.pagination(params)
 
     render template: 'posts/index'

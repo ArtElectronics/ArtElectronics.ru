@@ -12,6 +12,10 @@ class Hub < ActiveRecord::Base
   scope :of_, ->(type) { where(pubs_type: type) }
 
   class << self
+    def main_articles_hubs
+      with_slug('system-article-categories').children.published.nested_set
+    end
+
     def with_slug name
       where(slug: name.to_s.to_slug_param).first
     end
