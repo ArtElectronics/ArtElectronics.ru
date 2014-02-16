@@ -15,7 +15,9 @@
 - @posts.each do |post|
   .panel.panel-success
     .panel-heading
-      %h3= link_to post.title, show_url(post)
+      %h3
+        = link_to post.title, show_url(post)
+        (#{ post.state })
     .panel-body
       - if post.main_image?
         = link_to show_url(post) do

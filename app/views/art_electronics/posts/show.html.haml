@@ -12,7 +12,9 @@
 
 .panel.panel-success
   .panel-heading
-    %h3= @post.title
+    %h3
+      = @post.title
+      (#{ @post.state })
   .panel-body
     - if @post.main_image?
       %p= image_tag @post.main_image.url(:preview), class: :preview

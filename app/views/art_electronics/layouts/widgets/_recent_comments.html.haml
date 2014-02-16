@@ -1,4 +1,4 @@
-- comments = Comment.with_state(:published).where(commentable_state: :published).limit(5)
+- comments = Comment.recent_five
 
 - unless comments.blank?
   .widget.recent_comments
