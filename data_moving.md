@@ -51,3 +51,24 @@ mysql -u root ae_project_old < /path/to/dump.sql
 ```
 rake ae:data_move
 ```
+
+### Move new data to server
+
+```sh
+mysqldump -u root ae_project_new > ae_project_new.sql
+```
+
+```sh
+scp ae_project_new.sql ae_project@zykin-ilya.ru:/var/www/ae_project/data/staging.artelectronics.ru/shared/dumps
+```
+
+```
+cd /var/www/ae_project/data/staging.artelectronics.ru/current &&
+rvm use ruby-2.0.0-p247@cap3 &&
+RAILS_ENV=production bin/rake db:drop &&
+RAILS_ENV=production bin/rake db:create
+```
+
+```
+mysql -u ae_project -pPASSWORD ae_project_staging < /var/www/ae_project/data/staging.artelectronics.ru/shared/dumps/ae_project_new.sql
+```
