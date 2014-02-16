@@ -1,4 +1,6 @@
 class Author < ActiveRecord::Base
+  def to_param; name; end
+
   # relations
   has_many   :authorships
   has_many   :posts, through: :authorships

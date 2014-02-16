@@ -26,6 +26,10 @@
     / .tags
     /   %b Теги
     /   = tags_links @post.inline_tags
+    .authors
+      %b Авторы
+      - @post.authors.each do |author|
+        = link_to author.name, author
     .tags
       %b Теги
       = tags_links @post.word_list.join(', ')

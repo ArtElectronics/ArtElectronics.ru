@@ -1,6 +1,7 @@
-- content_for :express_nav do
-  %p= link_to t('authors.edit'), edit_author_path(@author)
-  %p= link_to t('authors.list'), authors_path
+- if current_user.try(:admin?)
+  - content_for :express_nav do
+    %p= link_to t('authors.edit'), edit_author_path(@author)
+    %p= link_to t('authors.list'), authors_path
 
 %h1= t('authors.show')
 

@@ -1,8 +1,8 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
-  before_action :user_require
-  before_action :role_required
+  before_action :user_require,  except: [:index, :show]
+  before_action :role_required, except: [:index, :show]
 
   def index
     @authors = Author.all.page params[:page]
@@ -37,7 +37,7 @@ class AuthorsController < ApplicationController
 
   private
     def set_author
-      @author = Author.find(params[:id])
+      @author = Author.where(id: params[:id]).first || Author.where(name: params[:id]).first
     end
 
     def author_params
