@@ -20,7 +20,7 @@
     - @authors.each do |author|
       %tr
         %td= author.name
-        %td= author.description
+        %td= raw author.description
         %td= author.short_description
         %td= author.user_id
         %td= author.created_at
