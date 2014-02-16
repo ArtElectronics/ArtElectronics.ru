@@ -21,7 +21,19 @@
     %p= raw @post.content
   
   .panel-footer
-    .tags= tags_links @post.inline_tags
+    / .tags
+    /   %b Теги
+    /   = tags_links @post.inline_tags
+    .tags
+      %b Теги
+      = tags_links @post.word_list.join(', ')
+    .tags
+      %b Имена
+      = tags_links @post.name_list.join(', ')
+    .tags
+      %b Названия
+      = tags_links @post.title_list.join(', ')
+
     = render partial: "posts/informer", locals: { post: @post }
 
 = render partial: "the_comments/tree", locals: { commentable: @post, comments_tree: @comments }
