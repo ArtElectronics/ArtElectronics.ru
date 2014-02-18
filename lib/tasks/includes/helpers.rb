@@ -240,3 +240,12 @@ def get_article_titles author
   end 
   articles_titles
 end
+
+def get_legacy_url old_article
+  legacy_url = ""
+  result = AE_FullDatabase.connection.execute "select c.slug, s.slug, a.id from categories c, subcategories s, articles a where a.id=#{old_article.id} and a.subcategory_id=s.id and s.category_id=c.id"
+  result.each(as: :array)  do | row |
+    legacy_url = row
+  end
+  legacy_url
+end

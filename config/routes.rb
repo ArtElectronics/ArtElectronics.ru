@@ -1,11 +1,6 @@
 TheApp::Application.routes.draw do
   root to: 'welcome#index'
 
-  # Legacy Urls
-  # /recipes/rc56797---lavandovyy-limonad
-  # /recipes/tags/milk
-  get "recipes/:id" => "welcome#legacy_post"
-  get "recipes/tag/:id", to: redirect { |params, request| URI.encode "#{request.protocol + request.host_with_port}/tag/#{params[:id]}" }
 
   # Login system
   devise_for :users, path: '',
@@ -69,4 +64,12 @@ TheApp::Application.routes.draw do
   patch  'main_image_to_left/:storage_type/:storage_id'  => "attached_files#main_image_to_left",     as: :main_image_to_left
   patch  'main_image_to_right/:storage_type/:storage_id' => "attached_files#main_image_to_right",    as: :main_image_to_right
   post   'crop_image_for_preview'                        => "attached_files#crop_image_for_preview", as: :crop_image_for_preview
+  
+  # Legacy Urls
+  # /telegraf/zametki/439
+  # /telegraf
+  # /telegraf/telegraf
+  get "/:c_slug/:s_slug/:id" => "welcome#legacy_post"
+  get "/:c_slug/:s_slug" => "welcome#legacy_hub"
+  get "/:c_slug", to: redirect { |params, request| URI.encode "#{request.protocol + request.host_with_port}/hubs/#{params[:c_slug]}" }
 end
