@@ -72,14 +72,7 @@ namespace :ae do
         ae_category = AE_Category.where(id: ae_subcategory.category_id).first
         legacy_url = "#{ae_category.slug}/#{ae_subcategory.slug}"
 
-        case ae_subcategory.slug
-        when ae_category.slug
-          slug = "#{ae_subcategory.slug}-#{ae_subcategory.slug}"
-        when 'retro'
-          ae_category.slug != 'fashion' ? slug = "#{ae_category.slug}-retro" : slug = 'retro'
-        else
-          slug = ae_subcategory.slug
-        end
+        slug = get_subcategory_slug( ae_subcategory, ae_category )
 
         hub = Hub.where( slug: slug).first
 
@@ -88,6 +81,33 @@ namespace :ae do
           print '*'
         else
           puts_error hub, index, ae_subcategories_count
+        end
+      end  
+      puts ''
+    end
+
+    desc "Сверка разбивки перенесенных статей по категориям"
+    task check_posts_by_hub: :environment do
+      puts ''
+      puts 'Сверка разбивки перенесенных статей по категориям'
+
+      ae_subcategories = AE_Subcategory.all
+      ae_subcategories_count = ae_subcategories.count
+
+      ae_subcategories.each_with_index do | ae_subcategory, index_subcategory |
+        ae_category = AE_Category.where(id: ae_subcategory.category_id).first
+        legacy_url = "#{ae_category.slug}/#{ae_subcategory.slug}"
+        ae_articles = AE_Article.where(subcategory_id: ae_subcategory.id)
+        s_hub = Hub.where(legacy_url: legacy_url).first
+        oc_posts = s_hub.posts
+        
+        ae_titles=ae_articles.map(&:title)
+        oc_titles=oc_posts.map(&:title)
+
+        if ae_titles==oc_titles
+          puts "#{ae_subcategory.id}: #{legacy_url} - ok (#{ae_titles.count}-#{oc_titles.count})".green
+        else
+          puts "#{ae_subcategory.id}: #{legacy_url} - bad (#{ae_titles.count}-#{oc_titles.count})".red
         end
       end  
       puts ''

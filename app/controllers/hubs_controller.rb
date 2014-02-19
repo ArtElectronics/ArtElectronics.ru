@@ -43,7 +43,9 @@ class HubsController < ApplicationController
     @sub_hubs = @hub.children
 
     @root_hub = @hub.root_hub
-    @posts    = @hub.pubs.published_set.pagination(params)
+    #taichiman: for post index order like in old AE
+    # @posts    = @hub.pubs.published_set.pagination(params)
+    @posts    = @hub.pubs.order(created_at: :desc).published_set.pagination(params)
 
     render template: 'posts/index'
   end

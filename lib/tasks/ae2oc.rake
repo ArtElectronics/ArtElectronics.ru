@@ -209,7 +209,8 @@ namespace :ae do
         title: ae_article.title,
         raw_intro: ae_article.description,
         raw_content: ae_article.body,
-        state: ae_article.state
+        state: ae_article.state,
+        created_at: ae_article.created_at
       )
 
       if post.save
@@ -217,7 +218,8 @@ namespace :ae do
                    "/original/#{ae_article.id}#{File.extname(ae_article.image_file_name)}"
 
         # create_main_image_file post, old_file
-        puts "(#{index+1}/#{ae_articles_count})"
+        # puts "(#{index+1}/#{ae_articles_count})"
+        print '*'
       else
         puts_error post, index, ae_articles_count
       end
@@ -229,6 +231,8 @@ namespace :ae do
     puts ''
     puts "Создаем основной hub для блогов"
     create_system_hub(:system_blogs, "Блоги", :posts)
+    root_hub_categories = Hub.where(title: "КатегорииСтатей").first
+    Hub.find_by( slug: 'system-blogs' ).move_to_child_of root_hub_categories
   end
 
   desc "Перетягиваем блоги"

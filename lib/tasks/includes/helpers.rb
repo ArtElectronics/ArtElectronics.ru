@@ -249,3 +249,15 @@ def get_legacy_url old_article
   end
   legacy_url
 end
+
+def get_subcategory_slug( ae_subcategory, ae_category )
+  case ae_subcategory.slug
+  when ae_category.slug
+    slug = "#{ae_subcategory.slug}-#{ae_subcategory.slug}"
+  when 'retro'
+    ae_category.slug != 'fashion' ? slug = "#{ae_category.slug}-retro" : slug = 'retro'
+  else
+    slug = ae_subcategory.slug
+  end
+  slug
+end
