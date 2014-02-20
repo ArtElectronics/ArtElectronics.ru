@@ -198,7 +198,9 @@ namespace :ae do
     ae_articles.each_with_index do |ae_article, index|
       # user = find_user ae_article
       user = User.root
-      hub = find_parent_category ae_article
+      #taichiman, because this do't set right hub
+      # hub = find_parent_category ae_article
+      hub = find_category_hub ae_article
 
       # решить вопрос с: image_file_name, pdf_file_name, swf_file_name, swf_see_file_name
       post = Post.new(
@@ -240,7 +242,9 @@ namespace :ae do
   task blogs_start: [:environment] do
     ae_blogs = AE_Blog.where.not('user_id IN (4,17,33)')
     ae_blogs_count = ae_blogs.count
-    hub_blog = Hub.roots.where("title = ?", "Блоги").first
+    #taichiman: because "Блоги" not root hub now.
+    # hub_blog = Hub.roots.where("title = ?", "Блоги").first
+    hub_blog = Hub.where("title = ?", "Блоги").first
 
     puts ''
     puts "Перетягиваем блоги:"
@@ -252,7 +256,9 @@ namespace :ae do
         raw_intro: ae_blog.body,
         raw_content: ae_blog.body,
         hub_id: hub_blog.id,
-        user_id: user_blog.id
+        user_id: user_blog.id,
+        state: 'published',
+        created_at: ae_blog.created_at
       )
 
       if blog.save
@@ -275,7 +281,9 @@ namespace :ae do
         raw_intro: bl.body,
         raw_content: bl.body,
         hub_id: hub_blog.id,
-        user_id: User.root
+        user_id: User.root,
+        state: 'published',
+        created_at: hub_blog.created_at
       )
 
       if blog.save
@@ -419,6 +427,8 @@ namespace :ae do
       create_root_category_hub
       categories_start    
       posts_start
+      legacy_url_start
+      legacy_url:check_posts_by_hub
       create_hub_blog
       blogs_start
       comment_start

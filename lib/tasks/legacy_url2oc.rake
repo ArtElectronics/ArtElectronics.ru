@@ -72,7 +72,7 @@ namespace :ae do
         ae_category = AE_Category.where(id: ae_subcategory.category_id).first
         legacy_url = "#{ae_category.slug}/#{ae_subcategory.slug}"
 
-        slug = get_subcategory_slug( ae_subcategory, ae_category )
+        slug = get_subcategory_slug( ae_category, ae_subcategory )
 
         hub = Hub.where( slug: slug).first
 
@@ -108,6 +108,8 @@ namespace :ae do
           puts "#{ae_subcategory.id}: #{legacy_url} - ok (#{ae_titles.count}-#{oc_titles.count})".green
         else
           puts "#{ae_subcategory.id}: #{legacy_url} - bad (#{ae_titles.count}-#{oc_titles.count})".red
+          puts "Process data moving to new base stopped.".red
+          exit
         end
       end  
       puts ''

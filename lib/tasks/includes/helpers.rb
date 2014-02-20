@@ -39,6 +39,13 @@ def find_parent_category category
   hub_category
 end
 
+def find_category_hub ae_article
+  sub = AE_Subcategory.where(id: ae_article.subcategory_id).first
+  cat = AE_Category.where(id: sub.category_id).first
+  slug = get_subcategory_slug( cat, sub )
+  Hub.where(slug: slug).first
+end
+
 def check_slug category
   hub = Hub.where('slug = ?', category.slug)
   hub.present?
@@ -250,7 +257,7 @@ def get_legacy_url old_article
   legacy_url
 end
 
-def get_subcategory_slug( ae_subcategory, ae_category )
+def get_subcategory_slug( ae_category, ae_subcategory )
   case ae_subcategory.slug
   when ae_category.slug
     slug = "#{ae_subcategory.slug}-#{ae_subcategory.slug}"
