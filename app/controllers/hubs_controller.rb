@@ -48,9 +48,9 @@ class HubsController < ApplicationController
 
     if @hubs.include? @hub
       @sub_hubs.empty? ? child_hubs_id = @hub.id : child_hubs_id = @sub_hubs.map(&:id)      
-      @posts = Post.where(hub_id: child_hubs_id).order(created_at: :desc).published_set.pagination(params)
+      @posts = Post.where(hub_id: child_hubs_id).fresh.published_set.pagination(params)
     else  
-      @posts    = @hub.pubs.order(created_at: :desc).published_set.pagination(params)
+      @posts    = @hub.pubs.fresh.published_set.pagination(params)
     end
 
     render template: 'posts/index'
