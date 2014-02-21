@@ -67,9 +67,9 @@ TheApp::Application.routes.draw do
   
   # Legacy Urls
   # /telegraf/zametki/439
-  # /telegraf
   # /telegraf/telegraf
-  get "/:c_slug/:s_slug/:id" => "welcome#legacy_post"
-  get "/:c_slug/:s_slug" => "welcome#legacy_hub"
-  get "/:c_slug", to: redirect { |params, request| URI.encode "#{request.protocol + request.host_with_port}/hubs/#{params[:c_slug]}" }
+  # /telegraf ( see as: ':system_hub route' line)
+  get '/blogs/:id'           => 'welcome#legacy_blog'
+  get '/:c_slug/:s_slug/:id' => 'welcome#legacy_post'
+  get '/:c_slug/:s_slug'     => 'welcome#legacy_hub'
 end

@@ -258,7 +258,8 @@ namespace :ae do
         hub_id: hub_blog.id,
         user_id: user_blog.id,
         state: 'published',
-        created_at: ae_blog.created_at
+        created_at: ae_blog.created_at,
+        legacy_url: ae_blog.id
       )
 
       if blog.save
@@ -283,7 +284,8 @@ namespace :ae do
         hub_id: hub_blog.id,
         user_id: User.root,
         state: 'published',
-        created_at: bl.created_at
+        created_at: bl.created_at,
+        legacy_url: bl.id
       )
 
       if blog.save

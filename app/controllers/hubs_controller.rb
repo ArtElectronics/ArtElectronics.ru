@@ -44,14 +44,12 @@ class HubsController < ApplicationController
 
     @root_hub = @hub.root_hub
     #taichiman: for post index order like in old AE
+    #еще мне кажется published_set здесь излишен, можно просто published. Так-как у нас не организован nested set по статьям.
     # @posts    = @hub.pubs.published_set.pagination(params)
 
-    if @hubs.include? @hub
-      @sub_hubs.empty? ? child_hubs_id = @hub.id : child_hubs_id = @sub_hubs.map(&:id)      
-      @posts = Post.where(hub_id: child_hubs_id).fresh.published_set.pagination(params)
-    else  
-      @posts    = @hub.pubs.fresh.published_set.pagination(params)
-    end
+    @posts = @hub.self_and_children_pubs(@sub_hubs)
+                 .fresh.published_set
+                 .pagination(params)
 
     render template: 'posts/index'
   end
@@ -62,7 +60,7 @@ class HubsController < ApplicationController
     @sub_hubs = @hub.children
 
     @posts = @hub.self_and_children_pubs(@sub_hubs)
-                 .published_set
+                 .fresh.published_set
                  .pagination(params)
 
     render template: 'posts/index'

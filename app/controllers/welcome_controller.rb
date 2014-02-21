@@ -24,4 +24,13 @@ class WelcomeController < ApplicationController
       redirect_to hub_url(hub.friendly_id), status: :moved_permanently
     end
   end
+
+  def legacy_blog
+    blog_hub = Hub.find_by(slug: 'system-blogs')
+    id = params[:id]
+
+    if blog = Post.where( hub_id: blog_hub.id, legacy_url: id ).published.first
+      redirect_to post_url(blog.friendly_id), status: :moved_permanently
+    end
+  end
 end
