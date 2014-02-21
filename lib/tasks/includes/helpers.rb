@@ -92,7 +92,8 @@ def create_comment node, parent = nil
     referer:     node.referer,
     user_agent:  node.user_agent,
     ip:          node.ip,
-    parent_id:   parent.try(:id)
+    parent_id:   parent.try(:id),
+    created_at:  node.created_at
   )
 
   children = return_children_comment node
