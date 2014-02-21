@@ -47,8 +47,6 @@ class HubsController < ApplicationController
     # @posts    = @hub.pubs.published_set.pagination(params)
 
     if @hubs.include? @hub
-      #taichiman
-      # @posts = Post.where(hub_id: @sub_hubs.map(&:id)).order(created_at: :desc).published_set.pagination(params)
       @sub_hubs.empty? ? child_hubs_id = @hub.id : child_hubs_id = @sub_hubs.map(&:id)      
       @posts = Post.where(hub_id: child_hubs_id).order(created_at: :desc).published_set.pagination(params)
     else  

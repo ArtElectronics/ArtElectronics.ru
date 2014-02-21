@@ -37,8 +37,6 @@ module TheFriendlyId
         page:    :p,
         post:    :pt,
         blog:    :b,
-        recipe:  :rc,
-        article: :a
       }[klass]
 
       # build short id

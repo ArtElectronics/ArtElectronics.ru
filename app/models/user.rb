@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
   has_many :hubs
   has_many :pages
   has_many :posts
-  has_many :blogs
-  has_many :notes
-  has_many :recipes
-  has_many :articles
   has_one  :author, validate: true, dependent: :nullify
 
   # Validations
