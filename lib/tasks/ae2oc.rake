@@ -283,7 +283,7 @@ namespace :ae do
         hub_id: hub_blog.id,
         user_id: User.root,
         state: 'published',
-        created_at: hub_blog.created_at
+        created_at: bl.created_at
       )
 
       if blog.save
