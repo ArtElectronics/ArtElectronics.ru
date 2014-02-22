@@ -140,7 +140,7 @@ namespace :ae do
     # Hub.delete_all
     puts ''
     puts "Создаем основной hub для категорий статей"
-    create_system_hub(:system_article_categories, "КатегорииСтатей", :categories)
+    create_system_hub(:system_article_categories, "Категории Статей", :hubs)
   end
 
   desc "Перетаскиваем категории в основной hub для категорий статей"
@@ -153,7 +153,7 @@ namespace :ae do
     ae_subcategories = AE_Subcategory.all
     ae_subcategories_count = ae_subcategories.count
 
-    root_hub_categories = Hub.where(title: "КатегорииСтатей").first
+    root_hub_categories = Hub.with_slug(:system_article_categories)
 
     ae_categories.each_with_index do |ae_category, index|
       hub_category = create_hub_category ae_category
@@ -233,8 +233,6 @@ namespace :ae do
     puts ''
     puts "Создаем основной hub для блогов"
     create_system_hub(:system_blogs, "Блоги", :posts)
-    root_hub_categories = Hub.where(title: "КатегорииСтатей").first
-    Hub.find_by( slug: 'system-blogs' ).move_to_child_of root_hub_categories
   end
 
   desc "Перетягиваем блоги"
@@ -242,12 +240,14 @@ namespace :ae do
   task blogs_start: [:environment] do
     ae_blogs = AE_Blog.where.not('user_id IN (4,17,33)')
     ae_blogs_count = ae_blogs.count
+
     #taichiman: because "Блоги" not root hub now.
     # hub_blog = Hub.roots.where("title = ?", "Блоги").first
-    hub_blog = Hub.where("title = ?", "Блоги").first
+    hub_blog = Hub.with_slug(:system_blogs)
 
     puts ''
     puts "Перетягиваем блоги:"
+
     ae_blogs.each_with_index do |ae_blog, index|
       user_blog = find_user ae_blog
 
@@ -265,7 +265,7 @@ namespace :ae do
       if blog.save
         print "*"
         old_file = "#{FILE_DUMP_DIR}/blogs"+
-           "/original/#{ae_blog.id}#{File.extname(ae_blog.image_file_name.to_s)}"
+           "/original/#{ ae_blog.id }#{File.extname(ae_blog.image_file_name.to_s)}"
         # create_main_image_file blog, old_file
       else
         puts_error blog, index, ae_blogs_count
@@ -283,7 +283,7 @@ namespace :ae do
         raw_content: bl.body,
         hub_id: hub_blog.id,
         user_id: User.root,
-        state: 'published',
+        state: :published,
         created_at: bl.created_at,
         legacy_url: bl.id
       )
@@ -343,8 +343,10 @@ namespace :ae do
     puts ''
     puts "Авторы очищены" if Author.destroy_all
     puts "Join таблица \"посты-авторы\" очищена" if Authorship.destroy_all
+    
     ae_authors = AE_Author.all
     # ae_authors = AE_Author.limit 2
+    
     articles_count = 0
     author_count = ae_authors.count
 
@@ -354,7 +356,7 @@ namespace :ae do
         description: ae_author.description,
         short_description: ae_author.short_description,
         created_at: ae_author.created_at,
-        updated_at: ae_author.updated_at,
+        updated_at: ae_author.updated_at
       )
 
       if author.save
@@ -372,6 +374,7 @@ namespace :ae do
         articles_count += 1
       end
     end
+
     puts ''
     puts "Articles assigment: #{ articles_count }"
   end
@@ -379,6 +382,7 @@ namespace :ae do
   desc "Проверка корректность переноса авторов"
   task compare_authors_equality: :environment do  
     puts "Проверяем корректность ассоциации перенесенных авторов с постами".blue
+    
     # ae_articles = AE_Article.find [13, 58]
     ae_articles = AE_Article.all
     ae_articles_count = ae_articles.count
@@ -423,20 +427,25 @@ namespace :ae do
   desc "data moving"
   task data_move: :environment do
     Rake::Task["db:bootstrap"].invoke
+
     %w[
       clean_db
       user_start
+      
       create_root_category_hub
-      categories_start    
+      categories_start
       posts_start
       legacy_url_start
       legacy_url:check_posts_by_hub
+
       create_hub_blog
       blogs_start
+      
       comment_start
       tags_start
       authors_start
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
+
     # uploaded_files_start
   end
 end

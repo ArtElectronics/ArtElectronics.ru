@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Delete all gems: gem list | cut -d' ' -f1 | xargs gem uninstall -aIx
 # for i in `gem list --no-versions`; do gem uninstall -aIx $i; done
 
-gem 'rails', '~> 4.1.0.beta1'
+gem 'rails', '~> 4.1.0.rc1'
 gem 'unicorn'
 
 # Datebase

@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
   def index
-    per_count = 7
-    @hubs  = Hub.main_articles_hubs
-    @posts = Post.published_rset.pagination(params)
+    @hubs    = Hub.main_articles_hubs
+    hubs_ids = @hubs.map(&:id)
+    @posts   = Post.where(hub_id: hubs_ids).published_rset.pagination(params)
   end
 
   # Legacy urls

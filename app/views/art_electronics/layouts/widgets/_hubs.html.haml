@@ -7,7 +7,9 @@
       - @hubs.each do |hub|
         - current = (@hub == hub) ? :current : nil
         = link_to hub_url(hub.slug), class: current do
-          %p
+          %p.nobr
+            = raw "&nbsp;&nbsp;&nbsp;" * (hub.level - 1)
             = hub.title
-            %b
-              (#{hub.pubs_published_count})
+            - if hub.pubs_published_count != 0
+              %b
+                (#{ hub.pubs_published_count })

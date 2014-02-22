@@ -43,8 +43,9 @@ class HubsController < ApplicationController
     @sub_hubs = @hub.children
 
     @root_hub = @hub.root_hub
+
     #taichiman: for post index order like in old AE
-    #еще мне кажется published_set здесь излишен, можно просто published. Так-как у нас не организован nested set по статьям.
+    # еще мне кажется published_set здесь излишен, можно просто published. Так-как у нас не организован nested set по статьям.
     # @posts    = @hub.pubs.published_set.pagination(params)
 
     @posts = @hub.self_and_children_pubs(@sub_hubs)

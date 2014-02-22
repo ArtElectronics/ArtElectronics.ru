@@ -1,13 +1,18 @@
 .navbar.mt5.navbar-inverse{ role: :navigation }
-  = link_to 'The!CMS.', root_path, class: 'navbar-brand'
+  = link_to 'ArtElectronics eMagazine', root_path, class: 'navbar-brand'
 
   .collapse.navbar-collapse
     %ul.nav.navbar-nav
       %li
         = link_to 'На главную', root_url
 
+        - if blog_hub = Hub.with_slug(:system_blogs)
+          %li= link_to 'Блоги', hub_url(blog_hub)
+
         - system_pages.each do |page|
           %li= link_to page.title, page_url(page.slug)
+
+        %li= link_to 'Пользователи', users_url          
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user

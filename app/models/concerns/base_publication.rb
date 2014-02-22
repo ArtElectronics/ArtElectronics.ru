@@ -44,7 +44,9 @@ module BasePublication
   private
 
   def set_published_at
-    self.published_at = Time.now if published? && published_at.blank?
+    # TODO: uncomments after release
+    self.published_at = self.created_at
+    # self.published_at = Time.now if published? && published_at.blank?
   end
 
   def define_user_via_hub

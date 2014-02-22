@@ -29,3 +29,13 @@ $footer_height: 100px;
 /* styles */
 .mt5{ margin-top: 5px; }
 .mb15{ margin-bottom: 15px; }
+
+/* Unbreakable */
+.nobr {
+  font-size: inherit;
+  white-space: nowrap;
+  /*  word-spacing: -2px;
+  letter-spacing: -2px; */
+}
+
+a.current { color: red; }

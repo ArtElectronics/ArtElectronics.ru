@@ -13,7 +13,7 @@ class Hub < ActiveRecord::Base
 
   class << self
     def main_articles_hubs
-      with_slug('system-article-categories').children.published.nested_set
+      with_slug(:system_article_categories).descendants.published.nested_set
     end
 
     def with_slug name
