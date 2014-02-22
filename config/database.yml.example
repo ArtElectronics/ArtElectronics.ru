@@ -1,20 +1,24 @@
 development:
-  adapter: sqlite3
-  database: the_app_dev
-  dbfile: db/development.db
+  adapter: mysql2
+  database: ae_project_new
+  username: root
+  password:
   host: localhost
-  username: zykin
-  password: zykin
   encoding: utf8
   timeout: 5000
 
-development:
-  adapter: sqlite3
-  database: db/development.db
+old:
+  adapter: mysql2
+  database: ae_project_old
+  host: localhost
+  username: root
+  password:
+  encoding: utf8
+  timeout: 5000
 
 test:
   adapter: mysql2
-  database: the_app_test
+  database: ae_project_test
   host: localhost
   username: zykin
   password: zykin

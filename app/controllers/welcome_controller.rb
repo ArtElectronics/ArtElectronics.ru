@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
     s_slug = params[:s_slug]
     id     = params[:id]
 
-    if post = Post.where(legacy_url: "#{c_slug}/#{s_slug}/#{id}").first
+    if post = Post.where(legacy_url: "#{ c_slug }/#{ s_slug }/#{ id }").first
       redirect_to post_url(post.friendly_id), status: :moved_permanently
     end
   end
@@ -20,7 +20,7 @@ class WelcomeController < ApplicationController
     c_slug = params[:c_slug]
     s_slug = params[:s_slug]
 
-    if hub = Hub.where(legacy_url: "#{c_slug}/#{s_slug}").first
+    if hub = Hub.where(legacy_url: "#{ c_slug }/#{ s_slug }").first
       redirect_to hub_url(hub.friendly_id), status: :moved_permanently
     end
   end
