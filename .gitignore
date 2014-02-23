@@ -2,6 +2,8 @@
 
 dumps/*
 
+emails.txt
+
 # Ignore bundler config.
 /.bundle
 
