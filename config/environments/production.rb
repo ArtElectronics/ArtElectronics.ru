@@ -23,13 +23,13 @@ TheApp::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = Uglifier.new(output: { ascii_only: true, quote_keys: true })
-  
+  # config.assets.js_compressor = Uglifier.new(output: { ascii_only: true, quote_keys: true })
   # config.assets.js_compressor  = :uglifier
   # config.assets.css_compressor = :sass
+  # config.assets.raise_runtime_errors = true
 
   # Whether to fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -42,7 +42,7 @@ TheApp::Application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -67,8 +67,11 @@ TheApp::Application.configure do
   
   theme = [:application, AppConfig.theme].join('_')
 
+  config.assets.paths << "#{ Rails.root }/public/javascripts"
+
   config.assets.precompile += %W[
     #{theme}.css #{theme}.js
+    tinymce/*
   ]
 
   # Ignore bad email addresses and do not raise email delivery errors.

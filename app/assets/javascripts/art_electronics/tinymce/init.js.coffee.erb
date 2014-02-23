@@ -4,12 +4,9 @@
 # cut copy paste bullist numlist outdent indent blockquote undo redo
 # removeformat subscript superscript
 $ ->
-  tinymce.init
-    relative_urls : false
-    remove_script_host : true
-    language_url: '/assets/tinymce/langs/ru.js'
-    content_css:  '/assets/tinymce/content_css.css'
+  tinyMCE.baseURL = "/javascripts/tinymce"
 
+  tinymce.init
     selector: ".redactor_intro, .redactor_content"
     plugins : 'code image link lists anchor table'
     menubar : false
