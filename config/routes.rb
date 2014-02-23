@@ -69,7 +69,10 @@ TheApp::Application.routes.draw do
   # /telegraf/zametki/439
   # /telegraf/telegraf
   # /telegraf ( see as: ':system_hub route' line)
-  get '/blogs/:id'           => 'welcome#legacy_blog'
-  get '/:c_slug/:s_slug/:id' => 'welcome#legacy_post'
-  get '/:c_slug/:s_slug'     => 'welcome#legacy_hub'
+
+  # ограничить перехват урлов - перехватываются урлы TheRole
+
+  # get '/blogs/:id'           => 'welcome#legacy_blog'
+  # get '/:c_slug/:s_slug/:id' => 'welcome#legacy_post'
+  # get '/:c_slug/:s_slug'     => 'welcome#legacy_hub'
 end

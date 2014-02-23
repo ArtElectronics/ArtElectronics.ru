@@ -23,7 +23,7 @@ TheApp::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = Uglifier.new(output: { ascii_only: true, quote_keys: true })
@@ -66,9 +66,9 @@ TheApp::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   
   theme = [:application, AppConfig.theme].join('_')
-
+  
   config.assets.paths << "#{ Rails.root }/public/javascripts"
-
+  
   config.assets.precompile += %W[
     #{theme}.css #{theme}.js
     tinymce/*
