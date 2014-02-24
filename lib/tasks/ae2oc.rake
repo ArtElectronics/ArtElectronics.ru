@@ -140,7 +140,7 @@ namespace :ae do
     # Hub.delete_all
     puts ''
     puts "Создаем основной hub для категорий статей"
-    create_system_hub(:system_article_categories, "Категории Статей", :hubs)
+    create_system_hub(:system_article_categories, "Категории Статей", :posts)
   end
 
   desc "Перетаскиваем категории в основной hub для категорий статей"
@@ -423,6 +423,13 @@ namespace :ae do
     puts ''
   end
 
+  desc "Publicate draft comments"
+  task publicate_comments: :environment do
+    puts "Publicate draft comments. Please wait"
+    Comment.with_state(:draft).map(&:to_published)
+    puts "Publicate draft comments done"
+  end
+
   # rake ae:data_move
   desc "data moving"
   task data_move: :environment do
@@ -444,6 +451,7 @@ namespace :ae do
       comment_start
       tags_start
       authors_start
+      publicate_comments
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
 
     # uploaded_files_start

@@ -1,7 +1,7 @@
 .select2-result{
   &.l_1{ font-weight: bold; }
 
-  @for $i from 1 through 2{
+  @for $i from 1 through 5{
     &.l_#{$i}{
       padding-left: #{($i - 1)*15}px;
     }

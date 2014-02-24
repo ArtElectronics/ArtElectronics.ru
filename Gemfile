@@ -56,6 +56,9 @@ gem 'delayed_job_active_record',
 
 # Open Cook components
 gem 'the_sortable_tree'
+  # path: '../the_sortable_tree'
+  # github: 'the-teacher/the_string_to_slug',
+  # branch: 'master'
 
 gem 'the_string_to_slug',
   #, path: '../the_string_to_slug' #, '~> 0.0.6'
