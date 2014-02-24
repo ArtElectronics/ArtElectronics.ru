@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: git://github.com/the-teacher/the_storages.git
-  revision: 8f7f2cc3b9ceb9990941f216ac3b6144eade6df4
+  revision: a31caa02c87287dec1f61f3ab20cff2a5da4f8ec
   branch: master
   specs:
     the_storages (0.0.2)
