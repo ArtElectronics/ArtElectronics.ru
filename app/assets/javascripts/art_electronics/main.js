@@ -10,8 +10,8 @@
 //= require expandable_tree/restorable
 //= require expandable_tree/initializer
 
-//= require tinymce/tinymce.min.js
-//= require tinymce/init
+// require tinymce/tinymce.min.js
+// require tinymce/init
 
 //= require jquery.MultiFile
 //= require jquery.Jcrop

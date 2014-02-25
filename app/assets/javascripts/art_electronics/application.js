@@ -17,8 +17,11 @@
 //= require the_comments
 //= require the_comments_manage
 
-//= require tinymce/tinymce.min.js
-//= require ./tinymce/init
+// require tinymce/tinymce.min.js
+// require ./tinymce/init
+
+//= require ckeditor/ckeditor
+//= require ./ckeditor/init
 
 //= require select2/select2.js
 //= require select2/select2_locale_ru.js
