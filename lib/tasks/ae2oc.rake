@@ -430,6 +430,26 @@ namespace :ae do
     puts "Publicate draft comments done"
   end
 
+  # rake ae:create_subscribers
+  desc "Create subscribers"
+  task create_subscribers: :environment do
+    uemails = AE_User.all.map(&:email)
+    cemail  = AE_Comment.all.map(&:email)
+    semails = AE_Subscriber.all.map(&:email)
+
+    emails = uemails | cemail | semails
+
+    deny = %w[ onsaleadult pickadulttoys someadulttoys kissadulttoys believesex marisolworld kirr90 ]
+
+    emails.delete_if { |email| email.match /#{ deny.join('|') }/ }
+    emails.delete_if { |email| !email.match(/@/) }
+
+    emails.each do |email|
+      puts "Subscribe #{ email }"
+      Subscriber.create!(email: email)
+    end
+  end
+
   # rake ae:data_move
   desc "data moving"
   task data_move: :environment do
@@ -452,6 +472,7 @@ namespace :ae do
       tags_start
       authors_start
       publicate_comments
+      create_subscribers
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
 
     # uploaded_files_start
