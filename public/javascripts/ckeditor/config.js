@@ -4,9 +4,11 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
 	config.language = 'ru';
   config.plugins  = "dialogui,dialog,dialogadvtab,menu,wysiwygarea,toolbar,font,format,colorbutton,removeformat,image,basicstyles,link,blockquote,undo,justify,list,table,tabletools,sourcearea,resize";
+
+  // config.basePath = "/javascripts/ckeditor/";
+  // config.plugins.basePath = "/javascripts/ckeditor/plugins/";
 
 	// config.uiColor = '#AADC6E';
   // config.plugins = "
