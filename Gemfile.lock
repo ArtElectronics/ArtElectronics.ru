@@ -46,16 +46,6 @@ GIT
       rails (>= 3, < 5)
 
 GIT
-  remote: git://github.com/the-teacher/the_storages.git
-  revision: a31caa02c87287dec1f61f3ab20cff2a5da4f8ec
-  branch: master
-  specs:
-    the_storages (0.0.2)
-      state_machine
-      the_sortable_tree
-      the_string_to_slug (~> 0.0.6)
-
-GIT
   remote: git://github.com/the-teacher/the_string_to_slug.git
   revision: 08c9571bf2d3b355440e745827a1c0807255f96d
   branch: master
@@ -86,6 +76,14 @@ GIT
     delayed_job_active_record (4.0.0.beta3)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
+
+PATH
+  remote: ../the_storages
+  specs:
+    the_storages (0.0.2)
+      state_machine
+      the_sortable_tree
+      the_string_to_slug (~> 0.0.6)
 
 GEM
   remote: https://rubygems.org/

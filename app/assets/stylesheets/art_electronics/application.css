@@ -9,5 +9,6 @@
   *= require ./vendors/select2_addons
 
   *= require ../the_comments/base
+  *= require the_storages
   *= require ./layout
 */

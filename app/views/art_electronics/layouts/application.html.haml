@@ -7,11 +7,10 @@
     %title= content_for?(:title) ? yield(:title) : "Bootstrap3"
     %link(href="favicon.ico" rel="shortcut icon")
 
-    %script 
-      var CKEDITOR_BASEPATH = "/javascripts/ckeditor/";
-
     = stylesheet_link_tag    :application
     = javascript_include_tag :application
+    = yield :editor
+
     = csrf_meta_tags
   %body    
     .body.container
