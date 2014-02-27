@@ -13,7 +13,7 @@
   = hidden_field_tag 'post_id',    @post.id
   = hidden_field_tag 'post_klass', @post.class
 
-  =# render partial: 'shared/main_image_toolbar', locals: { f: f, object: @post }
+  = render partial: 'shared/main_image_toolbar', locals: { f: f, object: @post }
   
   .form-group
     = f.label :title, t('pubs.title')

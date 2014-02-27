@@ -23,6 +23,10 @@ module MainImageUploading
         message: I18n.translate('posts.validation.main_image_file_size'),
         if: ->{ main_image? }
       }
+      #taichiman: because https://github.com/thoughtbot/paperclip#security-validations
+      # file_name: { 
+      #   :matches => [/gif\Z/, /png\Z/, /jpe?g\Z/, /bmp\Z/],
+      #   message: I18n.translate('posts.validation.main_image_file_name') }
   end
 
   def need_to_process_main_image?
