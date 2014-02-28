@@ -3,6 +3,8 @@
 # =================================
 # Check or set MAIN_IMAGE_OLD_PATH, MAIN_IMAGE_BLOGS_OLD_PATH
 # rake ae:main_image_start
+# 
+# Вручную надо перенести картинку со spoof именем '98.0' для блога 'Schizophrenia Taiwan 2.0' от 2013-11-28, путь: /public/system/blogs/original
 # =================================
 
 MAIN_IMAGE_POSTS_OLD_PATH=Rails.root+"public/system/articles/original/"
@@ -12,9 +14,9 @@ namespace :ae do
   desc "Drag main image to new base"
   task :main_image_start do
       %w[
+        drag_main_image_posts_start
         drag_main_image_blogs_start
       ].each { |task| Rake::Task["ae:main_image:#{task}"].invoke}
-        # drag_main_image_posts_start
   end
 
   namespace :main_image do
@@ -62,11 +64,10 @@ namespace :ae do
       num = 0
 
       ae_blogs.each_with_index do | ae_blog, index |       
-next if index<87
-binding.pry
         id = ae_blog.id
+        next if id==98 # for file with strange name: '98.0'. Drag it manually
+        
         img_path = Dir[File.join(MAIN_IMAGE_BLOGS_OLD_PATH,"#{id}.*")].select {|p| p =~ /\/.*\.(png)|(jp)|(JPG)|(0)|(PNG)/}.first
-# puts "index : #{id}"
 
         if img_path
           post = find_post( ae_blog )
@@ -85,6 +86,7 @@ binding.pry
         end
       end
       puts ''
+      puts "Вручную надо перенести картинку со spoof именем '98.0' для блога 'Schizophrenia Taiwan 2.0' от 2013-11-28, путь: /public/system/blogs/original ".blue
       puts "Перенесено главных картинок для блогов #{num} из #{ae_blogs_count}".green
       puts ''
     end

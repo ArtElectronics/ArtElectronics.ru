@@ -467,6 +467,7 @@ namespace :ae do
 
       create_hub_blog
       blogs_start
+      main_image_start
       
       comment_start
       tags_start

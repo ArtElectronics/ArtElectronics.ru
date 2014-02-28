@@ -13,20 +13,24 @@ module MainImageUploading
                       path:        ":rails_root/public/system/storages/:klass/:id/main_image/:style/:filename",
                       url:         "/system/storages/:klass/:id/main_image/:style/:filename"
 
-    validates_attachment :main_image,
-      content_type: {
-        content_type: AttachedFile::IMAGE_CONTENT_TYPES,
-        message: I18n.translate('posts.validation.main_image_file_type')
-      },
-      size: {
-        in: 10.kilobytes..5.megabytes,
-        message: I18n.translate('posts.validation.main_image_file_size'),
-        if: ->{ main_image? }
-      }
-      #taichiman: because https://github.com/thoughtbot/paperclip#security-validations
-      # file_name: { 
-      #   :matches => [/gif\Z/, /png\Z/, /jpe?g\Z/, /bmp\Z/],
-      #   message: I18n.translate('posts.validation.main_image_file_name') }
+
+    #TODO: available validators after import AE data completed
+    do_not_validate_attachment_file_type :main_image
+
+    # validates_attachment :main_image,
+    #   content_type: {
+    #     content_type: AttachedFile::IMAGE_CONTENT_TYPES,
+    #     message: I18n.translate('posts.validation.main_image_file_type')
+    #   },
+    #   size: {
+    #     in: 10.kilobytes..5.megabytes,
+    #     message: I18n.translate('posts.validation.main_image_file_size'),
+    #     if: ->{ main_image? }
+    #   }
+    #taichiman: because https://github.com/thoughtbot/paperclip#security-validations. Но работает и без этого валидатора.
+    # file_name: { 
+    #   :matches => [/gif\Z/, /png\Z/, /jpe?g\Z/, /bmp\Z/],
+    #   message: I18n.translate('posts.validation.main_image_file_name') }
   end
 
   def need_to_process_main_image?

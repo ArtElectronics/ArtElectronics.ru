@@ -225,7 +225,7 @@ end
 # in this bases have not unique fields for post and (articles, blogs) because I looking for by :title
 def find_post ae_article
   case ae_article.class.name
-  when 'AE_Article'
+  when 'AE_Article', 'Post'
     post = Post.where title: ae_article.title
   when 'AE_Blog'
     post = Post.where title: ae_article.name
