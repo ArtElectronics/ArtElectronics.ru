@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140225180039) do
     t.integer  "user_id"
     t.integer  "storage_id"
     t.string   "storage_type"
+    t.string   "description"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size",    default: 0

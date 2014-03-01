@@ -4,6 +4,7 @@ class AttachedFiles < ActiveRecord::Migration
     create_table :attached_files do |t|
       t.integer :user_id
       t.references :storage, polymorphic: true
+      t.string :description
 
       # paperclip
       t.string   :attachment_file_name

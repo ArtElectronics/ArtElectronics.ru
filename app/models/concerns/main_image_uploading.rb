@@ -13,7 +13,6 @@ module MainImageUploading
                       path:        ":rails_root/public/system/storages/:klass/:id/main_image/:style/:filename",
                       url:         "/system/storages/:klass/:id/main_image/:style/:filename"
 
-
     #TODO: available validators after import AE data completed
     do_not_validate_attachment_file_type :main_image
 
