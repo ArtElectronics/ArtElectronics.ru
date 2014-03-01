@@ -473,6 +473,7 @@ namespace :ae do
       authors_start
       publicate_comments
       create_subscribers
+      future_article_start
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
 
     # uploaded_files_start
