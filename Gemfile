@@ -11,6 +11,8 @@ gem 'mysql2'
 
 # App level
 gem 'devise'
+gem 'omniauth-facebook'
+
 gem 'RedCloth', require: 'redcloth'
 gem "rails_config"
 

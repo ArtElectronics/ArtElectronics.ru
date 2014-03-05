@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225180039) do
+ActiveRecord::Schema.define(version: 20140305131824) do
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -305,6 +305,8 @@ ActiveRecord::Schema.define(version: 20140225180039) do
     t.integer  "draft_comments_count",        default: 0
     t.integer  "published_comments_count",    default: 0
     t.integer  "deleted_comments_count",      default: 0
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
