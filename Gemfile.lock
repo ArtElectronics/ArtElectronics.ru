@@ -46,6 +46,16 @@ GIT
       rails (>= 3, < 5)
 
 GIT
+  remote: git://github.com/the-teacher/the_storages.git
+  revision: 30a0888b3d06493d33bed64fa1a6e85892f34277
+  branch: master
+  specs:
+    the_storages (0.0.2)
+      state_machine
+      the_sortable_tree
+      the_string_to_slug (~> 0.0.6)
+
+GIT
   remote: git://github.com/the-teacher/the_string_to_slug.git
   revision: 08c9571bf2d3b355440e745827a1c0807255f96d
   branch: master
@@ -76,14 +86,6 @@ GIT
     delayed_job_active_record (4.0.0.beta3)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
-
-PATH
-  remote: ../the_storages
-  specs:
-    the_storages (0.0.2)
-      state_machine
-      the_sortable_tree
-      the_string_to_slug (~> 0.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -238,6 +240,8 @@ GEM
     rails-i18n (4.0.1)
       i18n (~> 0.6)
       rails (~> 4.0)
+    rails_config (0.3.3)
+      activesupport (>= 3.0)
     railties (4.1.0.rc1)
       actionpack (= 4.1.0.rc1)
       activesupport (= 4.1.0.rc1)
@@ -340,6 +344,7 @@ DEPENDENCIES
   pry-byebug
   quiet_assets
   rails (~> 4.1.0.rc1)
+  rails_config
   rspec
   rspec-core
   rspec-expectations

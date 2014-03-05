@@ -12,6 +12,9 @@ TheApp::Application.routes.draw do
       :registrations => "registrations"
     }
 
+  devise_scope :user do
+    get 'registrations/test_mail' 
+  end
   # Personal
   get "cabinet" => "users#cabinet", as: :cabinet
 

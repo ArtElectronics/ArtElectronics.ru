@@ -12,6 +12,7 @@ bin/*
 
 PASSWORDS.txt
 /config/database.yml
+/config/settings/development.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
