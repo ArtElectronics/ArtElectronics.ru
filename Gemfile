@@ -12,6 +12,7 @@ gem 'mysql2'
 # App level
 gem 'devise'
 gem 'RedCloth', require: 'redcloth'
+gem "rails_config"
 
 # views
 gem 'jquery-rails'
@@ -72,10 +73,16 @@ gem 'the_role' #,
   # github: 'the-teacher/the_role',
   # branch: 'master'
 
+
 gem 'the_role_bootstrap3_ui' #,
   # path: '../the_role_bootstrap3_ui'
   # github: 'the-teacher/the_role_bootstrap3_ui',
   # branch: 'master'
+
+gem 'the_storages',
+  # path: '../the_storages'
+  github: 'the-teacher/the_storages',
+  branch: 'master'
 
 gem 'the_storages',
   # path: '../the_storages'
