@@ -25,6 +25,7 @@ gem "compass-rails", "~> 1.1.3"
 
 gem 'sass-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'font-awesome-sass'
 
 # Models
 gem 'sanitize'

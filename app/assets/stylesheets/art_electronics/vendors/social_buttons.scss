@@ -1,0 +1,278 @@
+div#login_separator {
+  border-top: solid 1px #999999;
+  color: #999999;
+  line-height: 0;
+  margin: 16px 0px 10px 0px;
+  padding: 0px 0px 8px 0px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*!
+ * Social Buttons for Twitter Bootstrap v1.0.0
+ *
+ * Copyright 2013 Adam Neumann
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+.btn-facebook {
+  color: #ffffff;
+  background-color: #133783;
+  border-color: #133783;
+  &:hover, &:focus, &:active, &.active {
+    color: #ffffff;
+    background-color: #0e285f;
+    border-color: #0b214e;
+  }
+}
+
+.open .dropdown-toggle.btn-facebook {
+  color: #ffffff;
+  background-color: #0e285f;
+  border-color: #0b214e;
+}
+
+.btn-facebook {
+  &:active, &.active {
+    background-image: none;
+  }
+}
+
+.open .dropdown-toggle.btn-facebook {
+  background-image: none;
+}
+
+.btn-facebook {
+  &.disabled, &[disabled] {
+    background-color: #133783;
+    border-color: #133783;
+  }
+}
+
+fieldset[disabled] .btn-facebook {
+  background-color: #133783;
+  border-color: #133783;
+}
+
+.btn-facebook {
+  &.disabled:hover, &[disabled]:hover {
+    background-color: #133783;
+    border-color: #133783;
+  }
+}
+
+fieldset[disabled] .btn-facebook:hover {
+  background-color: #133783;
+  border-color: #133783;
+}
+
+.btn-facebook {
+  &.disabled:focus, &[disabled]:focus {
+    background-color: #133783;
+    border-color: #133783;
+  }
+}
+
+fieldset[disabled] .btn-facebook:focus {
+  background-color: #133783;
+  border-color: #133783;
+}
+
+.btn-facebook {
+  &.disabled:active, &[disabled]:active {
+    background-color: #133783;
+    border-color: #133783;
+  }
+}
+
+fieldset[disabled] .btn-facebook:active {
+  background-color: #133783;
+  border-color: #133783;
+}
+
+.btn-facebook {
+  &.disabled.active, &[disabled].active {
+    background-color: #133783;
+    border-color: #133783;
+  }
+}
+
+fieldset[disabled] .btn-facebook.active {
+  background-color: #133783;
+  border-color: #133783;
+}
+
+.btn-twitter {
+  color: #ffffff;
+  background-color: #2daddc;
+  border-color: #0271bf;
+  &:hover, &:focus, &:active, &.active {
+    color: #ffffff;
+    background-color: #2095c0;
+    border-color: #014d82;
+  }
+}
+
+.open .dropdown-toggle.btn-twitter {
+  color: #ffffff;
+  background-color: #2095c0;
+  border-color: #014d82;
+}
+
+.btn-twitter {
+  &:active, &.active {
+    background-image: none;
+  }
+}
+
+.open .dropdown-toggle.btn-twitter {
+  background-image: none;
+}
+
+.btn-twitter {
+  &.disabled, &[disabled] {
+    background-color: #2daddc;
+    border-color: #0271bf;
+  }
+}
+
+fieldset[disabled] .btn-twitter {
+  background-color: #2daddc;
+  border-color: #0271bf;
+}
+
+.btn-twitter {
+  &.disabled:hover, &[disabled]:hover {
+    background-color: #2daddc;
+    border-color: #0271bf;
+  }
+}
+
+fieldset[disabled] .btn-twitter:hover {
+  background-color: #2daddc;
+  border-color: #0271bf;
+}
+
+.btn-twitter {
+  &.disabled:focus, &[disabled]:focus {
+    background-color: #2daddc;
+    border-color: #0271bf;
+  }
+}
+
+fieldset[disabled] .btn-twitter:focus {
+  background-color: #2daddc;
+  border-color: #0271bf;
+}
+
+.btn-twitter {
+  &.disabled:active, &[disabled]:active {
+    background-color: #2daddc;
+    border-color: #0271bf;
+  }
+}
+
+fieldset[disabled] .btn-twitter:active {
+  background-color: #2daddc;
+  border-color: #0271bf;
+}
+
+.btn-twitter {
+  &.disabled.active, &[disabled].active {
+    background-color: #2daddc;
+    border-color: #0271bf;
+  }
+}
+
+fieldset[disabled] .btn-twitter.active {
+  background-color: #2daddc;
+  border-color: #0271bf;
+}
+
+.btn-vk {
+  color: #ffffff;
+  background-color: #5a7fa6;
+  border-color: #426187;
+  &:hover, &:focus, &:active, &.active {
+    color: #ffffff;
+    background-color: #4b6b8c;
+    border-color: #2e435e;
+  }
+}
+
+.open .dropdown-toggle.btn-vk {
+  color: #ffffff;
+  background-color: #4b6b8c;
+  border-color: #2e435e;
+}
+
+.btn-vk {
+  &:active, &.active {
+    background-image: none;
+  }
+}
+
+.open .dropdown-toggle.btn-vk {
+  background-image: none;
+}
+
+.btn-vk {
+  &.disabled, &[disabled] {
+    background-color: #5a7fa6;
+    border-color: #426187;
+  }
+}
+
+fieldset[disabled] .btn-vk {
+  background-color: #5a7fa6;
+  border-color: #426187;
+}
+
+.btn-vk {
+  &.disabled:hover, &[disabled]:hover {
+    background-color: #5a7fa6;
+    border-color: #426187;
+  }
+}
+
+fieldset[disabled] .btn-vk:hover {
+  background-color: #5a7fa6;
+  border-color: #426187;
+}
+
+.btn-vk {
+  &.disabled:focus, &[disabled]:focus {
+    background-color: #5a7fa6;
+    border-color: #426187;
+  }
+}
+
+fieldset[disabled] .btn-vk:focus {
+  background-color: #5a7fa6;
+  border-color: #426187;
+}
+
+.btn-vk {
+  &.disabled:active, &[disabled]:active {
+    background-color: #5a7fa6;
+    border-color: #426187;
+  }
+}
+
+fieldset[disabled] .btn-vk:active {
+  background-color: #5a7fa6;
+  border-color: #426187;
+}
+
+.btn-vk {
+  &.disabled.active, &[disabled].active {
+    background-color: #5a7fa6;
+    border-color: #426187;
+  }
+}
+
+fieldset[disabled] .btn-vk.active {
+  background-color: #5a7fa6;
+  border-color: #426187;
+}

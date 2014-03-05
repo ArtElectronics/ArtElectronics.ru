@@ -1,5 +1,6 @@
 /* 
   *= require bootstrap
+  *= require font-awesome
 
   *= require tree
   *= require sortable_tree
@@ -7,6 +8,7 @@
 
   *= require select2/select2
   *= require ./vendors/select2_addons
+  *= require ./vendors/social_buttons
 
   *= require ../the_comments/base
   *= require the_storages
