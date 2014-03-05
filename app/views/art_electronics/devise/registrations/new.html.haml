@@ -14,13 +14,19 @@
     = f.submit t('devise.registrations.sign_up'), class: 'btn btn-info'
 
 #login_separator
-= form_tag controller: 'registrations', action: 'test_mail', method: :post do
-  = content_tag :button, type: :submit, class: 'btn btn-twitter' do
-    %i.fa.fa-twitter
-    | Login with Twitter
-  = content_tag :button, type: :submit, class: 'btn btn-facebook' do
-    %i.fa.fa-facebook
-    | Login with Facebook
-  = content_tag :button, type: :submit, class: 'btn btn-vk' do
-    %i.fa.fa-vk
-    | Login with VKontakte
+.row
+  .col-xs-3
+    = form_tag controller: 'registrations', action: 'test_mail', method: :post do
+      = content_tag :button, type: :submit, class: 'btn btn-twitter' do
+        %i.fa.fa-twitter
+        | Login with Twitter
+  .col-xs-3
+    = form_tag user_omniauth_authorize_path(:facebook) do
+      = content_tag :button, type: :submit, class: 'btn btn-facebook' do
+        %i.fa.fa-facebook
+        | Login with Facebook
+  .col-xs-3
+    = form_tag controller: 'registrations', action: 'test_mail', method: :post do
+      = content_tag :button, type: :submit, class: 'btn btn-vk' do
+        %i.fa.fa-vk
+        | Login with VKontakte
