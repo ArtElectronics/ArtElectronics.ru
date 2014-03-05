@@ -13,5 +13,14 @@
   .form-group
     = f.submit t('devise.registrations.sign_up'), class: 'btn btn-info'
 
-= render "devise/shared/links"
-= link_to 'send test mail', controller: 'registrations', action: 'test_mail'
+#login_separator
+= form_tag controller: 'registrations', action: 'test_mail', method: :post do
+  = content_tag :button, type: :submit, class: 'btn btn-twitter' do
+    %i.fa.fa-twitter
+    | Login with Twitter
+  = content_tag :button, type: :submit, class: 'btn btn-facebook' do
+    %i.fa.fa-facebook
+    | Login with Facebook
+  = content_tag :button, type: :submit, class: 'btn btn-vk' do
+    %i.fa.fa-vk
+    | Login with VKontakte

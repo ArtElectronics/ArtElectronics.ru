@@ -26,6 +26,7 @@ gem 'kaminari'
 gem "compass-rails", "~> 1.1.3"
 
 gem 'sass-rails'
+gem 'font-awesome-sass'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 
 # Models
