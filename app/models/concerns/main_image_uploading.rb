@@ -10,8 +10,8 @@ module MainImageUploading
 
     has_attached_file :main_image,
                       default_url: "/default_images/main_image/:style/missing.jpg",
-                      path:        ":rails_root/public/system/storages/:klass/:id/main_image/:style/:filename",
-                      url:         "/system/storages/:klass/:id/main_image/:style/:filename"
+                      path:        ":rails_root/public/uploads/storages/:klass/:id/main_image/:style/:filename",
+                      url:         "/uploads/storages/:klass/:id/main_image/:style/:filename"
 
     #TODO: available validators after import AE data completed
     do_not_validate_attachment_file_type :main_image
