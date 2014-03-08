@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   def save_audit
-    (@audit || Audit.new.init(self)).save unless controller_name == 'audits'
+    (@audit || Audit.new.init(self)).save unless ['audits', 'omniauth_callbacks'].include? controller_name
   end
 
   def not_authenticated

@@ -30,3 +30,5 @@
 
 //= require ./flash_viewer
 //= require vendors/swf_player/swfobject.js
+
+//= require ../common/login_popup1
