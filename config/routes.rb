@@ -1,15 +1,16 @@
 TheApp::Application.routes.draw do
   root to: 'welcome#index'
 
-
   # Login system
   devise_for :users, path: '',
     :path_names => {
       sign_in: 'login',
       sign_up: 'signup',
-      sign_out: 'logout',
-    }, :controllers => {
-      :registrations => "registrations"
+      sign_out: 'logout'
+    }, 
+    :controllers => {
+      :registrations => "registrations", 
+      :omniauth_callbacks => "omniauth_callbacks"
     }
 
   devise_scope :user do

@@ -22,3 +22,4 @@
 
 //= require ../common/app
 //= require ../common/select2_init
+//= require ../common/login_popup1
