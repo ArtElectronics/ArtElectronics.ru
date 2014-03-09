@@ -26,6 +26,14 @@ module BasePublication
     validates_presence_of   :user, :slug, :title
   end
 
+  def localized_errors
+    errors.inject({}) do |hash, (k, v)|
+      k = self.class.human_attribute_name k
+      hash[k] = v
+      hash
+    end
+  end
+
   def root_hub
     hub.root_hub if hub
   end

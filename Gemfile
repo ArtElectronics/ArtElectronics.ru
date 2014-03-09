@@ -19,6 +19,8 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'haml'
+gem 'slim'
+
 gem 'kaminari'
 gem "compass-rails", "~> 1.1.3"
 
