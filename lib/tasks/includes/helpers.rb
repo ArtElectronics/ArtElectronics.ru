@@ -241,6 +241,7 @@ def find_post ae_article
     puts "#{ ae_article.inspect }".yellow
     exit
   end
+
   post.first
 end
 

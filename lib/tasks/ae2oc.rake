@@ -463,14 +463,15 @@ namespace :ae do
       categories_start
 
       posts_start
-      main_image_start
       future_article_start
-
-      legacy_url_start
-      legacy_url:check_posts_by_hub
+      main_image:drag_main_image_posts_start
 
       create_hub_blog
       blogs_start
+      main_image:drag_main_image_blogs_start
+
+      legacy_url_start
+      legacy_url:check_posts_by_hub
 
       comment_start
       publicate_comments
