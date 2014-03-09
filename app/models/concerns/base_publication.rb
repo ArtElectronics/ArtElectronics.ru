@@ -23,13 +23,13 @@ module BasePublication
     belongs_to :user
     belongs_to :hub
 
-    validates_presence_of   :user, :slug, :title
+    validates_presence_of :user, :slug, :title
   end
 
   def localized_errors
     errors.inject({}) do |hash, (k, v)|
       k = self.class.human_attribute_name k
-      hash[k] = v
+      hash[k].blank? ? hash[k] = [v] : hash[k].push(v)
       hash
     end
   end
