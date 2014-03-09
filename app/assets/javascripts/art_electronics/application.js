@@ -17,8 +17,8 @@
 //= require the_comments
 //= require the_comments_manage
 
-//= require select2/select2.js
-//= require select2/select2_locale_ru.js
+//= require vendors/select2/select2.js
+//= require vendors/select2/select2_locale_ru.js
 
-//= require ../common/app
+//= require ../common/meta_block_init
 //= require ../common/select2_init

@@ -5,10 +5,10 @@
   *= require sortable_tree
   *= require expandable_tree
 
-  *= require select2/select2
-  *= require ./vendors/select2_addons
+  *= require vendors/select2/select2
+  *= require ../../javascripts/vendors/select2/select2_addons
 
-  *= require ../the_comments/base
+  *= require ../vendors/the_comments/base
   *= require the_storages
   *= require ./layout
 */
