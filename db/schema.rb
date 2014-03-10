@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305131824) do
+ActiveRecord::Schema.define(version: 20140310161123) do
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 20140305131824) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth",             default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "credentials", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "token"
+    t.text     "credential"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

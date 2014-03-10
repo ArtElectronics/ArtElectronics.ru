@@ -15,7 +15,7 @@
   / = f.hidden_field :user, { value: @omniauth }
   / = f.input :omniauth, as: :hidden, input_html:{value: @omniauth}
   / = hidden_field_tag 'user[omniauth]', session[:omniauth]
-  = text_area_tag 'user[omniauth]', session[:omniauth], class: 'form-control', size: '20x20'
+  = text_area_tag 'user[omniauth]', '', class: 'form-control', id: 'omniauth_hidden', size: '20x20'
 #login_separator
 .row
   .col-xs-3
@@ -24,7 +24,7 @@
         %i.fa.fa-twitter
         | Login with Twitter
   .col-xs-3
-    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook login-popup', "data-width"=>600, "data-height"=>400 do
+    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook', id: 'login-popup-fb', 'data-width'=>600, 'data-height'=>400 do
       %i.fa.fa-facebook
       | Login with Facebook
   .col-xs-3
