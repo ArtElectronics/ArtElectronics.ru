@@ -14,19 +14,21 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def auth
-    # sign_out current_user if current_user
-    
     @omniauth = request.env['omniauth.auth']
+    @user = User.new(oauth_params: @omniauth)
+    @user.save
 
-    user = find_user_for_oauth_ 555
+    # sign_out current_user if current_user
+    # @omniauth = request.env['omniauth.auth']
+#     user = find_user_for_oauth_ 555
 
-    if user.persisted?
-      sign_in_and_redirect user
-    else
-# binding.pry      
-      session[:omniauth] = @omniauth.to_json
-      redirect_to new_user_registration_path
-    end
+#     if user.persisted?
+#       sign_in_and_redirect user
+#     else
+# # binding.pry      
+#       session[:omniauth] = @omniauth.to_json  
+#       redirect_to new_user_registration_path
+#     end
 
   end
 

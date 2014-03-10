@@ -6,11 +6,13 @@ jQuery ->
     dataType: 'script'
     cache: true
 
-
 window.fbAsyncInit = ->
   FB.init(appId: '<%= Settings.facebook.app_id %>', cookie: true)
 
-  $('.login-popup').click (e) ->
+  $('#login-popup-fb').click (e) ->
     e.preventDefault()
     FB.login (response) ->
-      window.location = '/auth/facebook/callback' if response.authResponse
+      if response.authResponse
+        window.parent.$('#omniauth_hidden').val response.status
+        $.getJSON('/auth/facebook/callback')
+

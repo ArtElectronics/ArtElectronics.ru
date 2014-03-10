@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_accessor :oauth_params
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -16,12 +18,15 @@ class User < ActiveRecord::Base
   has_many :hubs
   has_many :pages
   has_many :posts
+  has_many :credentials
   has_one  :author, validate: true, dependent: :nullify
 
   # Validations
   validates :login,  presence: true, uniqueness: true
 
   # Filters
+  # before_create : 
+  before_save  :
   after_create :calculate_signup_fields!
   before_validation :prepare_login, on: :create
 
