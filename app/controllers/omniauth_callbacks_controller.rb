@@ -11,15 +11,43 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth
   end
 
+  def failure
+    # https://github.com/plataformatec/devise/blob/master/app/controllers/devise/omniauth_callbacks_controller.rb
+    # do something on failure    
+  end
+
   private
 
   def auth
     @omniauth = request.env['omniauth.auth']
-    @user = User.new(oauth_params: @omniauth)
-    @user.save
+    provider  = @omniauth['provider']
+    uid       = @omniauth['uid']
 
-    # sign_out current_user if current_user
-    # @omniauth = request.env['omniauth.auth']
+    if credential = Credential.find_by_provider_and_uid(provider, uid)
+      sign_out current_user if current_user
+      sign_in credential.user
+
+      return render :close_popup_and_redirect_to_cabinet, layout: false
+    else
+
+    render :insert_oauth_params_to_registration_form, layout: false
+  end
+end
+
+
+# def find_user_for_oauth_ auth
+#   begin 
+#     User.find auth
+#   rescue 
+#     User.new 
+#   end;
+# end
+
+# @user = User.new(oauth_params: @omniauth)
+# @user.save
+
+# sign_out current_user if current_user
+# @omniauth = request.env['omniauth.auth']
 #     user = find_user_for_oauth_ 555
 
 #     if user.persisted?
@@ -29,14 +57,3 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 #       session[:omniauth] = @omniauth.to_json  
 #       redirect_to new_user_registration_path
 #     end
-
-  end
-
-  def find_user_for_oauth_ auth
-    begin 
-      User.find auth
-    rescue 
-      User.new 
-    end;
-  end
-end
