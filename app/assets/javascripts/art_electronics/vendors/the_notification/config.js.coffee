@@ -4,10 +4,14 @@ TheNotification.show_errors = (errors) ->
       toastr.error "<b>#{ field }:</b> #{ err }"
 
 TheNotification.show_flash = (flash) ->
-  fu = { notice: 'info', error: 'error', warning: 'warning' }
+  fu =
+    notice:  'info'
+    error:   'error'
+    warning: 'warning'
+    alert:   'warning'
 
   for level, msg of flash
-    method = fu[level]
+    method = fu[level] || 'info'
     toastr[method] msg
 
 TheNotification.show_notifications = ->

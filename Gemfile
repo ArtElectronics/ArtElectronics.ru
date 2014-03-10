@@ -83,9 +83,9 @@ gem "the_comments",
   branch: 'kiss_version'
 
 gem "the_notification",
-  # path: '../the_notification'
-  github: 'the-teacher/the_notification',
-  branch: 'master'
+  path: '../the_notification'
+  # github: 'the-teacher/the_notification',
+  # branch: 'master'
 
 gem 'the_audit',
   # path: '../the_audit'
