@@ -7,6 +7,7 @@
 
 //= require base/log
 //= require base/app
+//= require base/JODY
 
 //= require the_notification
 //= require ./vendors/the_notification/config
