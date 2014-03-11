@@ -30,6 +30,13 @@ GIT
       the_sortable_tree
 
 GIT
+  remote: git://github.com/the-teacher/the_notification.git
+  revision: 8f03e047d3cd8170756337f4862949dd8618dfc7
+  branch: master
+  specs:
+    the_notification (0.0.1)
+
+GIT
   remote: git://github.com/the-teacher/the_role.git
   revision: 3e763cd0b789d55fc68b24a4bff9549b591513eb
   branch: master
