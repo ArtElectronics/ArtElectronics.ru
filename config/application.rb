@@ -14,5 +14,6 @@ module TheApp
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     # config.active_record.whitelist_attributes = false
+    config.i18n.default_locale = :ru
   end
 end

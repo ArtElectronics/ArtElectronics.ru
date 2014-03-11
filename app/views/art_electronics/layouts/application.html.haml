@@ -6,12 +6,13 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= content_for?(:title) ? yield(:title) : "Bootstrap3"
     %link(href="favicon.ico" rel="shortcut icon")
+    %meta(id="env_token" name="env_token" content="#{ Rails.env.to_s }")
 
+    = csrf_meta_tags
     = stylesheet_link_tag    :application
     = javascript_include_tag :application
     = yield :editor
 
-    = csrf_meta_tags
   %body    
     .body.container
       .mb15

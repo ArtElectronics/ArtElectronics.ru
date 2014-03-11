@@ -222,20 +222,26 @@ def compare_article_tags old_article, new_article
     end
 end
 
-# in this bases have not unique fields for post and articles, because I looking for by :title
+# in this bases have not unique fields for post and (articles, blogs) because I looking for by :title
 def find_post ae_article
-  post = Post.where title: ae_article.title
-  
+  case ae_article.class.name
+  when 'AE_Article', 'Post'
+    post = Post.where title: ae_article.title
+  when 'AE_Blog'
+    post = Post.where title: ae_article.name
+  end
+
   if post.count == 0 then
-    puts "Stop. Post for article #{ae_article.id} not found".red; 
+    puts "Stop. Post for article (blog) #{ae_article.id} not found".red;
     exit
   end
 
   if post.count > 1
-    puts "Stop. Title for old article not unique in new base.".red
+    puts "Stop. Title for old article (blog) not unique in new base.".red
     puts "#{ ae_article.inspect }".yellow
     exit
   end
+
   post.first
 end
 

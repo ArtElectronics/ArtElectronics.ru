@@ -16,6 +16,9 @@
       = @post.title
       (#{ @post.state })
   .panel-body
+    - if @post.future_text?
+      %p= link_to "future test", @post.future_text
+
     - if @post.main_image?
       %p= image_tag @post.main_image.url(:preview), class: :preview
     %p= raw @post.intro

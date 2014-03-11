@@ -6,11 +6,14 @@
   *= require sortable_tree
   *= require expandable_tree
 
-  *= require select2/select2
-  *= require ./vendors/select2_addons
-  *= require ./vendors/social_buttons
+  *= require vendors/select2/select2
 
-  *= require ../the_comments/base
+  *= require ../../javascripts/vendors/select2/select2_addons
+  *= require ../../javascripts/vendors/toastr/toastr
+
+  *= require ../vendors/the_comments/base
   *= require the_storages
   *= require ./layout
+  
+  *= require ./vendors/social_buttons
 */

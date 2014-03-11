@@ -70,8 +70,7 @@ TheApp::Application.configure do
   config.assets.precompile += %W[
     #{ theme }.css
     #{ theme }.js
-    tinymce/*
-    ckeditor/*
+    vendors/*
   ]
 
   # Ignore bad email addresses and do not raise email delivery errors.

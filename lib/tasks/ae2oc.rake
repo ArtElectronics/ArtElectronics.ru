@@ -461,17 +461,23 @@ namespace :ae do
       
       create_root_category_hub
       categories_start
+
       posts_start
-      legacy_url_start
-      legacy_url:check_posts_by_hub
+      future_article_start
+      main_image:drag_main_image_posts_start
 
       create_hub_blog
       blogs_start
-      
+      main_image:drag_main_image_blogs_start
+
+      legacy_url_start
+      legacy_url:check_posts_by_hub
+
       comment_start
+      publicate_comments
+
       tags_start
       authors_start
-      publicate_comments
       create_subscribers
     ].each{ |task| Rake::Task["ae:#{task}"].invoke }
 
