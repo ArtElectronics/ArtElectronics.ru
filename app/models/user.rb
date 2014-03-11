@@ -25,8 +25,6 @@ class User < ActiveRecord::Base
   validates :login,  presence: true, uniqueness: true
 
   # Filters
-  # before_create : 
-  before_save  :
   after_create :calculate_signup_fields!
   before_validation :prepare_login, on: :create
 
