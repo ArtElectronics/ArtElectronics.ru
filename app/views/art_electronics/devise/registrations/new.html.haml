@@ -14,8 +14,7 @@
     = f.submit t('devise.registrations.sign_up'), class: 'btn btn-info'
   / = f.hidden_field :user, { value: @omniauth }
   / = f.input :omniauth, as: :hidden, input_html:{value: @omniauth}
-  / = hidden_field_tag 'user[omniauth]', session[:omniauth]
-  = text_area_tag 'user[omniauth]', '', class: 'form-control', id: 'omniauth_hidden', size: '20x20'
+  = text_area_tag 'user[oauth_params]', '', class: 'form-control', id: 'oauth_params', size: '20x20'
 #login_separator
 .row
   .col-xs-3
@@ -32,6 +31,3 @@
       = content_tag :button, type: :submit, class: 'btn btn-vk' do
         %i.fa.fa-vk
         | Login with VKontakte
-
-=puts "!!! omni in omni view"
-=puts @omniauth

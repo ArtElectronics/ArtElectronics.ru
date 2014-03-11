@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   # Filters
   after_create :calculate_signup_fields!
+  before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }  
   before_validation :prepare_login, on: :create
 
   class << self
@@ -106,5 +107,9 @@ class User < ActiveRecord::Base
       self.username = part if self.username.blank?
       self.save
     end
+  end
+
+  def parse_oauth_params
+puts '!!  hello world'
   end
 end

@@ -24,16 +24,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provider  = @omniauth['provider']
     uid       = @omniauth['uid']
 
-    # return render js: "window.alert('hi');", layout: false
-    return render :close_popup_and_redirect_to_cabinet, layout: false
-
     # if credential = Credential.find_by_provider_and_uid(provider, uid)
-    #   sign_out current_user if current_user
-    #   sign_in credential.user
+    if false
+      sign_out current_user if current_user
+      sign_in User.first
 
-    #   return render :close_popup_and_redirect_to_cabinet, layout: false
-    # else
-    #   render :insert_oauth_params_to_registration_form, layout: false
-    # end
+      render :close_popup_and_redirect_to_cabinet, layout: false
+    else
+      render :insert_oauth_params_to_registration_form, layout: false
+    end
   end
 end

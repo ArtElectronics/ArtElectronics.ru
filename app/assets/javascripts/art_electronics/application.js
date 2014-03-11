@@ -29,4 +29,4 @@
 
 //= require ./initializer
 
-//= require ../common/login_popup1
+//= require ../common/login_popup

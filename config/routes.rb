@@ -10,7 +10,8 @@ TheApp::Application.routes.draw do
     },
     :controllers => {
       :registrations => "registrations",
-      :sessions      => "sessions"
+      :sessions      => "sessions",
+      :omniauth_callbacks => "omniauth_callbacks"
     }
 
   devise_scope :user do

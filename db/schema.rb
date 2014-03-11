@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310161123) do
+ActiveRecord::Schema.define(version: 20140311103803) do
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140310161123) do
     t.string   "ip"
     t.string   "remote_ip"
     t.string   "fullpath"
-    t.string   "referer"
+    t.text     "referer"
     t.string   "user_agent"
     t.string   "remote_addr"
     t.string   "remote_host"
@@ -102,9 +102,11 @@ ActiveRecord::Schema.define(version: 20140310161123) do
 
   create_table "credentials", force: true do |t|
     t.integer  "user_id"
+    t.string   "uid"
     t.string   "provider"
-    t.string   "token"
-    t.text     "credential"
+    t.string   "access_token"
+    t.string   "access_token_secret"
+    t.text     "full_credential"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
