@@ -110,6 +110,24 @@ class User < ActiveRecord::Base
   end
 
   def parse_oauth_params
-puts '!!  hello world'
+    oa = JSON.parse( CGI.unescapeHTML(self.oauth_params), symbolize_names: true )
+    uid = access_token = access_token_secret = full_credential = ''
+
+    login = username = email = 
+
+    provider = oa[:provider]
+    case provider
+    when 'facebook'
+      uid = oa[:uid]
+      
+      access_token =   
+      
+
+      login    = oa[:info][:nickname]     
+      username = oa[:info][:name]
+      email    = oa[:info][:email]
+    end
+binding.pry
+
   end
 end
