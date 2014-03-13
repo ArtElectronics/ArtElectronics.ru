@@ -25,10 +25,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provider  = @omniauth['provider']
     uid       = @omniauth['uid']
 
-    # if credential = Credential.find_by_provider_and_uid(provider, uid)
-    if false
+    if credential = Credential.find_by_provider_and_uid(provider, uid)
       sign_out current_user if current_user
-      sign_in User.first
+      sign_in credential.user
 
       render :close_popup_and_redirect_to_cabinet, layout: false
     else

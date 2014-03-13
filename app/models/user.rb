@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :hubs
   has_many :pages
   has_many :posts
-  has_many :credentials
+  has_many :credentials, :autosave => true
   has_one  :author, validate: true, dependent: :nullify
 
   # Validations
@@ -95,39 +95,47 @@ class User < ActiveRecord::Base
   end
 
   def calculate_signup_fields!
-    # здесь пока доинициализация (после devise) нового пользователя,
+    # OPTIMIZE: здесь пока доинициализация (после devise) нового пользователя,
     # так как он не все нужные мне поля   устанавливает по default
     if self.role != Role.with_name(:admin)
-      part = self.email.split('@')[0].to_s.to_slug_param
-      
-      self.login = part
-      self.role  = Role.with_name :blogger
+      # part = self.email.split('@')[0].to_s.to_slug_param
 
-      # может быть позже, мы будем получать username при регистрации юзера
-      self.username = part if self.username.blank?
+      # self.login    = part if self.login.blank?
+      # self.username = part if self.username.blank?
+      self.role     = Role.with_name :blogger
+
       self.save
     end
   end
 
   def parse_oauth_params
     oa = JSON.parse( CGI.unescapeHTML(self.oauth_params), symbolize_names: true )
+    
     uid = access_token = access_token_secret = full_credential = ''
-
-    login = username = email = 
+    login = username = email = ''
 
     provider = oa[:provider]
     case provider
     when 'facebook'
-      uid = oa[:uid]
-      
-      access_token =   
-      
+      uid = oa[:uid]      
+      access_token = oa[:credentials][:token]
 
       login    = oa[:info][:nickname]     
       username = oa[:info][:name]
       email    = oa[:info][:email]
-    end
-binding.pry
 
+      full_credential = oa
+    end
+
+    self.credentials.build uid: uid, 
+                   provider: provider, 
+                   access_token: access_token, 
+                   full_credential: full_credential
+
+    self.login    = login
+    self.username = username
+    self.email    = email
+    self.password = access_token[0..25]
+# binding.pry
   end
 end
