@@ -1,1 +1,9 @@
-name: foo 
+facebook:
+  app_id:     -62644225407
+  app_secret: -d60a1e17587e8df97898d6d13c88
+
+twitter:
+  app_id:     -FuI2EG3feB1BaH2sII
+  app_secret: -aA76Xl22eOo16TCBOaqbSwaaS6xP9O8paHOrC
+
+vkontakte:  bar

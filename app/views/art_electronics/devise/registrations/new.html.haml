@@ -16,10 +16,9 @@
 #login_separator
 .row
   .col-xs-3
-    = form_tag controller: 'registrations', action: 'test_mail', method: :post do
-      = content_tag :button, type: :submit, class: 'btn btn-twitter' do
-        %i.fa.fa-twitter
-        | Login with Twitter
+    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter login-popup', 'data-width'=>600, 'data-height'=>400 do
+      %i.fa.fa-twitter
+      | Login with Twitter
   .col-xs-3
     = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook login-popup', 'data-width'=>600, 'data-height'=>400 do
       %i.fa.fa-facebook

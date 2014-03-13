@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   include TheRole::User
   
@@ -125,6 +125,14 @@ class User < ActiveRecord::Base
       login    = oa[:info][:nickname]     
       username = oa[:info][:name]
       email    = oa[:info][:email]
+    when 'twitter'
+      uid = oa[:uid]      
+      # access_token = oa[:credentials][:token]
+      # expires_at   = oa[:credentials][:expires_at]
+
+      login    = oa[:info][:nickname]     
+      username = oa[:info][:name]
+      # email    = oa[:info][:email]
     end
 
     self.credentials.build uid: uid, 
