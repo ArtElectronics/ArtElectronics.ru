@@ -27,8 +27,14 @@ class User < ActiveRecord::Base
   # Filters
   after_create :calculate_signup_fields!
   after_create :send_confirmation
-  before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }  
+  
+  before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }
   before_validation :prepare_login, on: :create
+
+  # override devise method for disable devise email validation when oauth authentication flow
+  def email_required?
+    !self.oauth_params.blank? ? false : super
+  end
 
   class << self
     def root
@@ -128,6 +134,7 @@ class User < ActiveRecord::Base
     when 'twitter'
       uid = oa[:uid]      
       # access_token = oa[:credentials][:token]
+      access_token = '1111111111111111122222222222222222222333333333333333333'
       # expires_at   = oa[:credentials][:expires_at]
 
       login    = oa[:info][:nickname]     
@@ -140,7 +147,7 @@ class User < ActiveRecord::Base
                    access_token: access_token, 
                    expires_at: expires_at
 
-    self.login    = login
+    self.login    = login+'foo'
     self.username = username
     self.email    = email
     self.password = access_token[0..25]
