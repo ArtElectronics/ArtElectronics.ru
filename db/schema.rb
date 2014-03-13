@@ -102,11 +102,11 @@ ActiveRecord::Schema.define(version: 20140311103803) do
 
   create_table "credentials", force: true do |t|
     t.integer  "user_id"
-    t.string   "uid"
     t.string   "provider"
-    t.string   "access_token"
-    t.string   "access_token_secret"
-    t.text     "full_credential"
+    t.string   "uid"
+    t.text     "access_token"
+    t.text     "access_token_secret"
+    t.string   "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

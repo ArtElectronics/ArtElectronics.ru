@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   # Filters
   after_create :calculate_signup_fields!
+  after_create :send_confirmation
   before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }  
   before_validation :prepare_login, on: :create
 
@@ -111,7 +112,7 @@ class User < ActiveRecord::Base
   def parse_oauth_params
     oa = JSON.parse( CGI.unescapeHTML(self.oauth_params), symbolize_names: true )
     
-    uid = access_token = access_token_secret = full_credential = ''
+    uid = access_token = access_token_secret = expires_at = ''
     login = username = email = ''
 
     provider = oa[:provider]
@@ -119,23 +120,25 @@ class User < ActiveRecord::Base
     when 'facebook'
       uid = oa[:uid]      
       access_token = oa[:credentials][:token]
+      expires_at   = oa[:credentials][:expires_at]
 
       login    = oa[:info][:nickname]     
       username = oa[:info][:name]
       email    = oa[:info][:email]
-
-      full_credential = oa
     end
 
     self.credentials.build uid: uid, 
                    provider: provider, 
                    access_token: access_token, 
-                   full_credential: full_credential
+                   expires_at: expires_at
 
     self.login    = login
     self.username = username
     self.email    = email
     self.password = access_token[0..25]
-# binding.pry
   end
+end
+
+def send_confirmation
+  UserNotiferMailer.test_mail.deliver
 end
