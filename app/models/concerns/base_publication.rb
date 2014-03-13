@@ -11,6 +11,8 @@ module BasePublication
     include NestedSetMethods
     include CommonClassMethods
     include MainImageUploading
+
+    include TheNotification::Errors
     include TheComments::Commentable
 
     before_validation :define_user_via_hub, :define_hub_state, on: :create
@@ -24,14 +26,6 @@ module BasePublication
     belongs_to :hub
 
     validates_presence_of :user, :slug, :title
-  end
-
-  def localized_errors
-    errors.inject({}) do |hash, (k, v)|
-      k = self.class.human_attribute_name k
-      hash[k].blank? ? hash[k] = [v] : hash[k].push(v)
-      hash
-    end
   end
 
   def root_hub
