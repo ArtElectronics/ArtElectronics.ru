@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :hubs
   has_many :pages
   has_many :posts
-  has_many :credentials, :autosave => true
+  has_many :credentials, :autosave => true, dependent: :destroy
   has_one  :author, validate: true, dependent: :nullify
 
   # Validations
