@@ -84,6 +84,7 @@ PATH
   remote: ../the_notification
   specs:
     the_notification (0.0.1)
+      slim
 
 GEM
   remote: https://rubygems.org/

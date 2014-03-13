@@ -12,8 +12,8 @@ module BasePublication
     include CommonClassMethods
     include MainImageUploading
 
-    include TheNotification::Errors
     include TheComments::Commentable
+    include TheNotification::LocalizedErrors
 
     before_validation :define_user_via_hub, :define_hub_state, on: :create
     before_save       :prepare_tags, :prepare_content, :set_published_at

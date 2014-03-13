@@ -8,7 +8,8 @@
   *= require vendors/select2/select2
 
   *= require ../../javascripts/vendors/select2/select2_addons
-  *= require ../../javascripts/vendors/toastr/toastr
+  
+  *= require the_notification/vendors/toastr
 
   *= require ../vendors/the_comments/base
   *= require the_storages

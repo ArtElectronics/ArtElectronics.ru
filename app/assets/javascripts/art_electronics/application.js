@@ -9,10 +9,9 @@
 //= require base/app
 //= require base/JODY
 
+//= require the_notification/vendors/toastr
 //= require the_notification
-//= require ./vendors/the_notification/config
 
-//= require ../vendors/toastr/toastr
 //= require ./vendors/toastr/config
 
 //= require jquery.ui.nestedSortable
