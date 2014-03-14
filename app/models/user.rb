@@ -31,10 +31,11 @@ class User < ActiveRecord::Base
   before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }
   before_validation :prepare_login, on: :create
 
-  # override devise method for disable devise email validation when oauth authentication flow
-  def email_required?
-    !self.oauth_params.blank? ? false : super
-  end
+  # comment, because mysql error: "index_users_email dublicate email key". Для решения проблемы с отсутствием email в oauth втиттера и вконтакте. я создаю fake_email
+  # # override devise method for disable devise email validation when oauth authentication flow
+  # def email_required?
+  #   !self.oauth_params.blank? ? false : super
+  # end
 
   class << self
     def root
@@ -132,25 +133,58 @@ class User < ActiveRecord::Base
       username = oa[:info][:name]
       email    = oa[:info][:email]
     when 'twitter'
-      uid = oa[:uid]      
-      # access_token = oa[:credentials][:token]
-      access_token = '1111111111111111122222222222222222222333333333333333333'
-      # expires_at   = oa[:credentials][:expires_at]
+      uid = oa[:uid]     
+      access_token        = oa[:credentials][:token]
+      access_token_secret = oa[:credentials][:secret]
 
       login    = oa[:info][:nickname]     
       username = oa[:info][:name]
-      # email    = oa[:info][:email]
     end
 
     self.credentials.build uid: uid, 
-                   provider: provider, 
-                   access_token: access_token, 
-                   expires_at: expires_at
-
-    self.login    = login+'foo'
+                           provider: provider, 
+                           access_token: access_token,
+                           access_token_secret: access_token_secret,
+                           expires_at: expires_at
+    self.login = login
+    prepare_login    
+    self.login = fake_login( self.login )
+    
+    if email.blank? # in twitter
+      email      = access_token[-5,5]+'@fk.fk' 
+      self.email = fake_email( FAKE_EMAIL_PREFIX+'_0_'+ email )
+    else
+      self.email = email
+    end
+    
     self.username = username
-    self.email    = email
     self.password = access_token[0..25]
+  end
+
+  def fake_login login
+    reg = /-(\d+$)/
+    postfix = login.match(reg)
+    postfix.nil? ? next_id = 1 : next_id = postfix[1].to_i+1
+
+    u = User.where(login: login).first
+    if u.nil? 
+      login
+    else
+      fake_login( postfix.nil? ? login+="-#{next_id}" : login.sub!( reg,"-#{next_id}" ))
+    end
+  end
+
+  def fake_email email
+    reg = /^#{FAKE_EMAIL_PREFIX}_(\d+)_/
+    num = email.match(reg)
+    next_id = num[1].to_i+1
+
+    u = User.where(email: email).first
+    if u.nil?
+      email
+    else
+      fake_email( email.sub!( reg,"#{FAKE_EMAIL_PREFIX}_#{next_id}_" ))
+    end
   end
 end
 
