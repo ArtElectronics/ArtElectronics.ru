@@ -13,7 +13,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-# gem 'omniauth-vkontakte'
+gem 'omniauth-vkontakte'
 
 gem 'RedCloth', require: 'redcloth'
 gem "rails_config"

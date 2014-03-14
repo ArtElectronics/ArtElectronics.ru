@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :vkontakte]
 
   include TheRole::User
   
@@ -139,6 +139,13 @@ class User < ActiveRecord::Base
 
       login    = oa[:info][:nickname]     
       username = oa[:info][:name]
+    when 'vkontakte'
+      uid = oa[:uid]      
+      access_token = oa[:credentials][:token]
+      expires_at   = oa[:credentials][:expires_at]
+
+      login    = oa[:info][:nickname]     
+      username = oa[:info][:name]
     end
 
     self.credentials.build uid: uid, 
@@ -146,7 +153,8 @@ class User < ActiveRecord::Base
                            access_token: access_token,
                            access_token_secret: access_token_secret,
                            expires_at: expires_at
-    self.login = login
+    
+    login.blank? ? self.login = username : self.login = login
     prepare_login    
     self.login = fake_login( self.login )
     

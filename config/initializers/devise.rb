@@ -234,6 +234,8 @@ Devise.setup do |config|
   config.omniauth :facebook, Settings.facebook.app_id, Settings.facebook.app_secret, scope: 'basic_info, email, user_birthday', display: 'popup', provider_ignores_state: true
   
   config.omniauth :twitter, Settings.twitter.app_id, Settings.twitter.app_secret, scope: 'basic_info, email, user_birthday', display: 'popup'
+  
+  config.omniauth :vkontakte, Settings.vkontakte.app_id, Settings.vkontakte.app_secret, scope: 'basic_info, email, user_birthday', display: 'popup'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
