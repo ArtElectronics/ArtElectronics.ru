@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :vkontakte]
+  devise :database_authenticatable, :omniauthable, :confirmable, :recoverable, :registerable, :rememberable, :validatable, :omniauth_providers => [:facebook, :twitter, :vkontakte]
 
   include TheRole::User
   
@@ -26,9 +25,9 @@ class User < ActiveRecord::Base
 
   # Filters
   after_create :calculate_signup_fields!
-  after_create :send_confirmation
-  
+
   before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }
+
   before_validation :prepare_login, on: :create
 
   # comment, because mysql error: "index_users_email dublicate email key". Для решения проблемы с отсутствием email в oauth втиттера и вконтакте. я создаю fake_email
@@ -123,6 +122,9 @@ class User < ActiveRecord::Base
     login = username = email = ''
 
     provider = oa[:provider]
+    skip_confirmation!
+     # unless provider == 'facebook'
+
     case provider
     when 'facebook'
       uid = oa[:uid]      
@@ -156,12 +158,13 @@ class User < ActiveRecord::Base
     
     login.blank? ? self.login = username : self.login = login
     prepare_login    
-    self.login = fake_login( self.login )
+    self.login = fake_login( self.login ) # faked if double 
     
     if email.blank? # in twitter
       email      = access_token[-5,5]+'@fk.fk' 
       self.email = fake_email( FAKE_EMAIL_PREFIX+'_0_'+ email )
     else
+      # TODO: Не регистрировать, а впустить юзера, так как его email уже есть в базе. Например он зарегался через обычную учетку.
       self.email = email
     end
     
@@ -194,8 +197,4 @@ class User < ActiveRecord::Base
       fake_email( email.sub!( reg,"#{FAKE_EMAIL_PREFIX}_#{next_id}_" ))
     end
   end
-end
-
-def send_confirmation
-  UserNotiferMailer.test_mail.deliver
 end

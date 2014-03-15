@@ -21,7 +21,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def auth
     @omniauth = request.env['omniauth.auth']
-# binding.pry    
     provider  = @omniauth['provider']
     uid       = @omniauth['uid']
 
