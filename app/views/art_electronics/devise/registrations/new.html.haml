@@ -14,16 +14,4 @@
     = f.submit t('devise.registrations.sign_up'), class: 'btn btn-info'
   = hidden_field_tag 'user[oauth_params]', '', id: :oauth_params
 #login_separator
-.row
-  .col-xs-3
-    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:twitter), class: 'btn btn-twitter login-popup', 'data-width'=>600, 'data-height'=>400 do
-      %i.fa.fa-twitter
-      | Login with Twitter
-  .col-xs-3
-    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook login-popup', 'data-width'=>600, 'data-height'=>400 do
-      %i.fa.fa-facebook
-      | Login with Facebook
-  .col-xs-3
-    = content_tag :button, type: :submit, action: user_omniauth_authorize_path(:vkontakte), class: 'btn btn-vk login-popup', 'data-width'=>600, 'data-height'=>400 do
-      %i.fa.fa-vk
-      | Login with VKontakte
+= render 'devise/shared/social_login_buttons'
