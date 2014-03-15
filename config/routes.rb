@@ -10,6 +10,7 @@ TheApp::Application.routes.draw do
     },
     :controllers => {
       :registrations => "registrations",
+      :confirmations => "confirmations",
       :sessions      => "sessions",
       :omniauth_callbacks => "omniauth_callbacks"
     }

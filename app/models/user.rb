@@ -24,11 +24,16 @@ class User < ActiveRecord::Base
   validates :login,  presence: true, uniqueness: true
 
   # Filters
-  after_create :calculate_signup_fields!
-
-  before_validation :parse_oauth_params, on: :create, if: ->(user){!user.oauth_params.blank? }
-
+  before_validation :parse_oauth_params, on: :create, 
+                if: ->(user){ !user.oauth_params.blank? }
   before_validation :prepare_login, on: :create
+  
+  before_create :skip_confirmation!, 
+                if: ->(user){ !user.oauth_params.blank? }
+  before_create :calculate_signup_fields!
+
+  after_create :send_signup_notification, on: :create, 
+                if: ->(user){ !user.oauth_params.blank? && ( JSON.parse( CGI.unescapeHTML(user.oauth_params))['provider'] == 'facebook')}
 
   # comment, because mysql error: "index_users_email dublicate email key". Для решения проблемы с отсутствием email в oauth втиттера и вконтакте. я создаю fake_email
   # # override devise method for disable devise email validation when oauth authentication flow
@@ -102,17 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def calculate_signup_fields!
-    # OPTIMIZE: здесь пока доинициализация (после devise) нового пользователя,
-    # так как он не все нужные мне поля   устанавливает по default
-    if self.role != Role.with_name(:admin)
-      # part = self.email.split('@')[0].to_s.to_slug_param
-
-      # self.login    = part if self.login.blank?
-      # self.username = part if self.username.blank?
-      self.role     = Role.with_name :blogger
-
-      self.save
-    end
+    self.role = Role.with_name(:blogger) if self.role.nil?
   end
 
   def parse_oauth_params
@@ -122,8 +117,6 @@ class User < ActiveRecord::Base
     login = username = email = ''
 
     provider = oa[:provider]
-    skip_confirmation!
-     # unless provider == 'facebook'
 
     case provider
     when 'facebook'
@@ -196,5 +189,17 @@ class User < ActiveRecord::Base
     else
       fake_email( email.sub!( reg,"#{FAKE_EMAIL_PREFIX}_#{next_id}_" ))
     end
+  end
+
+  # notification for oauth
+  def send_signup_notification    
+    send_devise_notification(:signup_congratulation, {})
+  end
+  
+  protected
+
+  # notification for manual registration
+  def after_confirmation
+    send_devise_notification(:signup_congratulation, {})
   end
 end
