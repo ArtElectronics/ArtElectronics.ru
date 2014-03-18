@@ -17,6 +17,7 @@
       (#{ @post.state })
   .panel-body
     - if @post.future_text?
+      = render partial: "posts/links_to_attachments"
       %p= link_to "future test", @post.future_text
 
     - if @post.main_image?

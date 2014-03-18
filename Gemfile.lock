@@ -30,6 +30,14 @@ GIT
       the_sortable_tree
 
 GIT
+  remote: git://github.com/the-teacher/the_notification.git
+  revision: 3440403d0bf0dd656da0006cfe15a8ff77be414c
+  branch: master
+  specs:
+    the_notification (0.0.1)
+      slim
+
+GIT
   remote: git://github.com/the-teacher/the_role.git
   revision: 3e763cd0b789d55fc68b24a4bff9549b591513eb
   branch: master
@@ -79,12 +87,6 @@ GIT
     delayed_job_active_record (4.0.0.beta3)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
-
-PATH
-  remote: ../the_notification
-  specs:
-    the_notification (0.0.1)
-      slim
 
 GEM
   remote: https://rubygems.org/

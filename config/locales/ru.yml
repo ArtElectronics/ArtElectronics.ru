@@ -78,6 +78,9 @@ ru:
       main_image_file_type: 'Необходимо загружать только изображения (gif,jpg,png,bmp)'
       main_image_file_name: 'Необходимо загружать только изображения c расширением (gif,jpg,png,bmp)'
 
+    links_to_attachments:
+      flash_version: Посмотреть Flash-версию
+      download_pdf: Скачать PDF
   pubs:
     author: 'Автор поста:'
     hub_title: 'Имя раздела:'
