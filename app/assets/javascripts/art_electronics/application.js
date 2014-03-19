@@ -27,3 +27,4 @@
 //= require ./vendors/select2/init
 
 //= require ./initializer
+//= require ./flash_viewer

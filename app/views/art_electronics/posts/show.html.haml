@@ -10,6 +10,12 @@
 - content_for :tags_widget do
   = render partial: 'layouts/widgets/tags', locals: { tags_str: @post.inline_tags }
 
+- if @post.future_text?
+  - content_for :top_addons do
+    / # = render :partial => 'swf_txt_content'
+    = render :partial => 'viewer'
+    / # = render :partial => 'swf_js'
+
 .panel.panel-success
   .panel-heading
     %h3
