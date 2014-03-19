@@ -1,0 +1,10 @@
+%script
+  var flashvars = {};
+  var parameters = {};
+  parameters.bgcolor = '#ffffff';
+  parameters.quality = 'high';
+  parameters.allowScriptAccess = 'sameDomain';
+  parameters.allowFullScreen = 'false';
+
+  var attributes = {};
+  swfobject.embedSWF("/swf/see.swf?obj_url=#{@post.future_text}", 'viewer', '100%', '#{@viewer_height}', '9.0.0', false, flashvars, parameters, attributes);

@@ -11,10 +11,13 @@
   = render partial: 'layouts/widgets/tags', locals: { tags_str: @post.inline_tags }
 
 - if @post.future_text?
+  - @viewer_height = 840
   - content_for :top_addons do
-    / # = render :partial => 'swf_txt_content'
     = render :partial => 'viewer'
-    / # = render :partial => 'swf_js'
+    - if @post.future_type? :swf
+      = render :partial => 'swf_content'
+    - elsif @post.future_type? :swf_see
+      = render :partial => 'swf_see_content'
 
 .panel.panel-success
   .panel-heading

@@ -3,27 +3,26 @@ $ ->
     show_viewer()
 
 $ ->
-  $('a.viewer_close_message').click ->
-    alert 'hello from close'
+  $('a#viewer_close_message').click ->
     hide_viewer()
     
 show_viewer = ->
   $('.viewer_block').show()
-  $(window).scrollTop(325)
+#  $(window).scrollTop(325)
   hide_alternative_content()
 
 hide_viewer = ->
   $('.viewer_block').hide()
-  $(window).scrollTop(200)
+#  $(window).scrollTop(200)
   show_alternative_content()
 
 # TODO
 # @viewer_height = 840 set in  articles/show.html.haml
 #
 hide_alternative_content = ->
-  $('.body.container').css('margin-top', '180px')
+#  $('.body.container').css('margin-top', '180px')
   $('.body.container').css('overflow', 'hidden')
-  $('.body.container').css('height', '#{840 - 40}px')
+#  $('.body.container').css('height', '#{840 - 40}px')
 
 show_alternative_content = ->
   $('.body.container').css('margin-top', '0px');

@@ -27,4 +27,7 @@
 //= require ./vendors/select2/init
 
 //= require ./initializer
+
 //= require ./flash_viewer
+//= require vendors/swf_player/swfobject.js
+//= require vendors/swf_player/AC_RunActiveContent.js
