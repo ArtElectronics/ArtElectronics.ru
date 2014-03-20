@@ -30,4 +30,3 @@
 
 //= require ./flash_viewer
 //= require vendors/swf_player/swfobject.js
-// vendors/swf_player/AC_RunActiveContent.js
