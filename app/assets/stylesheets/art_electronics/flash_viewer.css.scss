@@ -1,5 +1,4 @@
-$swf_content_margin: 160px + 10px;
-$color: #003366;
+$hide_viewer_message_hight: 20px;
 
 @mixin opacity($opacity) {
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity})";
@@ -14,7 +13,6 @@ $color: #003366;
 
 @mixin inline-block{
   display: inline-block;
-  *display: inline;
   zoom: 1;
 }
 
@@ -22,25 +20,25 @@ $color: #003366;
 
 .hide_viewer{
   position: absolute;
-  top: $swf_content_margin + 160px; left: 43%;
+  top: 0px; left: 43%;
   line-height: 10px;
   padding: 0 15px;
   display: block;
-  color: #003366;
-  height: 20px;
+  color: #FFFFFF;
+  height: $hide_viewer_message_hight;
   z-index: 1;
   .bg{
     @include opacity(50);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 100%; height: 100%;
-    background: gray;
+    background: #0000CC;
     position: absolute;
     top: -5px; left: 0;
     z-index: -1;
   }
   a{
-    color: $color;
+    color: white;
     width: 100%; height: 100%;
     display: block;
     text-decoration: none;
@@ -50,14 +48,13 @@ $color: #003366;
 
 #viewer{
   position: absolute;
-  top: $swf_content_margin + 175px; left: 0;
+  top: $hide_viewer_message_hight; left: 0;
   border: 1px solid white;
   z-index: 100;
 }
 
 .post_versions_links{
   @include overblock;
-  // margin-bottom: 7px;
   table{
     align: center;
     width: 100%;
@@ -69,17 +66,15 @@ $color: #003366;
     @include inline-block;
     height: 49px;
     line-height: 49px;
-    // font-size: 1.5em;
     padding-left: 60px;
     
-    color: $color;
+    color: #003366;
     border: none;
     &:hover{
       border: none;
       text-decoration: none;
     }
     margin: 0 30px 0 0;
-    // margin: 0 30px 10px 0;
     background: url("/images/versions.png") no-repeat scroll 0 0 
     transparent;
     
