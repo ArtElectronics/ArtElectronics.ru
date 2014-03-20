@@ -31,17 +31,13 @@ class Post < ActiveRecord::Base
   end
 
   #TODO может быть ввести поле в attached_files, в котором однозначно указать тип swf, а не вычислять его по имени файла? 
-  def future_type? type
+  def get_future_type
     if has_future_text?
       name = self.attached_files.where(attachment_content_type:future_type).first.attachment_file_name      
-      
-      case type
-      when :swf
-        return true if name=~/^swf-\d+/        
-      when :swf_see
-        return true if name=~/^swf-see/
-      end
+
+      return :swf     if name=~/^swf-\d+/        
+      return :swf_see if name=~/^swf-see/
+      return :swf     # if type unknown
     end
-    false
   end
 end

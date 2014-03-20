@@ -10,15 +10,6 @@
 - content_for :tags_widget do
   = render partial: 'layouts/widgets/tags', locals: { tags_str: @post.inline_tags }
 
-- if @post.has_future_text?
-  - @viewer_height = 840
-  - content_for :top_addons do
-    = render :partial => 'viewer'
-    - if @post.future_type? :swf
-      = render :partial => 'swf_content'
-    - elsif @post.future_type? :swf_see
-      = render :partial => 'swf_see_content'
-
 .panel.panel-success
   .panel-heading
     %h3
@@ -27,6 +18,8 @@
   .panel-body
     - if @post.has_future_text?
       = render partial: "posts/links_to_attachments"
+      - content_for :swf_viewer do
+        = render :partial => 'viewer'
 
     - if @post.main_image?
       %p= image_tag @post.main_image.url(:preview), class: :preview
