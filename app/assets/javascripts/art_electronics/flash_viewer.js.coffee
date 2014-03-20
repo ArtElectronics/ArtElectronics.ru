@@ -23,13 +23,8 @@ hide_viewer = ->
   # $('.body.container').css('overflow', 'visible');
 
 $ ->
-  flashvars = {}
-  attributes = {}
-  parameters = {}
-  parameters.bgcolor = '#ffffff'
-  parameters.quality = 'high'
-  parameters.allowScriptAccess = 'sameDomain'
-  parameters.allowFullScreen = 'false'
+  flashvars = attributes = {}
+  parameters = bgcolor: '#ffffff', quality: 'high', allowScriptAccess: 'sameDomain', allowFullScreen: 'false'
   
   viewer_height = $(window).height()
   
