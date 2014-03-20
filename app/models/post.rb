@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
     "application/x-shockwave-flash"
   end
 
-  def future_text?
+  def has_future_text?
     attached_files.map(&:attachment_content_type).include? future_type
   end
 
@@ -18,9 +18,21 @@ class Post < ActiveRecord::Base
     attached_files.where(attachment_content_type: future_type).first.url
   end
 
+  def pdf_type
+    "application/pdf"
+  end
+  
+  def has_pdf?
+    attached_files.map(&:attachment_content_type).include? pdf_type
+  end
+
+  def pdf_file
+    attached_files.where(attachment_content_type: pdf_type).first.url
+  end
+
   #TODO может быть ввести поле в attached_files, в котором однозначно указать тип swf, а не вычислять его по имени файла? 
   def future_type? type
-    if future_text?
+    if has_future_text?
       name = self.attached_files.where(attachment_content_type:future_type).first.attachment_file_name      
       
       case type

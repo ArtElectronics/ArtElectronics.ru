@@ -1,3 +1,14 @@
-.div
-  = link_to t('.flash_version'), '#', class: 'flash_version'
-
+.panel.panel-default
+  .panel-body
+    .post_versions_links
+      %table
+        %tr
+          %td
+            - if @post.has_future_text?
+              = link_to t('.flash_version'), '#', class: :flash_version
+          %td
+            - if @post.has_pdf?
+              = link_to t('.pdf_version'), @post.pdf_file, :class => :pdf_version, :rel => :nofollow
+    .test_links  
+      %p= link_to "future test", @post.future_text
+      %p= link_to "pdf test", @post.pdf_file

@@ -80,7 +80,7 @@ ru:
 
     links_to_attachments:
       flash_version: Посмотреть Flash-версию
-      download_pdf: Скачать PDF
+      pdf_version: Скачать PDF
     viewer:
       close: закрыть / смотреть текстовую версию
   pubs:

@@ -10,7 +10,7 @@
 - content_for :tags_widget do
   = render partial: 'layouts/widgets/tags', locals: { tags_str: @post.inline_tags }
 
-- if @post.future_text?
+- if @post.has_future_text?
   - @viewer_height = 840
   - content_for :top_addons do
     = render :partial => 'viewer'
@@ -25,9 +25,8 @@
       = @post.title
       (#{ @post.state })
   .panel-body
-    - if @post.future_text?
+    - if @post.has_future_text?
       = render partial: "posts/links_to_attachments"
-      %p= link_to "future test", @post.future_text
 
     - if @post.main_image?
       %p= image_tag @post.main_image.url(:preview), class: :preview
