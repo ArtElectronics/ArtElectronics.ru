@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
   devise :database_authenticatable,
-    :confirmable,
+    # :confirmable,
     :recoverable,
     :validatable,
     :registerable,

@@ -12,6 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
+    render text: :oauth_failure
     # https://github.com/plataformatec/devise/blob/master/app/controllers/devise/omniauth_callbacks_controller.rb
     # do something on failure    
   end
@@ -28,7 +29,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in credential.user
 
       return render :close_popup_and_redirect_to_cabinet, layout: false
-    else
+    end
 
     render :insert_oauth_params_to_registration_form, layout: false
   end
