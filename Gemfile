@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Delete all gems: gem list | cut -d' ' -f1 | xargs gem uninstall -aIx
 # for i in `gem list --no-versions`; do gem uninstall -aIx $i; done
 
-gem 'rails', '~> 4.1.0.rc1'
+gem 'rails', '~> 4.1.0.rc2'
 gem 'unicorn'
 
 # Datebase
@@ -78,9 +78,9 @@ gem 'the_role_bootstrap3_ui' #,
   # branch: 'master'
 
 gem 'the_storages',
-  # path: '../the_storages'
-  github: 'the-teacher/the_storages',
-  branch: 'master'
+  path: '../the_storages'
+  # github: 'the-teacher/the_storages',
+  # branch: 'master'
 
 gem "the_comments",
   # path: '../the_comments',
@@ -121,7 +121,10 @@ end
 
 group :assets do  
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'sprockets', '2.11.0' # 2.12.0 is broken
   gem 'sprockets-rails'
+
   gem 'coffee-rails'
 end
 
