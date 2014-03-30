@@ -28,7 +28,11 @@
 
 //= require ./initializer
 
+<<<<<<< HEAD
 //= require ./flash_viewer
 //= require vendors/swf_player/swfobject.js
 
 //= require ../common/login_popup1
+=======
+//= require ../common/login_popup
+>>>>>>> c74d1c1cf8cb603660ce58fc2d6d1a142a9e7f64

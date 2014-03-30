@@ -13,7 +13,7 @@ class CreateAudits < ActiveRecord::Migration
       t.string :ip
       t.string :remote_ip
       t.string :fullpath
-      t.string :referer
+      t.text   :referer
       t.string :user_agent
       t.string :remote_addr
       t.string :remote_host

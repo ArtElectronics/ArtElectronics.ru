@@ -12,6 +12,8 @@ gem 'mysql2'
 # App level
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
 
 gem 'RedCloth', require: 'redcloth'
 gem "rails_config"

@@ -1,8 +1,15 @@
 class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+  devise :database_authenticatable,
+    :omniauthable,
+    :omniauth_providers => [:facebook, :twitter, :vkontakte]
+
+    # :confirmable,
+    # :recoverable,
+    # :registerable,
+    # :rememberable,
+    # :validatable
 
   include TheRole::User
   
@@ -18,17 +25,12 @@ class User < ActiveRecord::Base
   has_many :hubs
   has_many :pages
   has_many :posts
-  has_many :credentials
   has_one  :author, validate: true, dependent: :nullify
 
   # Validations
   validates :login,  presence: true, uniqueness: true
 
-  # Filters
-  # before_create : 
-  before_save  :
-  after_create :calculate_signup_fields!
-  before_validation :prepare_login, on: :create
+  include SocialNetworksLogin
 
   class << self
     def root
@@ -96,17 +98,11 @@ class User < ActiveRecord::Base
   end
 
   def calculate_signup_fields!
-    # здесь пока доинициализация (после devise) нового пользователя,
-    # так как он не все нужные мне поля   устанавливает по default
-    if self.role != Role.with_name(:admin)
-      part = self.email.split('@')[0].to_s.to_slug_param
-      
-      self.login = part
-      self.role  = Role.with_name :blogger
+    self.role = Role.with_name(:blogger) if self.role.nil?
+  end
 
-      # может быть позже, мы будем получать username при регистрации юзера
-      self.username = part if self.username.blank?
-      self.save
-    end
+  # notification for manual registration
+  def after_confirmation
+    send_devise_notification(:signup_congratulation, {})
   end
 end

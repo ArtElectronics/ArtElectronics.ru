@@ -17,5 +17,6 @@
   *= require the_storages
   *= require ./layout
 
-  *= require ./flash_viewer
+  *= require ./flash_viewer  
+  *= require ./vendors/social_buttons
 */

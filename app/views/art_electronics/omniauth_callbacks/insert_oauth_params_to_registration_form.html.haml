@@ -1,0 +1,5 @@
+%script
+  parent=window.opener;
+  = "parent.$('#oauth_params').val('#{ @omniauth.to_json }');";
+  parent.$('form:first').submit();
+  window.close();

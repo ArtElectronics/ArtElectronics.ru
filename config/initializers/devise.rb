@@ -1,3 +1,5 @@
+FAKE_EMAIL_PREFIX = 'fake_email'
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -14,6 +16,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
+  config.mailer = 'CustomMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -229,7 +232,22 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, Settings.facebook.app_id, Settings.facebook.app_secret, scope: 'basic_info, email, user_birthday', display: 'popup', provider_ignores_state: true
+
+  config.omniauth :facebook,
+    Settings.facebook.try(:app_id),
+    Settings.facebook.try(:app_secret),
+    scope:   'basic_info, email',
+    display: 'popup'
+
+  config.omniauth :vkontakte,
+    Settings.vkontakte.try(:app_id),
+    Settings.vkontakte.try(:app_secret),
+    display: 'popup'
+
+  config.omniauth :twitter,
+    Settings.twitter.try(:app_id),
+    Settings.twitter.try(:app_secret)
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
