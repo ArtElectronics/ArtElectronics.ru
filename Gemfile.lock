@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: e647673be6731fdf741cb3e72d7e2b647f59ab39
+  revision: 08d522ad02ad6c0fff922fef9e96ae7a210a1b56
   branch: master
   specs:
     awesome_nested_set (3.0.0.rc.3)
@@ -38,35 +38,16 @@ GIT
       slim
 
 GIT
-  remote: git://github.com/the-teacher/the_role.git
-  revision: 3e763cd0b789d55fc68b24a4bff9549b591513eb
-  branch: master
-  specs:
-    the_role (2.3)
-      haml
-      rails (>= 3, < 5)
-
-GIT
-  remote: git://github.com/the-teacher/the_storages.git
-  revision: 16f3ba352c8c6597801ed60358adf53dd15b43a0
-  branch: master
-  specs:
-    the_storages (0.0.2)
-      state_machine
-      the_sortable_tree
-      the_string_to_slug (~> 0.0.6)
-
-GIT
   remote: git://github.com/the-teacher/the_string_to_slug.git
-  revision: 08c9571bf2d3b355440e745827a1c0807255f96d
+  revision: 7c7ae876c26bf6a3c1fb831d9fcd0dbaeef4dcf1
   branch: master
   specs:
-    the_string_to_slug (0.0.8)
+    the_string_to_slug (1.2)
       rails-i18n (~> 4.0.0.pre)
 
 GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: b1961847eda8adc591e8ec0d764fd958702b6d29
+  revision: 1543d853c7fada42e2a327e42792083cd7b3fe2b
   specs:
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
@@ -88,50 +69,56 @@ GIT
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
 
+PATH
+  remote: ../the_storages
+  specs:
+    the_storages (0.0.2)
+      state_machine
+      the_sortable_tree
+      the_string_to_slug (~> 1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
-    actionmailer (4.1.0.rc1)
-      actionpack (= 4.1.0.rc1)
-      actionview (= 4.1.0.rc1)
+    actionmailer (4.1.0.rc2)
+      actionpack (= 4.1.0.rc2)
+      actionview (= 4.1.0.rc2)
       mail (~> 2.5.4)
-    actionpack (4.1.0.rc1)
-      actionview (= 4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+    actionpack (4.1.0.rc2)
+      actionview (= 4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    actionview (4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+    actionview (4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    activemodel (4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+    activemodel (4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       builder (~> 3.1)
-    activerecord (4.1.0.rc1)
-      activemodel (= 4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+    activerecord (4.1.0.rc2)
+      activemodel (= 4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       arel (~> 5.0.0)
-    activesupport (4.1.0.rc1)
+    activesupport (4.1.0.rc2)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.0.1)
+    acts-as-taggable-on (3.0.2)
       rails (>= 3, < 5)
     arel (5.0.0)
-    atomic (1.1.14)
-    bcrypt (3.1.6)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
+    atomic (1.1.16)
+    bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (2.6.0)
+    byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
     capybara (2.2.1)
@@ -143,7 +130,7 @@ GEM
     chunky_png (1.3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.3)
+    cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -155,18 +142,19 @@ GEM
     coffee-script-source (1.7.0)
     colored (1.2)
     columnize (0.3.6)
-    compass (0.12.2)
+    compass (0.12.4)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
-      sass (~> 3.1)
-    compass-rails (1.1.3)
+      sass (~> 3.2.17)
+    compass-rails (1.1.7)
       compass (>= 0.12.2)
+      sprockets (<= 2.11.0)
     daemons (1.1.9)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
-    devise (3.2.3)
-      bcrypt-ruby (~> 3.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
@@ -177,7 +165,7 @@ GEM
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
-    faker (1.2.0)
+    faker (1.3.0)
       i18n (~> 0.5)
     fssm (0.2.10)
     haml (4.0.5)
@@ -203,9 +191,9 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mini_portile (0.5.2)
-    minitest (5.2.3)
-    multi_json (1.8.4)
+    mini_portile (0.5.3)
+    minitest (5.3.1)
+    multi_json (1.9.2)
     mysql2 (0.3.15)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -220,43 +208,43 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-byebug (1.3.1)
-      byebug (~> 2.6)
+    pry-byebug (1.3.2)
+      byebug (~> 2.7)
       pry (~> 0.9.12)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.1.0.rc1)
-      actionmailer (= 4.1.0.rc1)
-      actionpack (= 4.1.0.rc1)
-      actionview (= 4.1.0.rc1)
-      activemodel (= 4.1.0.rc1)
-      activerecord (= 4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+    rails (4.1.0.rc2)
+      actionmailer (= 4.1.0.rc2)
+      actionpack (= 4.1.0.rc2)
+      actionview (= 4.1.0.rc2)
+      activemodel (= 4.1.0.rc2)
+      activerecord (= 4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.0.rc1)
+      railties (= 4.1.0.rc2)
       sprockets-rails (~> 2.0.0)
-    rails-i18n (4.0.1)
+    rails-i18n (4.0.2)
       i18n (~> 0.6)
-      rails (~> 4.0)
-    railties (4.1.0.rc1)
-      actionpack (= 4.1.0.rc1)
-      activesupport (= 4.1.0.rc1)
+      rails (>= 4.0)
+    railties (4.1.0.rc2)
+      actionpack (= 4.1.0.rc2)
+      activesupport (= 4.1.0.rc2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.1.1)
+    rake (10.2.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.7)
+    rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
-    rspec-rails (2.14.1)
+    rspec-rails (2.14.2)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -266,15 +254,16 @@ GEM
       rspec-mocks (~> 2.14.0)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
-    sass (3.2.14)
-    sass-rails (4.0.1)
+    sass (3.2.18)
+    sass-rails (4.0.2)
       railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0.0)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
-    slop (3.4.7)
+    slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -287,22 +276,28 @@ GEM
     state_machine (1.2.0)
     subexec (0.2.3)
     temple (0.6.7)
+    the_role (2.5.3)
+      rails (>= 3, < 5)
+      the_string_to_slug (~> 1.2)
+    the_role_bootstrap3_ui (1.1)
+      haml
+      rails (>= 3, < 5)
     the_sortable_tree (2.4.0)
       rails (>= 3.1)
-    thin (1.6.1)
+    thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
-    thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thor (0.19.1)
+    thread_safe (0.3.1)
+      atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
-    uglifier (2.4.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.2)
@@ -346,7 +341,7 @@ DEPENDENCIES
   pry
   pry-byebug
   quiet_assets
-  rails (~> 4.1.0.rc1)
+  rails (~> 4.1.0.rc2)
   rspec
   rspec-core
   rspec-expectations
@@ -356,12 +351,14 @@ DEPENDENCIES
   sass-rails
   seedbank!
   slim
+  sprockets (= 2.11.0)
   sprockets-rails
   state_machine (~> 1.2.0)
   the_audit!
   the_comments!
   the_notification!
-  the_role!
+  the_role
+  the_role_bootstrap3_ui
   the_sortable_tree
   the_storages!
   the_string_to_slug!
