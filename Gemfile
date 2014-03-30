@@ -25,7 +25,7 @@ gem 'kaminari'
 gem "compass-rails", "~> 1.1.3"
 
 gem 'sass-rails'
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 
 # Models
 gem 'sanitize'
@@ -78,9 +78,9 @@ gem 'the_role_bootstrap3_ui' #,
   # branch: 'master'
 
 gem 'the_storages',
-  path: '../the_storages'
-  # github: 'the-teacher/the_storages',
-  # branch: 'master'
+  # path: '../the_storages'
+  github: 'the-teacher/the_storages',
+  branch: 'master'
 
 gem "the_comments",
   # path: '../the_comments',
