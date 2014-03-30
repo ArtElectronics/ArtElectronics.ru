@@ -2,14 +2,13 @@ class User < ActiveRecord::Base
   attr_accessor :oauth_params
 
   devise :database_authenticatable,
+    :confirmable,
+    :recoverable,
+    :validatable,
+    :registerable,
+    :rememberable,
     :omniauthable,
     :omniauth_providers => [:facebook, :twitter, :vkontakte]
-
-    # :confirmable,
-    # :recoverable,
-    # :registerable,
-    # :rememberable,
-    # :validatable
 
   include TheRole::User
   
