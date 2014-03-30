@@ -1,5 +1,5 @@
-.viewer_block.hide_block{ data:{'swf-url' => "#{@post.future_text}", 'swf-type' => "#{ @post.get_future_type}"} }
+.viewer_block.hide_block{ data: { 'swf-url' => "#{@post.future_text}", 'swf-type' => @post.get_future_type } }
   .hide_viewer
     .bg
-    = link_to t('.close'), '#', id: 'viewer_close_message'
+    = link_to t('.close'), '#', class: 'viewer_close_message'
   #viewer

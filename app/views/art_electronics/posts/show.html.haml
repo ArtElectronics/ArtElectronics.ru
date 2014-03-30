@@ -18,8 +18,6 @@
   .panel-body
     - if @post.has_future_text?
       = render partial: "posts/links_to_attachments"
-      - content_for :swf_viewer do
-        = render :partial => 'viewer'
 
     - if @post.main_image?
       %p= image_tag @post.main_image.url(:preview), class: :preview
