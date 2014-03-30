@@ -67,10 +67,15 @@ gem 'the_string_to_slug',
   github: 'the-teacher/the_string_to_slug',
   branch: 'master'
 
-gem 'the_role',
+gem 'the_role' #,
   # path: '../the_role'
-  github: 'the-teacher/the_role',
-  branch: 'master'
+  # github: 'the-teacher/the_role',
+  # branch: 'master'
+
+gem 'the_role_bootstrap3_ui' #,
+  # path: '../the_role_bootstrap3_ui'
+  # github: 'the-teacher/the_role_bootstrap3_ui',
+  # branch: 'master'
 
 gem 'the_storages',
   # path: '../the_storages'

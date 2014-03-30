@@ -30,15 +30,6 @@ GIT
       the_sortable_tree
 
 GIT
-  remote: git://github.com/the-teacher/the_role.git
-  revision: 3e763cd0b789d55fc68b24a4bff9549b591513eb
-  branch: master
-  specs:
-    the_role (2.3)
-      haml
-      rails (>= 3, < 5)
-
-GIT
   remote: git://github.com/the-teacher/the_storages.git
   revision: 16f3ba352c8c6597801ed60358adf53dd15b43a0
   branch: master
@@ -285,6 +276,11 @@ GEM
     state_machine (1.2.0)
     subexec (0.2.3)
     temple (0.6.7)
+    the_role (2.4)
+      rails (>= 3, < 5)
+    the_role_bootstrap3_ui (1.0)
+      haml
+      rails (>= 3, < 5)
     the_sortable_tree (2.4.0)
       rails (>= 3.1)
     thin (1.6.1)
@@ -359,7 +355,8 @@ DEPENDENCIES
   the_audit!
   the_comments!
   the_notification!
-  the_role!
+  the_role
+  the_role_bootstrap3_ui
   the_sortable_tree
   the_storages!
   the_string_to_slug!
