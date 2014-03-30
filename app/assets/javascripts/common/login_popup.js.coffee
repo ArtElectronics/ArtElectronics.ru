@@ -8,6 +8,11 @@
     left=#{ left }, top=#{ top }
   """
 
+@oauth_processing = ->
+  oauth_data = window.oauth_data;
+  $('#oauth_params').val JSON.stringify oauth_data
+  $('form:first').submit()
+
 $ ->
   $(".login-popup").click (e) ->
     btn = $ e.target
