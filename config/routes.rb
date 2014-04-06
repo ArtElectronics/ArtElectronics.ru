@@ -20,8 +20,11 @@ TheApp::Application.routes.draw do
   end
   
   # Personal
-  get "cabinet" => "users#cabinet", as: :cabinet
-  get "search"  => "search#index",  as: :search
+  get  "cabinet" => "users#cabinet", as: :cabinet
+  
+  # Search
+  post  "search" => "search#index",  as: :search
+  match "search/:squery" => "search#index", via: %w[ get post ]
 
   concern   :user_comments,  TheComments::UserRoutes.new
   concern   :admin_comments, TheComments::AdminRoutes.new

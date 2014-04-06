@@ -7,6 +7,7 @@
 
 //= require base/log
 //= require base/app
+//= require base/role
 //= require base/JODY
 
 //= require the_notification/vendors/toastr
@@ -28,6 +29,8 @@
 
 //= require ./initializer
 
+//= require ./search_form
 //= require ./flash_viewer
+
 //= require vendors/swf_player/swfobject.js
 //= require ../common/login_popup

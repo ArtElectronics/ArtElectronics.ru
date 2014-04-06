@@ -7,3 +7,4 @@ $ ->
 
   do Select2.init
   do TheNotification.init
+  do SearchForm.init

@@ -22,7 +22,6 @@
           .col-md-12
             = render partial: "layouts/items/header"
             = render partial: "layouts/items/sections"
-            = render partial: "layouts/items/search"
         .row
           -if content_for?(:the_audit_main)
             .col-md-12
@@ -31,6 +30,7 @@
               = yield :the_audit_main
           -else
             .col-md-3
+              = render partial: "layouts/items/search"
               = render partial: "layouts/widgets/express_nav"
               = yield :hubs_widget
               = yield :sub_hubs_widget

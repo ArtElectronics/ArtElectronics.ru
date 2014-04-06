@@ -1,5 +1,19 @@
-= form_tag search_path, method: :get, role: :form do |f|  
-  .form-group
-    .row
-      .col-md-12
-        = text_field_tag 'q', '', class: 'form-control input-medium'
+.panel.panel-success
+  .panel-heading
+    h3 Поиск
+  .panel-body
+    = form_tag search_path, method: :post, role: :form, data: { role: :search } do |f|
+      .form-group
+        .row
+          .col-md-12
+            = text_field_tag 'search_query', params[:squery], class: 'form-control input-medium', placeholder: "Что ищем?", data: { role: :search_query }
+        .row
+          .col-md-12
+            p
+              = check_box_tag 'search_posts', true, params[:sp], data: { role: :search_posts }
+              |  По постам
+            p
+              = check_box_tag 'search_blogs', true, params[:sb], data: { role: :search_blogs }
+              |  По блогам
+      .form-group
+        = submit_tag 'Поиск', class: 'btn btn-info'

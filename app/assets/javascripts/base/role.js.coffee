@@ -1,0 +1,1 @@
+@by_role = (name) -> $ """[data-role='#{ name }']"""
