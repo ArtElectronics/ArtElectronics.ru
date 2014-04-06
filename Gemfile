@@ -15,7 +15,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 
-gem 'RedCloth', require: 'redcloth'
 gem "rails_config"
 
 # views
@@ -33,14 +32,13 @@ gem 'sass-rails'
 gem 'font-awesome-sass'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 
+# Search
+gem 'thinking-sphinx', '~> 3.1.0'
+
 # Models
 gem 'sanitize'
 gem 'state_machine', '~> 1.2.0'
-
-# gem 'acts-as-taggable-on', 
-#   github: "mbleigh/acts-as-taggable-on",
-#   branch: "master"
-
+gem 'RedCloth', require: 'redcloth'
 gem "acts-as-taggable-on", "~> 3.0.1"
 
 gem 'awesome_nested_set',

@@ -18,8 +18,10 @@ TheApp::Application.routes.draw do
   devise_scope :user do
     post 'registrations/test_mail' 
   end
+  
   # Personal
   get "cabinet" => "users#cabinet", as: :cabinet
+  get "search"  => "search#index",  as: :search
 
   concern   :user_comments,  TheComments::UserRoutes.new
   concern   :admin_comments, TheComments::AdminRoutes.new

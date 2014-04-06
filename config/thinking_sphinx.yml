@@ -1,0 +1,12 @@
+development:
+  mysql41: 9191
+  address: localhost
+  morphology: stem_ru
+
+  indices_location: /Users/admin/rails/opensource/ArtElectronics/searchd_indexes
+  configuration_file: /Users/admin/rails/opensource/ArtElectronics/config/searchd.config
+
+  log:         /Users/admin/rails/opensource/ArtElectronics/log/searchd.log
+  query_log:   /Users/admin/rails/opensource/ArtElectronics/log/searchd.query.log
+  pid_file:    /Users/admin/rails/opensource/ArtElectronics/tmp/pids/searchd.development.pid
+  binlog_path: /Users/admin/rails/opensource/ArtElectronics/tmp/binlog/production

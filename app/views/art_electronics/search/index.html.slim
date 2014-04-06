@@ -1,0 +1,9 @@
+h1 Поиск: #{ params[:q] }
+
+= paginate @search_result
+
+- @search_result.each do |item|
+  h2= item.title
+  p== item.content
+
+= paginate @search_result
