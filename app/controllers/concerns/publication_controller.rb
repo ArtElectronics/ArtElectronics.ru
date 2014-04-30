@@ -26,14 +26,14 @@ module PublicationController
       @comments = @post.comments.for_manage_set      
       
       @hubs = Hub.main_articles_hubs
-      @post.increment!(:show_count) if @post.published?
+      Post.increment_counter( :show_count, @post.id ) if @post.published?
 
       render 'posts/show'
     end
 
     def tag
       @tag   = params[:tag]
-      @posts = Post.tagged_with(@tag).fresh.pagination(params)
+      @posts = Post.tagged_with(@tag).published.fresh.pagination(params)
       render 'posts/index'
     end
 
@@ -122,7 +122,7 @@ module PublicationController
         :title,
         :raw_intro,
         :raw_content,
-        :tag_list
+        :name_list, :word_list, :title_list
       )
     end
   end

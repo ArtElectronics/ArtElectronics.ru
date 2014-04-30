@@ -1,0 +1,7 @@
+.panel.panel-default
+  .panel-body
+    - AppConfig.tag_contexts.each do | c |
+      .form-group
+        - id = "post[#{ c }_list]"
+        = label_tag id, t(".context.#{ c }")
+        = text_field_tag id, post.send("inline_#{ c }_tags") , 'data-tags' => @tags[ c ].to_json

@@ -109,7 +109,6 @@ namespace :ae do
             end
           end
         else
-          binding.pry
           puts "Post: #{ ae_article.title } not found".red
         end
 

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310161123) do
+ActiveRecord::Schema.define(version: 20140508100434) do
+
+  create_table "archive_numbers", force: true do |t|
+    t.integer "n"
+    t.integer "month"
+    t.integer "year"
+    t.integer "in_year_n"
+    t.string  "cover_file_name"
+  end
 
   create_table "attached_files", force: true do |t|
     t.integer  "user_id"
@@ -170,6 +178,9 @@ ActiveRecord::Schema.define(version: 20140310161123) do
     t.integer  "draft_comments_count",     default: 0
     t.integer  "published_comments_count", default: 0
     t.integer  "deleted_comments_count",   default: 0
+    t.string   "inline_name_tags",         default: ""
+    t.string   "inline_word_tags",         default: ""
+    t.string   "inline_title_tags",        default: ""
   end
 
   create_table "pages", force: true do |t|
@@ -210,6 +221,9 @@ ActiveRecord::Schema.define(version: 20140310161123) do
     t.integer  "draft_comments_count",     default: 0
     t.integer  "published_comments_count", default: 0
     t.integer  "deleted_comments_count",   default: 0
+    t.string   "inline_name_tags",         default: ""
+    t.string   "inline_word_tags",         default: ""
+    t.string   "inline_title_tags",        default: ""
   end
 
   create_table "posts", force: true do |t|
@@ -250,6 +264,9 @@ ActiveRecord::Schema.define(version: 20140310161123) do
     t.integer  "draft_comments_count",                      default: 0
     t.integer  "published_comments_count",                  default: 0
     t.integer  "deleted_comments_count",                    default: 0
+    t.string   "inline_name_tags",                          default: ""
+    t.string   "inline_word_tags",                          default: ""
+    t.string   "inline_title_tags",                         default: ""
   end
 
   create_table "roles", force: true do |t|

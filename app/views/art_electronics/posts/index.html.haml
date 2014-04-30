@@ -28,7 +28,7 @@
       = render partial: "posts/read_more", locals: { post: post }
 
     .panel-footer
-      .tags= tags_links(post.inline_tags)
+      .tags= tags_to_str( post )
       = render partial: "posts/informer", locals: { post: post }
 
 = paginate @posts

@@ -1,4 +1,4 @@
-- tags = tags_str.split ','
+- tags = tags_to_ary( post )
 
 - unless tags.blank?
   .panel.panel-success
@@ -6,5 +6,5 @@
       %h3 Тэги
 
     .panel-body
-      - tags.each do |tag|
-        %p= link_to tag, tag_url(tag)
+      - tags.each do |tag| 
+        %p= tag

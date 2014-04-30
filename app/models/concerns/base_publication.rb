@@ -68,15 +68,24 @@ module BasePublication
   end
 
   def prepare_tags
-    # Rm dots, because it can brokes url_helpers (dot can be interpreted as format param) 
-    syms = %w[' " ` : \. \\ /].join('|')
-    syms = Regexp.new syms
+    AppConfig.tag_contexts.each do |context|
+      if self.respond_to?( "#{context}_list" )
+        tags = massage_tags( self.send( "#{context}_list" ) )
+        assign_tags( context, tags )
+      end
+    end
+  end
 
-    tags = self.tag_list.to_s.mb_chars.downcase.gsub(syms, ',')
+  def massage_tags tags
+    # Replace dots with underscore, because it can brokes url_helpers (dot can be interpreted as format param) 
+    syms = Regexp.new '\.'
+    tags = tags.to_s.mb_chars.gsub(syms, '_')
     tags = Sanitize.clean(tags, :elements => [])
+  end
 
-    self.tag_list    = tags
-    self.inline_tags = self.tag_list.to_s
+  def assign_tags context, tags
+    self.send( "#{ context }_list"+'=', tags )        
+    self.send( "inline_#{ context }_tags=", tags )
   end
 
   def prepare_content

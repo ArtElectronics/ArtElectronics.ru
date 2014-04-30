@@ -83,6 +83,14 @@ ru:
       pdf_version: Скачать PDF
     viewer:
       close: закрыть / смотреть текстовую версию
+
+    tags:
+      title: 'Тэги:'
+
+      context:
+        name: Имена
+        title: Названия
+        word: Термины
   pubs:
     author: 'Автор поста:'
     hub_title: 'Имя раздела:'

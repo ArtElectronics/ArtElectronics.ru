@@ -22,8 +22,11 @@ class CreatePublications < ActiveRecord::Migration
 
         # denormalization
         t.string :hub_state,  default: :draft
-        t.string :inline_tags
         t.string :legacy_url
+
+        t.string :inline_name_tags, default: ''
+        t.string :inline_word_tags, default: ''
+        t.string :inline_title_tags,default: ''
 
         # DateTime
         t.datetime :published_at

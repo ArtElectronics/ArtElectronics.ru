@@ -28,16 +28,16 @@
   .form-group
     = f.label :raw_content, t('pubs.content')
     = f.text_area :raw_content, class: :redactor_content
-
-  .form-group
-    = f.label :tag_list, t('pubs.tags')
-    = f.text_field :tag_list, class: 'form-control'
+  
+  .form-group#tags{ data: { contexts: AppConfig.tag_contexts } }
+    = label_tag 'tags', t('posts.tags.title')
+    = render partial: 'tag_fields', locals: { post: @post }
 
   - if !@post.new_record?
     .form-group
       - options = options_for_select(publication_states, @post.state)
       .row
-        .col-md-12= f.label  :state, t('pubs.state')
+        .col-md-12= f.label :state, t('pubs.state')
       .row
         .col-md-5= f.select :state, options, {}, class: 'form-control input-medium'
   

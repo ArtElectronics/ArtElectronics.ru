@@ -8,7 +8,7 @@
   = render partial: 'layouts/widgets/recent_comments'
 
 - content_for :tags_widget do
-  = render partial: 'layouts/widgets/tags', locals: { tags_str: @post.inline_tags }
+  = render partial: 'layouts/widgets/tags', locals: { post: @post }
 
 .panel.panel-success
   .panel-heading
@@ -26,23 +26,13 @@
     %p= raw @post.content
   
   .panel-footer
-    / .tags
-    /   %b Теги
-    /   = tags_links @post.inline_tags
     .authors
       %b Авторы
       - @post.authors.each do |author|
         = link_to author.name, author
-    .tags
-      %b Теги
-      = tags_links @post.word_list.join(', ')
-    .tags
-      %b Имена
-      = tags_links @post.name_list.join(', ')
-    .tags
-      %b Названия
-      = tags_links @post.title_list.join(', ')
-
+    
+    = render partial: 'posts/tag_by_context', locals: { post: @post }
+    
     = render partial: "posts/informer", locals: { post: @post }
 
 = render partial: "the_comments/tree", locals: { commentable: @post, comments_tree: @comments }
