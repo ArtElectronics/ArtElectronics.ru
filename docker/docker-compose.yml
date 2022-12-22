@@ -1,9 +1,10 @@
 #
-# docker compose -f dev.docker-compose.yml up
-# docker compose -f dev.docker-compose.yml down
+# docker compose -f docker-compose.yml up
+# docker compose -f docker-compose.yml down
 #
-# PLATFORM=amd docker compose -f dev.docker-compose.yml up
-# PLATFORM=amd docker compose -f dev.docker-compose.yml down
+# PLATFORM=amd docker compose -f docker-compose.yml pull
+# PLATFORM=amd docker compose -f docker-compose.yml up
+# PLATFORM=amd docker compose -f docker-compose.yml down
 #
 # docker exec -ti artelectronics-psql-1 /bin/bash
 # docker exec -ti artelectronics-rails-1 /bin/bash

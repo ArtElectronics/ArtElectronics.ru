@@ -2,6 +2,15 @@
 
 ## Cold Start
 
+### 0. Pull images
+
+- `PLATFORM=arm` -- default platform
+- `PLATFORM=amd`
+
+```sh
+PLATFORM=amd docker compose -f docker-compose.yml pull
+```
+
 ### 1. Initialize Data Base
 
 ```sh
