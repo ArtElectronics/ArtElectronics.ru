@@ -1,0 +1,102 @@
+= render partial: 'the_crop/canvas', locals: { image: @pub.main_image.url(:original) }
+
+= render partial: 'publications/editor'
+
+- if @pub.moderator_note.present?
+  %p.bg-warning{ style: 'padding:15px;'}= @pub.moderator_note
+
+- if @pub.ugc? && @pub.published? && @pub.unmoderated?
+  .form-group
+    - author_feed = link_to 'ленте автора', [current_user, @pub.class.table_name]
+    %p.bg-success{ style: 'padding:15px;'}
+      Этот пост опубликован в #{ author_feed }, но не присутствует в главной ленте сайта.
+      Если этот пост достаточно интересен и пройдет модерацию, он появится в главной ленте сайта.
+
+= form_for @pub, html: { enctype: "multipart/form-data", role: :form } do |f|
+  = render partial: 'the_notification/form', locals: { object: @pub, format: :json }
+
+  .form-group
+  = hidden_field_tag 'pub_id',    @pub.id
+  = hidden_field_tag 'pub_klass', @pub.class
+
+  = render partial: 'shared/main_image_toolbar', locals: { f: f, object: @pub }
+
+  .form-group
+    = f.label :title, t('pubs.title')
+    = f.text_field :title, class: 'form-control', data: { role: :pub_title }
+
+  - selector_hubs = current_user.editable_hubs_for(controller_name)
+  = render partial: 'hubs/hub_select', locals: { object: @pub, selector_hubs: selector_hubs }
+
+  .form-group
+    = f.label :raw_intro, t('pubs.intro')
+    = f.text_area :raw_intro, class: :redactor_intro, id: :redactor_intro
+
+  .form-group
+    = f.label :raw_content, t('pubs.content')
+    = f.text_area :raw_content, class: :redactor_content, id: :redactor_content
+
+  - if current_user.admin?
+    - if %w[ Post Blog ].include?(@pub.class.to_s)
+      .form-group#tags{ data: { contexts: AppConfig.tag_contexts + ["author"] } }
+        = label_tag 'tags', t('publications.tags.title')
+        = render partial: 'publications/tag_fields', locals: { f: f, pub: @pub }
+        - if @pub.class.to_s == 'Post'
+          .form-group
+            - id = "author_list"
+            = f.label id, t("publications.tags.context.author")
+            = f.text_field id, value: @pub.inline_author_tags, data: { tags: @authors.to_json }
+
+  - if current_user.admin?
+    .form-group
+      .row
+        .col-md-12= f.label :comments_switcher, 'Комментарии:'
+      .row
+        - comm_swtch = %w[ on off ].collect{ |state| [ t("comments_switcher.#{ state }"), state ] }
+        - options = options_for_select(comm_swtch, @pub.comments_switcher)
+        .col-md-5= f.select :comments_switcher, options, {}, autocomplete: :off, class: 'form-control input-medium'
+
+  .form-group
+    - options = options_for_select(publication_states, @pub.state)
+    .row
+      .col-md-12= f.label :state, t('pubs.state')
+    .row
+      .col-md-5= f.select :state, options, {}, autocomplete: :off, class: 'form-control input-medium'
+
+  - if current_user.moderator?(@pub.class.table_name)
+    .form-group
+      = f.label :moderation_state, "Статус модерации:"
+      - mod_states = %w[ unmoderated moderated ].collect{ |state| [ t("publications.#{ state }"), state ] }
+      - options = options_for_select(mod_states, @pub.moderation_state)
+      = f.select :moderation_state, options, {}, autocomplete: :off, class: 'form-control input-medium'
+
+    .form-group
+      = f.label :moderator_note, "Заметка модератора:"
+      = f.text_area :moderator_note, class: 'form-control', style: 'width:100%; height: 200px;'
+
+  - if current_user.admin?
+    .clearfix
+      %p Участие в RSS лентах:
+      .pull-left{ style: 'width:50%' }
+        .form-group
+          = f.label :yandex_news, "Yandex News:"
+          = f.check_box :yandex_news, autocomplete: :off
+        .form-group
+          = f.label :surfingbird, "Surfingbird:"
+          = f.check_box :surfingbird, autocomplete: :off
+        .form-group
+          = f.label :novoteka, "Novoteka:"
+          = f.check_box :novoteka, autocomplete: :off
+
+      .pull-left
+        .form-group
+          = f.label :flipboard_culture, "Flipboard культура:"
+          = f.check_box :flipboard_culture, autocomplete: :off
+        .form-group
+          = f.label :flipboard_tech, "Flipboard техника:"
+          = f.check_box :flipboard_tech, autocomplete: :off
+
+  .form-group
+    = f.submit t('pubs.save'), class: 'btn btn-danger btn-lg'
+
+  = render partial: 'shared/pub_stats', locals: { object: @pub }

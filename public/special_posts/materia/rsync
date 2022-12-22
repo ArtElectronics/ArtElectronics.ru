@@ -1,0 +1,4 @@
+ssh ae_project_new@zykin-ilya.ru
+cd /var/www/ae_project_new/data/ae_project_production/current/public/special_posts/ArticleNov2015/
+
+rsync -chavzPr . ae_project_new@zykin-ilya.ru:/var/www/ae_project_new/data/ae_project_production/current/public/special_posts/ArticleNov2015/

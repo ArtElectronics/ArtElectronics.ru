@@ -1,0 +1,141 @@
+- content_for :sidebar do
+  .panel.panel-default
+    .panel-heading
+      %b Логин:
+      = @user.login
+
+    .panel-body
+      %p
+        = image_tag @user.avatar.url(:medium)
+      %p
+        %b Имя:
+        = @user.username
+
+      %p
+        %b Email:
+        = @user.email
+
+      - if (credentials = @user.credentials).any?
+        %p
+          %b Привязано к:
+        %ul
+          - credentials.each do |credential|
+            %li= credential.provider
+
+      %br
+      %p= link_to "Редактировать", edit_user_url(@user), class: 'btn btn-info'
+
+%h3= t ".cabinet", login: @user.login
+
+- if current_user.any_role?(posts: :new, pages: :new, blogs: :new)
+  %h4= t '.create'
+  %br
+
+  %p
+    - %w[ posts pages blogs ].each do |model_name|
+      - if current_user.has_role?(model_name, :new)
+        = link_to t(:new, scope: model_name), [:new, model_name.singularize], class: 'btn btn-primary', style: 'margin-right: 30px;'
+
+  %br
+
+- if current_user.any_role?(posts: :my, blogs: :my, pages: :my)
+  %h4 Мои публикации (управление):
+
+  .list-group
+    - %w[ posts pages blogs ].each do |model_name|
+      - if current_user.has_role?(model_name, :my)
+        = link_to [:my, @user, model_name], class: 'list-group-item' do
+          = t(".my_#{ model_name }")
+          %span.badge.alert-info
+            Черновики:
+            = @user.send(model_name).with_state(:draft).count
+          %span.badge.alert-success
+            Опубликовано:
+            = @user.send(model_name).with_state(:published).count
+
+- if current_user.any_role?(posts: :my, blogs: :my, pages: :my)
+  %h4 Мои публикации (просмотр):
+
+  .list-group
+    - %w[ posts pages blogs ].each do |model_name|
+      - if current_user.has_role?(model_name, :my)
+        = link_to [@user, model_name], class: 'list-group-item' do
+          = t(:my, scope: [model_name])
+          %span.badge.alert-success
+            Опубликовано:
+            = @user.send(model_name).with_state(:published).count
+
+- if current_user.any_role?(moderator: :posts, moderator: :pages, moderator: :blogs)
+  %h4 Управление публикациями сайта:
+
+  .list-group
+    - %w[ posts pages blogs ].each do |model_name|
+      - if current_user.has_role?(model_name, :manage)
+        = link_to [:manage, model_name], class: 'list-group-item' do
+          = t("#{ model_name }.manage")
+          %span.badge.alert-info
+            Черновики:
+            = model_name.classify.constantize.with_state(:draft).count
+          %span.badge.alert-success
+            Опубликовано:
+            = model_name.classify.constantize.with_state(:published).count
+
+- if @user.has_role?(:comments, :manage)
+  %h4= t '.comments'
+  .list-group
+    = link_to [:manage, :comments], class: 'list-group-item' do
+      = t '.comments'
+
+      %span.badge.alert-warning
+        На модерации:
+        = @user.draft_comcoms_count
+
+      %span.badge.alert-info
+        Написано к моим постам:
+        = @user.comcoms.active.count
+
+      %span.badge.alert-success
+        Написано мной:
+        = @user.my_comments.active.count
+
+- if @user.has_role?(:hubs, :manage)
+  %h4= t '.hubs_manage'
+
+  .list-group
+    = link_to t('.hubs'), manage_hubs_url, class: 'list-group-item'
+
+- if current_user.has_role?(:meta_data, :manage)
+  %h4 SEO:
+
+  .list-group
+    - if current_user.has_role?(:meta_data, :manage)
+      = link_to "SEO. Мета данные", meta_data_url, class: 'list-group-item'
+
+- if @user.has_role?(:author, :manage)
+  %h4= t '.authors'
+
+  .list-group
+    = link_to t('.authors_list'), manage_authors_url, class: 'list-group-item'
+
+- if @user.has_role?(:banners, :manage)
+  %h4 Баннеры
+
+  .list-group
+    = link_to t('.banners'), banners_path, class: 'list-group-item'
+
+- if @user.any_role?(users: :manage, roles: :manage)
+  %h4= t '.users_and_roles'
+
+  .list-group
+    = link_to t('.users'), users_url, class: 'list-group-item'
+    = link_to t('.roles'), admin_roles_url, class: 'list-group-item'
+
+- if @user.has_role?(:archives, :manage)
+  %h4= t '.archive'
+  .list-group
+    = link_to t('.numbers'), manage_archive_numbers_path, class: 'list-group-item'
+
+  %h4 Аудит:
+  .list-group
+    = link_to 'Аудит', audits_path, class: 'list-group-item'
+

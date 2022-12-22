@@ -1,0 +1,106 @@
+.articles_breadcrumbs{
+  margin-bottom: 25px;
+
+  p{ display: inline-block; }
+
+  .current_hub_title, .hub_title{
+    font-size: 3.2em;
+    line-height: 120%;
+    font-family: Verdana;
+  }
+
+  .current_hub_title{
+    color: #333;
+    margin-right: 30px;
+  }
+
+  .hub_title a{ color: #4873A8; }
+}
+
+.posts.index{
+  overflow: hidden; zoom: 1;
+  width: 730px;
+
+  .post{
+    overflow: hidden; zoom: 1;
+    margin-bottom: 25px;
+
+    img.preview{
+      box-shadow: 0 0 2px lightgray;
+      float: left;
+      margin: 2px;
+    }
+
+    .preview_cell{
+      padding: 0;
+      padding-right: 20px;
+    }
+    .intro_cell{
+      padding: 0;
+      width: 100%;
+    }
+    .intro{
+      .date{
+        color: #808080;
+        font-size: 1.3em;
+      }
+      a:hover{ color: #d9593d; }
+
+      .text a:hover{
+        color: #666;
+        text-decoration: none;
+      }
+      // .text{
+      //   margin-bottom: 15px;
+
+      //   p, span{
+      //     font-family: Verdana !important;
+      //   }
+      // }
+
+      // .text a{
+      //   color: #333;
+      //   font-size: 1.3em;
+      //   text-decoration: none;
+      //   &:hover{ color: #666; }
+      // }
+    }
+
+    h3{
+      font-family: verdana;
+      font-size: 27px;
+
+      font-weight: normal;
+      line-height: 145%;
+
+      a{ color: #004080; }
+      a:hover{ color: #013056; }
+    }
+  }
+}
+
+.informer{
+  .show_count, .comments_count{
+    float: right;
+    padding-left: 25px;
+  }
+
+  .show_count{
+    margin-right: 25px;
+    background: image-url("AE/eye.gif") no-repeat scroll left center transparent;
+  }
+  .comments_count{
+    background: image-url("AE/talk.gif") no-repeat scroll left center transparent;
+  }
+
+  .line{
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .tags{
+    font-size: 1em;
+    margin-bottom: 7px;
+    line-height: 160%;
+  }
+}

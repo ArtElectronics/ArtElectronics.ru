@@ -1,0 +1,35 @@
+- content_for :editor do
+  %script
+    var CKEDITOR_BASEPATH = "/javascripts/ckeditor/";
+
+  = javascript_include_tag "ckeditor/ckeditor"
+  = javascript_include_tag "vendors/ckeditor/init"
+
+= form_for @archive, html: { enctype: "multipart/form-data", role: :form } do |f|
+  = render partial: 'the_notification/form', locals: { object: @archive }
+
+  .form-group
+    = f.label :number, t('.number')
+    = f.text_field :number, class: 'form-control'
+
+  .form-group
+    = f.label :year, t('.year')
+    = f.text_field :year, class: 'form-control'
+
+  .form-group
+    = f.label :month, t('.month')
+    = f.text_field :month, class: 'form-control'
+
+  .form-group
+    = f.label :number_in_year, t('.number_in_year')
+    = f.text_field :number_in_year, class: 'form-control'
+
+  .form-group
+    = f.label :raw_content, t('.content')
+    %br
+    = f.text_area :raw_content, class: :redactor_content
+
+  = render partial: 'cover', locals: { f: f, obj: @archive }
+
+  .form-group
+    = f.submit 'save', class: 'btn btn-info'

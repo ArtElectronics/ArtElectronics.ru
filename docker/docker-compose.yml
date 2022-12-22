@@ -1,0 +1,66 @@
+#
+# docker compose -f dev.docker-compose.yml up
+# docker compose -f dev.docker-compose.yml down
+#
+# PLATFORM=amd docker compose -f dev.docker-compose.yml up
+# PLATFORM=amd docker compose -f dev.docker-compose.yml down
+#
+# docker exec -ti artelectronics-psql-1 /bin/bash
+# docker exec -ti artelectronics-rails-1 /bin/bash
+version: '3.8'
+
+name: artelectronics
+
+services:
+  # port: 3306
+  mysql:
+    image: mysql:8.0
+    # NOTE: use of "mysql_native_password" is not recommended:
+    # https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_DATABASE: artelectronics
+      MYSQL_USER: rails
+      MYSQL_PASSWORD: qwerty
+    volumes:
+      - ../db/_MYSQL:/var/lib/mysql
+      - ../shared:/shared
+
+  # port: 6379
+  # command: redis-server --save 60 1 --loglevel warning
+  redis:
+    image: redis:7.0.5-alpine
+    volumes:
+      - ../db/_REDIS:/data
+      - ../shared:/shared
+
+  # docker exec -ti artelectronics-sphinx-1 ash
+  # docker exec artelectronics-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
+  # port: 36307
+  sphinx:
+    image: macbre/sphinxsearch:3.4.1
+    environment:
+      - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
+    volumes:
+      - ../db/_SPHINX:/opt/sphinx/index
+      - ../config/_SPHINX:/opt/sphinx/conf
+      - ../shared:/shared
+    mem_limit: 512m
+
+  # rails s -p 3000 -b 0.0.0.0
+  # port 3000
+  rails:
+    tty: true
+    stdin_open: true
+    image: iamteacher/artelectronics.ru:webapp.${PLATFORM:-arm}64
+    volumes:
+      - ../:/home
+    ports:
+      - 3002:3000
+    # depends_on:
+    #   - psql
+    #   - redis
+    #   - sphinx

@@ -1,0 +1,6 @@
+- if @pub.is_a? Post
+  - content_for :swf_viewer do
+    .viewer_block.hidden{ data: { 'swf-url' => @pub.future_text, 'swf-type' => @pub.get_future_type } }
+      .holder
+        = link_to raw('<i>&times;</i>'), '#', class: :viewer_close_message
+        #viewer

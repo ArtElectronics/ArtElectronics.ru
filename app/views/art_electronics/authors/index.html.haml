@@ -1,0 +1,41 @@
+.authors.index
+  %h1= t('authors.list')
+  %br
+
+  = render partial: "authors/alphabet"
+
+  - @authors.each do |author|
+    .author.ob
+      .image_block
+        = image_tag author.avatar.url :big
+
+      .info_block
+        %h3= link_to author.name, author_path(author)
+
+        - if author.short_description.present?
+          %p= raw author.short_description
+
+        - if author.description.present? && (author.description.to_s.size > 20)
+          .more= link_to "Узнать больше »", jsvoid
+          .info.ob
+            %p= raw author.description
+
+        - if author.posts.any?
+          .author_posts
+            - orig  = author.posts.order(id: :desc)
+            - first = orig.slice(0, 5)
+            - last  = orig - first
+
+            %ul.authors_posts_list
+              - first.each do |post|
+                %li= link_to post.title, post_url(post)
+
+            - if last.any?
+              .more_additional_posts@more_additional_posts= link_to "Другие статьи автора »", '#'
+
+              %ul.authors_posts_list.additional_posts.ob
+                - last.each do |post|
+                  %li= link_to post.title, post_url(post)
+
+  %br
+  = paginate @authors

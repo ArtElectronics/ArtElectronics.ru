@@ -1,0 +1,10 @@
+- content_for :express_nav do
+  %p= link_to t('app.cabinet'), cabinet_url
+
+  - %w[ posts pages blogs ].each do |model_name|
+    - if current_user.has_role?(model_name, :manage)
+      %p= link_to t(:manage, scope: model_name), url_for([:manage, model_name])
+
+%h1= t :new, scope: @pub.class.table_name
+
+= render 'publications/new_form'

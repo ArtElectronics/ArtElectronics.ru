@@ -1,0 +1,21 @@
+%h3 Здравствуйте!
+%p
+  Вы получили открытку <i>"Татлин. Туча стрел в будущее"</i>, составленную пользователем сайта <a href="http://artelectronics.ru">ArtElectronics.ru</a> специально для Вас.
+%br
+%table
+  %tr
+    %td
+      %div{style: "padding:15px;background:gray;"}
+        = image_tag attachments['postcard.png'].url
+
+- if @name.present?
+  %p Составитель: #{ @name }
+
+%p
+  Владимир Татлин – ключевая фигура авангарда ХХ века, один из создателей конструктивизма. Дерзкие эксперименты, выход за пределы живописи и фантастические замыслы о переустройстве быта – все это в творчестве Татлина было вплетено в социальные и политические утопии его времени.
+%p
+  Познакомиться с творчеством Владимиром Татлина в формате <a href="http://artelectronics.ru/hubs/future-future">future-текста</a> и отправить подобную открытку своим друзьям Вы можете <a href="http://artelectronics.ru/posts/tatlin-tucha-strel-v-buduschee">здесь</a>.
+%p
+  %i Спасибо за Ваш интерес!
+  %br
+  С уважеием, редакция сайта <a href="http://artelectronics.ru">ArtElectronics.ru</a>.

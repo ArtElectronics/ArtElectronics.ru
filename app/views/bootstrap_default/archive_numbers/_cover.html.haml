@@ -1,0 +1,13 @@
+.image_toolbar
+  .base_view
+    %p
+      %b= t('.title')
+
+    .image_preview
+      = link_to obj.cover.url(:original) do
+        = image_tag obj.cover.url(:original)
+
+.form-group
+  %p
+    %label= t('.select')
+    = f.file_field :cover

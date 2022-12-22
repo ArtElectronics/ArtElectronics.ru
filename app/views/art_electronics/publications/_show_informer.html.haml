@@ -1,0 +1,5 @@
+= link_to "#comments", class: :comments_count do
+  = pub.comments_sum
+
+= link_to jsvoid, class: :show_count do
+  = pub.show_count.to_i.next

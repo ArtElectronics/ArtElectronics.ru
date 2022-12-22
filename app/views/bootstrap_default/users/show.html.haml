@@ -1,0 +1,13 @@
+%h2
+  = image_tag @user.avatar.url(:medium)
+
+  - if @user.username.present?
+    = @user.username
+  - else
+    = @user.login
+%br
+
+%h4 Логин: #{ @user.login }
+%p Роль пользователя на сайте: #{ @user.role.name }
+
+%hr

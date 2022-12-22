@@ -1,0 +1,76 @@
+.tmp_login{
+  width: 600px;
+  margin: auto;
+
+  .info{
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+
+    background-color: #FCF8F2;
+    border: 1px solid #F0AD4E;
+    border-radius: 3px;
+  }
+}
+
+.sessions.new{
+  padding-top: 15px;
+
+  h3{
+    font-weight: normal;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .social_login{
+    text-align: center;
+    margin-bottom: 15px;
+
+    a{
+      display: inline-block;
+
+      margin-right: 30px;
+      width:  75px; height: 75px;
+      background: image-url("AE/social_networks_auth.gif") no-repeat scroll 2px 2px transparent;
+
+      &.fb{ background-position: -134px 2px; }
+      &.tw{ background-position: -271px 2px; }
+      &.gp{ background-position: -408px 2px; }
+    }
+  }
+
+  .delimiter{
+    color: #D9593D;
+    font-size: 1.3em;
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+
+    span{
+      display: inline-block;
+      position: relative;
+
+      &:before, &:after{
+        top: 50%;
+        content: '';
+        width: 350px;
+        display: block;
+        position: absolute;
+        border-bottom: 1px solid #CCDAE7;
+      }
+      &:before{ right: 40px; }
+      &:after { left:  40px; }
+    }
+  }
+  .login_table{
+    width:  700px;
+    margin: auto;
+  }
+}
+span.remember_me{
+  font-size: 1.3em;
+}
+.session_shared_links{
+  padding-top: 40px;
+  font-size: 1.4em;
+}

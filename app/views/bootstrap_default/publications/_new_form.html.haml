@@ -1,0 +1,22 @@
+- selector_hubs = current_user.editable_hubs_for(controller_name)
+
+- if selector_hubs.blank?
+  = t 'hubs.have_not_available_hubs'
+- else
+  %p.bg-success{ style: "padding: 15px;" }
+    = t :new_form_description, scope: @pub.class.table_name
+
+  = form_for @pub, html: { role: :form } do |f|
+    = render partial: 'the_notification/form', locals: { object: @pub, format: :html }
+
+    = hidden_field_tag 'pub_id',    @pub.id
+    = hidden_field_tag 'pub_klass', @pub.class
+
+    .form-group
+      = f.label :title, t('pubs.title')
+      = f.text_field :title, class: 'form-control'
+
+    = render partial: 'hubs/hub_select', locals: { object: @pub, selector_hubs: selector_hubs }
+
+    .form-group
+      = f.submit t('pubs.create'), class: 'btn btn-info'

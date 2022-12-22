@@ -1,0 +1,7 @@
+- if content_for? :express_nav
+  .panel.panel-default
+    .panel-heading
+      %h5 Навигация
+
+    .panel-body
+      = yield :express_nav

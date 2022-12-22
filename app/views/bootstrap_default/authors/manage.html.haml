@@ -1,0 +1,36 @@
+/ - content_for :express_nav do
+/   %p= link_to t('authors.lenta'), authors_path
+
+- content_for :authors do
+  %h1= t('authors.list')
+
+  %li= link_to(t('authors.new'), new_author_path)
+
+  = paginate @authors
+
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th= t('authors.name')
+        %th= t('authors.short_description')
+        / %th= t('authors.created_at')
+        %th Действия
+
+    %tbody
+      - @authors.each do |author|
+        %tr
+          %td
+            = image_tag author.avatar.url :small
+          %td
+            %p
+              %b= link_to author.name, author
+            = raw author.short_description
+          / %td= author.created_at.strftime('%d.%m.%Y')
+
+          - if current_user.try(:admin?)
+            %td
+              %p= link_to 'Просмотр', author, title: 'Просмотр'
+              %p= link_to 'Правка', edit_author_path(author), title: 'Правка'
+              %p= link_to 'Удалить', author, method: :delete, data: { confirm: 'Вы точно хотите удалить Автора?' },  title: 'Удалить автора'
+
+  = paginate @authors

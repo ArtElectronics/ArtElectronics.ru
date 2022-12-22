@@ -1,0 +1,46 @@
+.btn{
+  padding: 5px;
+  cursor: pointer;
+  border: 0 none;
+  border-radius: 5px;
+}
+.btn-default{
+  color: white;
+  font-size: 1.8em;
+  background: #d9593d;
+}
+a.btn{
+  margin-right: 15px;
+
+  &:hover{
+    color: white;
+
+    transition-property: box-shadow;
+    transition-delay: 0.1s;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+
+    box-shadow: 0px 0px 8px #682C23 inset;
+  }
+}
+
+label{
+  color: #333;
+  font-size: 1.3em;
+  margin-bottom: 5px;
+}
+.input-lg{
+  font-size: 1.4em;
+  width: 80%;
+}
+.form-group{
+  margin-bottom: 20px;
+}
+
+.form-control{
+  padding: 7px;
+  border: 1px solid #BDCCD4;
+  border-radius: 3px;
+
+  &:focus{ border: 1px solid #d9593d; }
+}

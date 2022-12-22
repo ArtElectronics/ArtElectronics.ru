@@ -1,0 +1,38 @@
+- content_for :express_nav do
+  %p= link_to t('.link_edit'), edit_archive_number_path(@archive)
+  %p= link_to t('admin.archive_numbers.index.title'), archive_numbers_path
+
+%h1= t('.title')
+
+%table.table
+  %tbody
+    %tr
+      %td
+        %strong= "#{t('admin.archive_numbers.form.number')}"
+      %td
+        = @archive.number
+
+    %tr
+      %td
+        %strong= "#{t('admin.archive_numbers.form.year')}"
+      %td
+        = @archive.year
+
+    %tr
+      %td
+        %strong= "#{t('admin.archive_numbers.form.month')}"
+      %td
+        = @archive.month
+
+    %tr
+      %td
+        %strong= "#{t('admin.archive_numbers.form.number_in_year')}"
+      %td
+        = @archive.number_in_year
+
+    %tr
+      %td
+        %strong= "#{t('admin.archive_numbers.form.cover')}"
+      %td
+        = link_to @archive.cover.url( :original ) do
+          = image_tag @archive.cover.url( :big )

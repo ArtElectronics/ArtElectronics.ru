@@ -1,0 +1,62 @@
+- content_for :meta_data do
+  - if controller_name == 'hubs'
+    = render template: "meta_data/hubs/index", locals: { hub: @hub }
+  - if controller_name == 'welcome'
+    -# TODO: add something
+
+- content_for :sidebar do
+  - banner = raw Banner.for_location('right-top-240-400').published.sample.try(:insert)
+
+  - if banner.present?
+    %div{ style: 'border: 1px solid gray' }= banner
+    %br
+    %br
+
+  .posts.show_sidebar
+    %h3 Больше текстов
+    .recent
+      - recent_pubs = Post.recent.published.includes(:hub).limit(20)
+      - recent_pubs.each do |pub|
+        %section
+          %b= link_to pub.hub.title, hub_path(pub.hub)
+          %p= link_to pub.title, pub
+
+- if current_hub = @hub
+  .articles_breadcrumbs
+    %p.current_hub_title= current_hub.title.mb_chars.capitalize
+    - current_hub.parents_until_slug(:posts).each do |item|
+      - unless %w[ pages ].include? item.slug
+        %p.hub_title
+          = link_to item.title.mb_chars.capitalize, hub_url(item)
+
+.posts.index
+  - if @pubs.count.zero?
+    %h3 Жаль, но здесь пока ничего нет.
+    %p Попробуйте воспользоваться поиском или поискать информацию в других разделах журнала
+
+  - @pubs.each do |pub|
+    .post
+      %table
+        %tr
+          %td.preview_cell
+            = link_to pub do
+              = image_tag pub.main_image.url(:base), class: :preview
+          %td.intro_cell
+            .intro
+              %span.date
+                = pub.pub_at
+                / = I18n.l(pub.created_at, format: "%d %B %Y")
+                / = pub.created_at.strftime('%Y/%m/%d')
+
+              %h3= link_to pub.title, pub
+
+              .text.content_typography
+                - if pub.hub.has_slug?(:blogs)
+                  = raw Truncato.truncate pub.intro.to_s, max_length: 500, count_tags: true
+                - else
+                  = raw pub.intro
+
+              .informer
+                = render partial: "publications/informer", locals: { pub: pub }
+
+  = paginate @pubs

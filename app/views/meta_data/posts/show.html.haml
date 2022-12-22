@@ -1,0 +1,71 @@
+- meta = post.meta_data
+
+-# TITLE
+- title = meta.title.to_s.squish.strip
+- title = title.present? ? title : "#{ post.title } - ArtElectronics.ru".squish.strip
+
+-# DESCRIPTION
+- descr = meta.description.to_s.squish.strip
+- descr = descr.present? ? descr : Sanitize.clean(post.intro.to_s).squish.strip[0..180]
+
+-# KEYWORDS
+- keywords  = meta.keywords.to_s.squish.strip.gsub(/\s*,\s*/, ',')
+- keywords  = keywords.present? ? keywords : [ post.inline_name_tags, post.inline_title_tags, post.inline_word_tags ].delete_if{|s| s.blank? }.join(',').squish.strip.gsub(/\s*,\s*/, ',')
+
+-# AUTHOR
+- author = meta.author
+- author = author.present? ? meta.author : 'ArtElectronics.ru'
+
+-# TIME format
+- tshift   = post.created_at.strftime("%z")
+- tshift   = [ tshift[0..2], tshift[3..4] ].join(':')
+- pub_time = post.created_at.strftime("%FT%R:%S#{ tshift }")
+- mod_time = post.updated_at.strftime("%FT%R:%S#{ tshift }")
+
+-# OG: IMAGE
+- og_image = post.main_image.present? ? image_url(post.main_image.url(:original)) : nil
+- og_image = meta.og_image.present?   ? meta.og_image : og_image
+
+- canonical_url = if post.created_at < Time.new(2017, 02, 25)
+  - request.original_url.to_s.gsub('https://', 'http://')
+- else
+  - request.original_url
+
+-# OG: TITLE, DESCRIPTION, SITE NAME, TYPE, URL
+- og_title = meta.og_title.present?       ? meta.og_title       : title
+- og_descr = meta.og_description.present? ? meta.og_description : descr
+- og_sname = meta.og_site_name.present?   ? meta.og_site_name   : 'ArtElectronics.ru'
+- og_type  = meta.og_type.present?        ? meta.og_type        : 'article'
+- og_url   = meta.og_url.present?         ? meta.og_url         : canonical_url
+
+-# =============== MAIN ===============
+- content_for :title do
+  = title
+
+%link{ rel: :canonical, href: canonical_url }
+%meta{ name: :author,      content: author.strip   }
+%meta{ name: :keywords,    content: keywords.strip }
+%meta{ name: :description, content: descr.strip    }
+
+-# =============== MAIN ===============
+
+-# =============== OPEN GRAPH ===============
+-# http://ogp.me/#no_vertical
+
+- if og_image.present?
+  %meta{ property: "og:image", content: og_image.strip }
+
+%meta{ property: "og:title",        content: og_title.strip }
+%meta{ property: "og:description",  content: og_descr.strip }
+%meta{ property: "og:site_name",    content: og_sname.strip }
+
+%meta{ property: "og:type",         content: og_type.strip }
+%meta{ property: "og:url",          content: og_url.strip  }
+%meta{ property: "#{ og_type.strip }:section", content: post.hub.title.strip }
+
+%meta{ property: "#{ og_type.strip }:published_time", content: pub_time }
+%meta{ property: "#{ og_type.strip }:modified_time",  content: mod_time }
+
+- keywords.split(',').each do |tag|
+  %meta{ property: "#{ og_type.strip }:tag", content: tag.to_s.strip.strip }
+-# =============== OPEN GRAPH ===============

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <title>pars</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        /*border: 1px solid red;*/
+    }
+
+    .body {
+        width: 980px;
+        margin: auto;
+    }
+
+    .header,
+    .footer {
+        height: 150px;
+        background: lightgray;
+    }
+
+    .main {
+        background: yellow;
+        overflow: hidden;
+    }
+
+    .content {
+        float: left;
+        width: 740px;
+        background: lightblue;
+    }
+
+    .sidebar {
+        float: right;
+        width: 230px;
+        background: green;
+    }
+
+    #m_ka {
+        position: absolute;
+        background-color: red;
+        width: 50px;
+        height: 50px;
+        top: 5180px;
+        z-index: 999;
+        opacity: 0;
+    }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta name="viewport" content="user-scalable=yes" />
+</head>
+
+<body onload="opPac()">
+    <div class='body'>
+        <div class='header'></div>
+        <div class='main'>
+            <div class='content'>
+                <h3>Заголовок</h3>
+                <p>Автор: Иванов</p>
+                <p>25.02.2015</p>
+                <iframe src="index.html" id="pars" border='0' seamless='seamless' scrolling='no' style="width:735px;height:10300px;border:5px dashed red"></iframe>
+                <div id="m_ka"></div>
+            </div>
+            <div class='sidebar'>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+                <p> Новые статьи </p>
+            </div>
+        </div>
+        <div class='footer'></div>
+    </div>
+    <script src="acces/js/jquery/jquery.waypoints.min.js"></script>
+   <!--  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+    <script type="text/javascript">
+    var frame = document.getElementById("pars");
+    var win = frame.contentWindow;
+
+
+$('#m_ka')
+    .waypoint(function(direction) {
+    win.aN_tb7();
+}, {
+    //context: '#docs',
+    offset: '75%'
+})
+    $('#m_ka')
+    .waypoint(function(direction) {
+    win.aN_tb7();
+}, {
+    //context: '#docs',
+    offset: '-200%'
+})
+
+    </script>
+</body>
+
+</html>

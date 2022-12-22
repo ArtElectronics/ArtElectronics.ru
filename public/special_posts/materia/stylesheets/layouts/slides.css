@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body{background:url(../../images/bg.png)}
+.fullscreen--canvas{overflow:hidden;position:relative}
+.slide--title{background:url(../../images/bg-dark.png)}
+.slide--title .bg-dark--ae-logo{position:absolute;bottom:30px;left:30px}
+.slide--title .bg-dark--info{position:absolute;bottom:24px;right:30px;cursor:pointer}
+.slide--info{background:url(../../images/info_bg.jpg) 0 0/cover no-repeat}
+.slide--sub-holder{padding-top:50px;padding-bottom:50px;position:relative}
+.slide--sub-holder:before{position:absolute;top:0;left:0;content:' ';width:100%;height:100%;background:#626261;z-index:1;opacity:.7;filter:alpha(opacity=70)}
+.slide--01{background:url('../../images/set-0/Идеальное состояние-Плотин.jpg') 0 0/cover no-repeat}
+.slide--02{background:url('../../images/set-0/Информационное поле планеты.jpeg') 0 0/cover no-repeat}
+.slide--03{background:url('../../images/set-0/Киборги будущего.jpg') 0 0/cover no-repeat}
+.slide--04{background:url('../../images/set-0/Клоны и генетически измененные люди.jpg') 0 0/cover no-repeat}
+.slide--05{background:url('../../images/set-0/Когда люди перестанут быть людьми.jpg') 0 0/cover no-repeat}
+.slide--06{background:url('../../images/set-0/Люди зараженные программируемыми вирусами.jpg') 0 0/cover no-repeat}
+.slide--07{background:url('../../images/set-0/Люди и древние рыбы.jpg') 0 0/cover no-repeat}
+.slide--08{background:url(../../images/set-0/Нашествие-роботов.png) 0 0/cover no-repeat}
+.slide--09{background:url('../../images/set-0/Определение мыслящеи материи.jpg') 0 0/cover no-repeat}
+.slide--10{background:url('../../images/set-0/Потомок человечества.jpg') 0 0/cover no-repeat}
+.slide--11{background:url('../../images/set-0/Развитие мысли вместо эволюции.jpg') 0 0/cover no-repeat}
+.slide--12{background:url('../../images/set-0/Цели мыслящеи материи.png') 0 0/cover no-repeat}
+.slide--13{background:url('../../images/set-0/Человек между мыслью и жизнью.jpg') 0 0/cover no-repeat}
+.slide--14{background:url('../../images/set-0/Человек перестает быть живым существом.jpg') 0 0/cover no-repeat}
+.slide--15{background:url('../../images/set-0/Электронныи рабочии.jpg') 0 0/cover no-repeat}
+.nano .nano-pane,.nano .nano-slider{background:0 0!important;border-radius:0!important}
+.nano>.nano-pane{width:25px!important}
+.nano{z-index:1;margin:auto;height:500px!important}
+.nano .nano-content{padding:20px 30px 20px 20px}
+.nano .nano-pane{border-left:1px solid rgba(255,255,255,.5)}
+.nano .nano-slider{border-right:3px solid #fff}
+.slide-controls--next,.slide-controls--prev,.slide-controls--repeat{color:#fff;font-size:30px;line-height:60px;text-align:center;font-family:Georgia;z-index:10;border:1px solid #fff;box-shadow:0 0 1px 1px rgba(0,0,0,.3);text-shadow:0 0 1px rgba(0,0,0,.8)}
+.slide-controls--next:after,.slide-controls--next:before,.slide-controls--prev:after,.slide-controls--prev:before,.slide-controls--repeat:after,.slide-controls--repeat:before{box-shadow:0 0 1px 1px rgba(0,0,0,.2)}
+.slide-controls--logo{position:absolute;left:0;right:0;bottom:20px;text-align:center}
+.slide-controls--repeat{position:absolute;top:30px;left:0;right:0;margin-left:auto;margin-right:auto;width:60px;height:60px;border-radius:100px;cursor:pointer}
+.slide-controls--repeat:after{content:'';display:block;position:absolute;left:50%;top:-52px;height:50px;border-left:1px solid #fff}
+.slide-controls--next:after,.slide-controls--prev:before{content:'';display:block;top:50%;border-top:1px solid #fff}
+.slide-controls--next,.slide-controls--prev{bottom:48%;height:60px;border-radius:100px;cursor:pointer;position:absolute}
+.slide-controls--prev{left:30px;width:60px}
+.slide-controls--prev:before{position:absolute;left:-52px;width:50px}
+.slide-controls--next{right:30px;width:60px}
+.slide-controls--next:after{position:absolute;right:-52px;width:50px}
+.slide--info-typo.article-content--typography span{color:#F1F09C!important;font-size:120%}
+.article-content--typography{font-size:18px;font-family:sans-serif,Arial;font-weight:lighter;line-height:130%;color:#fff;text-shadow:0 0 2px rgba(0,0,0,.9);text-align:justify;margin-right:5px}
+.article-content--typography a{color:#F1F09C!important}
+.article-content--typography a:hover{color:#E1FF0B!important}
+.article-content--typography a.no-actual-link{color:#fff!important;cursor:default}
+.article-content--typography span{color:#fff!important}
+.article-content--typography h1{color:#fff;margin-bottom:20px;text-shadow:0 0 3px #000;font-family:sans-serif,Arial;font-weight:lighter!important;font-size:30px!important}
+.article-content--typography ol{margin-left:20px}
+.article-content--typography li{line-height:125%;margin-bottom:10px}

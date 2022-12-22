@@ -1,0 +1,262 @@
+ru:
+  subscribers:
+    form_placeholder: E-mail
+    form_title: Получать Дайджест AE
+
+  authors_count:
+    zero:  ''
+    one:   'Автор:'
+    few:   'Авторы:'
+    many:  'Авторы:'
+    other: 'Авторы:'
+
+  the_storages:
+    validation:
+      uniq_attachment_file_name: У файла должно быть уникальное имя
+      attachment_file_size: не соответствующий размер
+
+  app:
+    name: ArtElectronics.ru
+    cabinet: Мой кабинет
+
+  comments_switcher:
+    'on': Включены
+    'off': Выключены
+
+  file_size_helper:
+    mb: Мб
+
+  per_page:
+    "5": по 5
+    "10": по 10
+    "20": по 20
+    "50": по 50
+
+  main_image:
+    title: 'Главное изображение:'
+    select: 'Укажите изображение:'
+    selected_area: 'Выбрать область изображения'
+    selecte_area_and_save:  "Укажите область изображения и сохраните результат:"
+    save: "Сохранить"
+    just_close: "Просто закрыть"
+
+  shared:
+    meta_fields:
+      slug: "Короткий URL адрес:"
+      author: "Автор:"
+      keywords: "Ключевые слова:"
+      description: "Описание:"
+      copyright: "Авторское право:"
+
+  hubs:
+    new: Новый хаб
+    list: Хабы
+    edit: Редактировать хаб
+    show: Просмотр хаба
+    manage: Управлять хабами
+    pubs_type: 'Тип публикаций:'
+    optgroup: 'Раздел для группировки:'
+    have_not_available_hubs: 'Нет доступных разделов для публикации'
+
+    updated: "Хаб успешно обновлен"
+    created: "Хаб успешно создан"
+
+    pubs_types:
+      posts: Публикации
+      pages: Страницы
+
+  pages:
+    new: Новая страница
+    new_form_description: Что бы создать страницу укажите ее название и раздел в котором она будет опубликована. При необходимости эти данные можно будет изменить
+    my: Моя лента страниц
+    show: Просмотр этой страницы
+    manage: Управлять страницами
+    edit: Редактирование страницы
+    feed: Мои страницы
+
+  blogs:
+    new: Новая запись в блоге
+    new_form_description: Что бы создать запись в блоге укажите название записи и раздел в котором будет опубликована. При необходимости эти данные можно будет изменить
+    my: Моя лента блого-записей
+    show: Просмотр этой блого-записи
+    manage: Управлять блогами
+    edit: Редактирование блого-записи
+    feed: Моя блого-лента
+
+  posts:
+    new: Новая статья
+    new_form_description: Что бы создать новую статью укажите ее название и раздел в котором она будет опубликована. При необходимости эти данные можно будет изменить
+    my: Моя лента статей
+    show: Просмотр статьи
+    manage: Управлять статьями
+    edit: Редактирование статьи
+    feed: Моя лента статей
+
+    read_more: "Читать дальше &raquo;"
+    to_comments: "К комментариям &raquo;"
+
+    validation:
+      main_image_file_size: 'Размер загружаемого файла должен быть от 10Кб до 5Мб'
+      main_image_file_type: 'Необходимо загружать только изображения (gif,jpg,png,bmp)'
+      main_image_file_name: 'Необходимо загружать только изображения c расширением (gif,jpg,png,bmp)'
+
+    links_to_attachments:
+      flash_version: Посмотреть Flash-версию
+      pdf_version: Скачать PDF
+    viewer:
+      close: закрыть / смотреть текстовую версию
+
+  publications:
+    unmoderated: На модерации
+    moderated: Одобрено
+
+    tags:
+      title: 'Тэги:'
+
+      context:
+        name: Имена
+        title: Названия
+        word: Термины
+  pubs:
+    author: 'Автор поста:'
+    hub_title: 'Имя раздела:'
+    select_hub: 'Доступные разделы для публикации:'
+    title: 'Заголовок:'
+    intro: 'Вводная часть:'
+    content: 'Основное содержимое:'
+    tags: 'Теги:'
+    type: 'Тип поста:'
+    state: 'Состояние:'
+    save: Сохранить
+    create: Создать
+    seo_meta_info: 'SEO, META информация'
+
+    updated: "Публикация успешно обновлена"
+    created: "Публикация успешно создана"
+
+    states:
+      draft: Черновик
+      published: Опубликовано
+
+    info:
+      author: 'Автор:'
+      show_count: 'Просмотров:'
+      pubs_count: 'Публикаций:'
+      files_count: 'Всего файлов:'
+      files_size: 'Размер файлов:'
+
+  views:
+    pagination:
+      first: "[Первая]"
+      last: "[Последняя]"
+      previous: "&laquo;"
+      next: "&raquo;"
+      truncate: "..."
+
+  attached_files:
+    preview_rebuilded: "Превью-картинка изменена"
+    image_rotated_on_left: "Изображение повернуто влево"
+    image_rotated_on_right: "Изображение повернуто вправо"
+    main_image_deleted: "Изображение удалено"
+
+  users:
+    cabinet:
+      cabinet: "Кабинет: %{login}"
+      create:   'Создать:'
+      show:     'Просмотр:'
+      comments: 'Комментарии:'
+      hubs_manage: 'Управление cтруктурой:'
+      pubs_manage: 'Управление публикациями:'
+      users_and_roles: 'Пользователи и Роли:'
+      authors: 'Авторы:'
+      subscribe: 'Подписка:'
+      archive: 'Архив:'
+      numbers: 'Номера'
+
+      new_post: 'Новый Пост'
+      new_blog: 'Новая Блогозапись'
+      new_page: 'Новую Страницу'
+
+      my_posts:      'Моя лента постов'
+      my_blogs:      'Моя блого-лента'
+      my_pages:      'Мои страницы'
+
+      my_post_list:  'Моя лента постов'
+      my_blogs_list: 'Моя блого-лента'
+
+      incoming_comments: Новые комментарии
+
+      hubs: 'Разделы сайта'
+      users: 'Пользователи'
+      roles: 'Роли'
+      authors_list: 'Авторы'
+      subscribers: 'Подписчики'
+      subscriber: 'Управление'
+
+    have_not_role: "У вас не достаточно прав"
+    not_authenticated: "Вы должны войти в систему прежде чем увидеть данную страницу"
+    index: Список пользователей
+    create:
+      created: Пользователь успешно создан
+
+  authors:
+    name: "Имя:"
+    description: "Описание:"
+    short_description: "Краткое описание:"
+    user_id: "Имя пользователя:"
+    created_at: "Создан:"
+    manage: Управление авторами
+
+    updated: "Автор успешно обновлен"
+    created: "Автор успешно создан"
+
+    avatar: "Аватар:"
+    lenta: Лента авторов
+
+    list:    Авторы
+    show:    Просмотр автора
+    edit:    Редактировать автора
+    new:     Новый автор
+    save:    Сохранить
+    destroy: Удалить автора
+
+  admin:
+    archive_numbers:
+      index:
+        title: Архив номеров
+        link_new: Новый номер
+
+        number: Номер
+        year: Год
+        month: Месяц
+        number_in_year: Номер в году
+        raw_content: Содержание
+
+      show:
+        title: Просмотр номера
+        link_edit: Редактровать номер
+
+      edit:
+        title: Редактировать
+
+      update:
+        updated: Архив успешно обновлен.
+
+      create:
+        created: Архив успешно создан.
+
+      new:
+        title: Новый номер
+
+      form:
+        number: Номер
+        year: Год
+        month: Месяц
+        number_in_year: Номер в месяце
+        content: Содержимое
+        cover: Обложка
+        save: Сохранить
+
+      cover:
+        title: Изображение обложки
+        select: Выбрать обложку

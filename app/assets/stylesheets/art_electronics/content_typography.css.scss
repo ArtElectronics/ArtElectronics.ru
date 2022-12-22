@@ -1,0 +1,59 @@
+.content_typography{
+  line-height: 1.5em;
+  font-size: 16px;
+
+  a{ color: #d9593d; }
+  a:hover{ color: #d9593d; text-decoration: underline; }
+
+  img{
+    display: block;
+    margin: auto;
+  }
+
+  p{
+    color: #333;
+    line-height: 1.5em;
+
+    font-size: 16px;
+    margin: 15px 0;
+  }
+
+  blockquote{
+    border-radius: 4px;
+    background: #efefef;
+    padding: 5px;
+  }
+
+  h1, h2, h3{ margin: 20px 0; font-weight: normal; }
+  h4, h5, h6{ margin: 15px 0; font-weight: bold;   }
+
+  h1{ font-size: 3em;   }
+  h2{ font-size: 2.6em; }
+  h3{ font-size: 2.2em; }
+  h4{ font-size: 1.8em; }
+
+  ul, ol{
+    margin: 20px 0;
+    margin-left: 30px;
+
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.5em;
+
+    li{ margin-bottom: 15px; }
+  }
+  ol{ list-style: decimal inside; }
+  ul{ list-style: disc inside; }
+
+  pre{
+    font-size: 1.6em;
+    font-family: Verdana;
+  }
+
+  table{
+    margin: 25px 0;
+    font-size: 14px;
+  }
+  th{ font-weight: bold; }
+  th, td{ padding: 10px; }
+}

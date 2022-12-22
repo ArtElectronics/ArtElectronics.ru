@@ -1,0 +1,14 @@
+pre= params.to_yaml
+
+h3 Поиск: #{ @squery }
+p 
+  ' Всего найдено
+  = @search_results_count
+
+= paginate @search_results
+
+- @search_results.each do |item|
+  h2= item.title
+  p== item.content
+
+= paginate @search_results

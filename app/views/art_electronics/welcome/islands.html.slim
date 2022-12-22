@@ -1,0 +1,41 @@
+- content_for :meta_data do
+  = render partial: "meta_data/default"
+
+= content_for :full_width do
+  .islands
+    .island.one
+      / =   link_to '', '/index', title: "Новое"
+    .island.two
+      / =   link_to '', '/index', title: "Контент"
+    .island.three
+      / = link_to '', '/hubs/blogs', title: "Блог"
+    .island.four
+      / =  link_to '', '/pages/about', title: "О Проекте"
+
+  ul.index_block
+    li
+      h2 Новое
+      - @recent_posts.each do |post|
+        p
+          strong= link_to post.hub.title, post.hub
+          = link_to post.title, post
+
+    li
+      h2 Unlinear text _
+      - @future_posts.each do |post|
+        p.future_preview
+          = link_to post.title, post, class: :w210
+          = link_to post do
+            span.round_pic= image_tag post.main_image.url, width: 150
+
+    li
+      h2 Подписка
+      = render partial: 'subscribers/subscribe_form'
+
+      br
+
+      h2 Блоги
+      - @recent_blogs.each do |post|
+        p
+          strong= link_to post.hub.title, post.hub
+          = link_to post.title, post

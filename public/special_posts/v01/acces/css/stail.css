@@ -1,0 +1,336 @@
+@font-face {
+    font-family: Unbuntu;
+
+    src: url(../font/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+    font-family: Unbuntu2;
+
+    src: url(../font/Ubuntu-LI.ttf);
+}
+
+/* body {
+    width: 100%;
+    height: 100%;
+
+    background: #fff;
+}
+ */
+.t_block {
+    font-size: 18px;
+    line-height: 2;
+
+    text-align: justify;
+}
+
+h4 {
+    font-size: 19px;
+}
+
+#pages {
+    font-family: Unbuntu;
+
+    position: absolute;
+   
+
+    width: 735px;
+    
+}
+
+.t_block {
+    line-height: 2;
+
+    text-align: justify !important;
+}
+
+p {
+    text-align: justify !important;
+}
+
+#movies_as {
+    position: relative;
+    left: 45px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.SL122 {
+    cursor: pointer;
+
+    background-color: #fff;
+}
+
+.SL118 {
+    cursor: pointer;
+
+    background-color: #fff;
+}
+
+.vd {
+    width: 735px;
+    height: 414px;
+    /*border-radius:150% 150%;*/
+    cursor: pointer;
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.5);*/
+    background: #000;
+}
+
+blockquote {
+    font-family: Unbuntu2;
+    font-size: 18px;
+}
+
+.zag {
+    font-size: 18px;
+}
+
+.bg_blaks {
+    position: relative;
+
+    width: 735px;
+    height: auto;
+
+    background: #000;
+}
+
+.zametka {
+    font-family: Unbuntu2;
+    font-size: 18px;
+
+    position: relative;
+
+    width: 735px;
+
+    text-align: justify;
+}
+
+.btns,
+.SL70,
+.SL74 {
+    position: relative;
+
+    cursor: pointer;
+
+    background: #e4e5e6;
+}
+
+#arrow1 {
+    position: absolute;
+    z-index: -1;
+    top: 340px;
+    left: 100px;
+
+    cursor: pointer;
+    transform: rotate(15deg);
+
+    background-image: url(../pics/lain_zigzag.svg);
+}
+
+#arrow2 {
+    position: absolute;
+    z-index: -1;
+    top: 1580px;
+    top: 1540px;
+    left: 90px;
+
+    width: 735px;
+    height: 250px;
+
+    cursor: pointer;
+}
+
+#tchk {
+    position: relative;
+    z-index: -1;
+    top: -310px;
+    left: 250px;
+
+    width: 49px;
+    height: 35px;
+
+    cursor: pointer;
+
+    background-image: url('../pics/tchk.png');
+}
+
+#tchk2 {
+    position: relative;
+    z-index: 5;
+    top: -345px;
+    left: 250px;
+
+    width: 49px;
+    height: 35px;
+
+    cursor: pointer;
+}
+
+#az {
+    position: relative;
+    z-index: 0;
+    top: -330px;
+    left: 250px;
+
+    width: 190px;
+    height: 262px;
+
+    background-image: url('../pics/bucva.png');
+}
+
+#tb4 {
+    position: relative;
+
+    overflow: hidden;
+
+    height: 350px;
+}
+
+#arr_5 {
+    position: relative;
+    top: -10px;
+    left: 650px;
+
+    width: 82px;
+    height: 8px;
+
+    cursor: pointer;
+
+    background-image: url(../pics/arr_5.png);
+}
+
+.tx32,
+.tx33 {
+    background-color: #e4e5e6;
+}
+
+#splash_6 {
+    position: relative;
+    z-index: -1;
+    top: 183px;
+    left: 270px;
+
+    width: 120px;
+    height: 25px;
+
+    background-color: #e4e5e6;
+}
+
+#splash_6_h {
+    position: relative;
+    z-index: 1;
+    top: 151px;
+    left: 277px;
+
+    width: 117px;
+    height: 25px;
+
+    cursor: pointer;
+}
+
+#ver_arr {
+    position: relative;
+    z-index: -2;
+    top: 268px;
+    left: 700px;
+
+    width: 8px;
+    height: 92px;
+
+    background-image: url(../pics/vertical_arrov.png);
+}
+
+#ver_arr_over {
+    position: relative;
+    z-index: 1;
+    top: 170px;
+    left: 700px;
+
+    width: 8px;
+    height: 92px;
+
+    cursor: pointer;
+}
+
+#p2 > .la3 > .sl_24,
+#p2 > .la1 > .sl_10,
+#p2 > .la4 > .sl_30,
+#p2 > .la3 > .sl_23,
+.sl9_9, #p1 > .l5_2 > .sl5_13, #p1 > .l5_2 > .sl5_14,
+.sl9_8, #p2 > .l5_1 > .sl5_4, #p2 > .l5_2 > .sl5_14, #p2 > .l5_2 > .sl5_15, #p2 > .l5_2 > .sl5_16, #p2 > .l5_2 > .sl5_17,
+#p2 > .l5_2 > .sl5_18, #p2 > .l5_2 > .sl5_19, #p2 > .l5_2 > .sl5_20, #p3 > .l5_1 > .sl5_8 {
+    font-weight: 600;
+}
+
+#tb3,
+#tb10 p {
+    cursor: pointer;
+}
+
+.slov {
+    padding: 2px;
+
+    cursor: pointer;
+
+    background-color: #e4e5e6;
+}
+
+.slov_big {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+
+    letter-spacing: -6px;
+
+    background-color: transparent;
+}
+
+#tb9 {
+    position: relative;
+
+    width: 735px;
+    height: 216px;
+}
+
+#tb6 {
+    position: relative;
+    top: -80px;
+
+    width: 735px;
+    height: 260px;
+}
+
+#tb8 {
+    position: relative;
+    top: -200px;
+
+    width: 735px;
+    height: 260px;
+}
+
+#tb10 {
+    position: relative;
+}
+
+#tb9 {
+    cursor: pointer;
+}
+
+#tb5 {
+    cursor: pointer;
+}
+
+.gradients {
+    background: rgb(255, 255, 255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 53%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(53%, rgba(0, 0, 0, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 53%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 53%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 53%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 53%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000', GradientType=0); /* IE6-9 */
+
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+}

@@ -1,0 +1,159 @@
+footer{
+  background: #AADDF8;
+  position: relative;
+
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: -120px; left: 0;
+
+    width: 100%;
+    height: 310px;
+    background: image-url("AE/footer.png") repeat scroll center top;
+  }
+
+  .content_holder{ padding-top: 215px; }
+
+  section.description{
+    margin-left: 60px;
+    font-size: 0.8em;
+    position: relative;
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0; left: -52px;
+      width:  42px;
+      height: 42px;
+
+      background: image-url("AE/ae_42.png") no-repeat scroll center top transparent;
+    }
+  }
+}
+
+footer{
+  table{ width: 100%; }
+
+  h3{
+    color: #333;
+    font-size: 2.1em;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+}
+
+.footer_nav{ width: 240px; }
+
+footer{
+  a{
+    &.current, &:hover{ color: #D9593D; }
+  }
+}
+
+nav.footer_tree{
+  margin-bottom: 25px;
+
+  @for $i from 1 through 3 {
+    div[level='#{ $i }'] a{
+      padding-left: #{ ($i - 1)*15 }px;
+    }
+  }
+
+  a{
+    white-space: nowrap;
+    display: inline-block;
+
+    color: #004080;
+    font-size: 1.5em;
+    line-height: 120%;
+    padding-left: 10px;
+
+    margin: 5px 0;
+
+    border-left: 4px solid transparent;
+
+    &.current, &:hover{ color: #D9593D; }
+
+    &:first-letter{
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.footer_links{ padding-right: 30px; }
+
+.footer_links, .additional{
+  a{
+    color: #004080;
+    display: inline-block;
+    font-size: 1.5em;
+    line-height: 120%;
+    margin: 5px 0;
+
+    &:first-letter{
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.footer_contacts, .additional{
+  h4{
+    color: #333333;
+    font-size: 1.8em;
+    font-weight: normal;
+    margin-bottom: 7px;
+  }
+
+  section{ margin-bottom: 25px; }
+}
+
+.footer_contacts{
+  strong{
+    color: #808080;
+    display: block;
+    font-size: 1.4em;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+
+  .phone{
+    color: #333;
+    font-size: 1.8em;
+    padding-left: 25px;
+    background: image-url("AE/phone.gif") no-repeat scroll left 5px transparent;
+
+    small{ font-size: 80%; }
+  }
+
+  .email{
+    padding-left: 25px;
+    background: image-url("AE/mail.gif") no-repeat scroll left top transparent;
+
+    a{
+      font-size: 1.3em;
+      line-height: 152%;
+    }
+  }
+}
+
+.additional{
+  width: 250px;
+
+  .social_networks{
+    a{
+      display: inline-block;
+      width: 25px; height: 25px;
+      margin-right: 20px;
+      background: image-url("AE/social_networks.gif") no-repeat scroll left top transparent;
+
+      &.fb{ background-position: -50px  0; }
+      &.tw{ background-position: -101px 0; }
+      &.gp{ background-position: -152px 0; }
+      &.pt{ background-position: -202px 0; }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+%h3 Забыли пароль?
+
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  = render partial: 'the_notification/form', locals: { object: resource, format: :json }
+  .form-group
+    = f.label :email
+    = f.email_field :email, autofocus: true, class: 'form-control input-lg'
+  .form-group
+    = f.submit "Получить инструкции по восстановлению пароля", class: 'btn btn-default'

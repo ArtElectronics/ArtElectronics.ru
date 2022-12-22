@@ -1,0 +1,79 @@
+.authors.index{
+  .alphabet{
+    .title a{
+      color: #d9593d;
+      text-transform: none;
+
+      &:hover{ border-bottom: 1px solid #d9593d; }
+    }
+
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #d9593d;
+
+    .delimiter{
+      margin: 0 6px;
+      color: lightgray;
+    }
+
+    a{
+      text-transform: capitalize;
+      margin: 0 2px;
+    }
+
+    b a{ color: #d9593d; }
+  }
+
+  .info{ display: none; }
+  .author{ margin-bottom: 50px; }
+
+  .image_block{
+    width: 175px;
+    float: left;
+    text-align: center;
+
+    img{
+      width: 100px;
+      border-radius: 100px;
+    }
+  }
+
+  .authors_posts_list{
+    margin-bottom: 15px;
+
+    li{
+      font-size: 17px;
+      line-height: 130%;
+    }
+  }
+
+  .author_posts{ margin-left: 60px; }
+  .more_additional_posts{ margin-left: 60px; }
+  .additional_posts{ display: none; }
+
+  .info_block{
+    margin-left: 176px;
+
+    p{
+      font-size: 18px;
+      line-height: 130%;
+    }
+
+    h3{
+      color: #1a1a1a;
+      font-size: 30px;
+      font-weight: normal;
+
+      a{ color: #1a1a1a; }
+      a:hover{ color: #1a1a1a; }
+    }
+
+    .more, .more_additional_posts{
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .more_additional_posts{
+      margin-bottom: 10px;
+    }
+  }
+}

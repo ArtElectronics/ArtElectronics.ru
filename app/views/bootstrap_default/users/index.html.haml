@@ -1,0 +1,25 @@
+- content_for :full_width do
+  = paginate @users
+
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th
+        %th= link_to 'Логин ↕', simple_sort_url(:login, params), title: :login
+        %th= link_to 'Имя пользователя ↕',  simple_sort_url(:username,  params), title: :username
+        %th= link_to 'Зарегистрирован ↕', simple_sort_url(:created_at,  params), title: :created_at
+        - if current_user && current_user.admin?
+          %th Действия
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= image_tag user.avatar.url(:thumb)
+          %td= user.login
+          %td= user.username
+          %td= I18n.l(user.created_at, format: "%-d %B %Y")
+          - if current_user && current_user.admin?
+            %td
+              %p= link_to 'Правка', edit_user_path(user)
+
+  = paginate @users

@@ -1,0 +1,34 @@
+.posts.index
+  %h3 Поиск по тегу: #{ @tag }
+
+  - if @taggings.count.zero?
+    %h3 Жаль, но здесь пока ничего нет.
+    %p Попробуйте воспользоваться поиском или поискать информацию в других разделах журнала
+  - else
+    - @taggings.each do |rel|
+      - pub = rel.published_pub
+      .post
+        %table
+          %tr
+            %td.preview_cell
+              = link_to pub do
+                = image_tag pub.main_image.url(:base), class: :preview
+            %td.intro_cell
+              .intro
+                %span.date
+                  = pub.pub_at
+                  / = I18n.l(pub.created_at, format: "%d %B %Y")
+                  / = pub.created_at.strftime('%Y/%m/%d')
+
+                %h3= link_to pub.title, pub
+
+                .text.content_typography
+                  - if pub.hub.has_slug?(:blogs)
+                    = raw Truncato.truncate pub.intro.to_s, max_length: 500, count_tags: true
+                  - else
+                    = raw pub.intro
+
+                .informer
+                  = render partial: "publications/informer", locals: { pub: pub }
+
+    = paginate @taggings

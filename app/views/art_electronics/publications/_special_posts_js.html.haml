@@ -1,0 +1,9 @@
+- if @pub.id == 667
+  - content_for :special_post_manual do
+    .special_post_manual.hidden
+      .wrp
+        = render 'special_posts/tatlin_manual'
+
+  :javascript
+    $(function(){ show_tatlin_manual() });
+    $(function(){ show_tatlin() });

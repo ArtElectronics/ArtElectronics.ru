@@ -1,0 +1,7 @@
+.archives.index
+  h1 Архив журнала
+
+  - @archives.each do |archive|
+    .issue
+      .cover= image_tag archive.cover.url(:big)
+      .content= raw archive.raw_content

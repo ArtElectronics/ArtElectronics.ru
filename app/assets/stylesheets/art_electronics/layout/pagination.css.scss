@@ -1,0 +1,23 @@
+.pagination{
+  li{
+    display: inline-block;
+    margin: 5px;
+  }
+  .first, .last{
+    a{
+      color: lightgray;
+      display: inline-block;
+      font-size: 12px;
+      &:hover{ color: #FF7F66; }
+    }
+  }
+
+  a{
+    color: #4873A8;
+    font-size: 2.5em;
+  }
+  .current{
+    color: #FF7F66;
+    font-weight: bold;
+  }
+}

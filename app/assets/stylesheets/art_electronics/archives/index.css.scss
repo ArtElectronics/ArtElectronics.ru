@@ -1,0 +1,38 @@
+.archives.index{
+  .issue{
+    overflow: hidden; zoom: 1;
+    margin-bottom: 25px;
+    *{ font-size: 15px; }
+
+    .cover{
+      float: left;
+      margin: 0 20px 20px 0;
+    }
+
+    .content{
+      margin-left: 210px;
+    }
+
+    ul{
+      margin-bottom: 15px;
+    }
+
+    li{
+      margin-bottom: 10px;
+    }
+
+    h1{
+      font-size: 24px;
+    }
+
+    small{ display: none; }
+
+    .contents{ margin-bottom: 15px; }
+
+    .title{
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+}

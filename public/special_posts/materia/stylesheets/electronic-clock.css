@@ -1,0 +1,55 @@
+@-webkit-keyframes blink{0%,100%{opacity:0;filter:alpha(opacity=0);color:red;-webkit-transform:scale(1);transform:scale(1)}
+70%{opacity:1;filter:alpha(opacity=100);color:#a647f6;-webkit-transform:scale(1.3);transform:scale(1.3)}
+}
+@keyframes blink{0%,100%{opacity:0;filter:alpha(opacity=0);color:red;-webkit-transform:scale(1);transform:scale(1)}
+70%{opacity:1;filter:alpha(opacity=100);color:#a647f6;-webkit-transform:scale(1.3);transform:scale(1.3)}
+}
+.electronic-clock--next,.electronic-clock--result{text-align:center;position:relative;color:#a647f6}
+.heart-beat{-webkit-animation:blink 2s infinite;animation:blink 2s infinite}
+@-webkit-keyframes shadow-blink{0%,100%{box-shadow:0 0 5px #bfc0c4}
+50%{box-shadow:0 0 40px #bfc0c4}
+}
+@keyframes shadow-blink{0%,100%{box-shadow:0 0 5px #bfc0c4}
+50%{box-shadow:0 0 40px #bfc0c4}
+}
+.shadow-blink{-webkit-animation:shadow-blink 5s infinite;animation:shadow-blink 5s infinite}
+.electronic-clock--result{font-family:Georgia;font-size:50px;height:50px;line-height:50px;margin-bottom:40px}
+.electronic-clock--next{font-size:20px;font-family:'Open Sans',Arial;font-weight:100;background:0 0;cursor:pointer;padding:10px;opacity:.3;filter:alpha(opacity=30)}
+.electronic-clock--next:before{display:block;position:absolute;content:'';top:0;left:0;width:100%;border-top:1px solid #a647f6;height:0;transition:height ease-out .5s}
+.toggle-dots{opacity:0!important;filter:alpha(opacity=0)}
+.electronic-clock{width:370px;padding:250px 40px 40px;margin:auto;position:relative}
+.electronic-clock:after{content:'';position:absolute;width:400px;height:20px;border-radius:100%;left:50%;margin-left:-200px;bottom:2px;z-index:-1}
+.electronic-clock.light{color:#272e38}
+.electronic-clock.light .digits div{opacity:.9;filter:alpha(opacity=90)}
+.electronic-clock.light .digits div span{background-color:#73b0fb;border-color:#73b0fb}
+.electronic-clock.light .digits div.dots:after,.electronic-clock.light .digits div.dots:before{background-color:#73b0fb}
+.electronic-clock .digits{padding:20px;cursor:pointer;overflow:hidden;border-radius:2px;border:2px solid #bfc0c4;box-shadow:0 0 5px #bfc0c4}
+.electronic-clock .digits div{text-align:left;position:relative;width:28px;height:50px;display:inline-block;margin:0 4px;float:left}
+.electronic-clock .digits div span{opacity:0;filter:alpha(opacity=0);position:absolute;transition:.25s}
+.electronic-clock .digits div span:after,.electronic-clock .digits div span:before{content:'';position:absolute;width:0;height:0;border:5px solid transparent}
+.electronic-clock .digits .d1{height:5px;width:16px;top:0;left:6px}
+.electronic-clock .digits .d1:before{border-width:0 5px 5px 0;border-right-color:inherit;left:-5px}
+.electronic-clock .digits .d1:after{border-width:0 0 5px 5px;border-left-color:inherit;right:-5px}
+.electronic-clock .digits .d2{height:5px;width:16px;top:24px;left:6px}
+.electronic-clock .digits .d2:before{border-width:3px 4px 2px;border-right-color:inherit;left:-8px}
+.electronic-clock .digits .d2:after{border-width:3px 4px 2px;border-left-color:inherit;right:-8px}
+.electronic-clock .digits .d3{height:5px;width:16px;top:48px;left:6px}
+.electronic-clock .digits .d3:before{border-width:5px 5px 0 0;border-right-color:inherit;left:-5px}
+.electronic-clock .digits .d3:after{border-width:5px 0 0 5px;border-left-color:inherit;right:-5px}
+.electronic-clock .digits .d4{width:5px;height:14px;top:7px;left:0}
+.electronic-clock .digits .d4:before{border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px}
+.electronic-clock .digits .d4:after{border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px}
+.electronic-clock .digits .d5{width:5px;height:14px;top:7px;right:0}
+.electronic-clock .digits .d5:before{border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px}
+.electronic-clock .digits .d5:after{border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px}
+.electronic-clock .digits .d6{width:5px;height:14px;top:32px;left:0}
+.electronic-clock .digits .d6:before{border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px}
+.electronic-clock .digits .d6:after{border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px}
+.electronic-clock .digits .d7{width:5px;height:14px;top:32px;right:0}
+.electronic-clock .digits .d7:before{border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px}
+.electronic-clock .digits div.dots:after,.electronic-clock .digits div.dots:before{width:5px;height:5px;content:'';position:absolute;left:0;top:14px}
+.electronic-clock .digits .d7:after{border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px}
+.electronic-clock .digits div .d2,.electronic-clock .digits div .d3,.electronic-clock .digits div .d4,.electronic-clock .digits div .d5,.electronic-clock .digits div .d6,.electronic-clock .digits div .d7,.electronic-clock .digits div>.d1{box-shadow:0 0 5px #73b0fb,0 0 5px #73b0fb}
+.electronic-clock .digits div.eight .d1,.electronic-clock .digits div.eight .d2,.electronic-clock .digits div.eight .d3,.electronic-clock .digits div.eight .d4,.electronic-clock .digits div.eight .d5,.electronic-clock .digits div.eight .d6,.electronic-clock .digits div.eight .d7,.electronic-clock .digits div.five .d1,.electronic-clock .digits div.five .d2,.electronic-clock .digits div.five .d3,.electronic-clock .digits div.five .d4,.electronic-clock .digits div.five .d7,.electronic-clock .digits div.four .d2,.electronic-clock .digits div.four .d4,.electronic-clock .digits div.four .d5,.electronic-clock .digits div.four .d7,.electronic-clock .digits div.nine .d1,.electronic-clock .digits div.nine .d2,.electronic-clock .digits div.nine .d3,.electronic-clock .digits div.nine .d4,.electronic-clock .digits div.nine .d5,.electronic-clock .digits div.nine .d7,.electronic-clock .digits div.one .d5,.electronic-clock .digits div.one .d7,.electronic-clock .digits div.seven .d1,.electronic-clock .digits div.seven .d5,.electronic-clock .digits div.seven .d7,.electronic-clock .digits div.six .d1,.electronic-clock .digits div.six .d2,.electronic-clock .digits div.six .d3,.electronic-clock .digits div.six .d4,.electronic-clock .digits div.six .d6,.electronic-clock .digits div.six .d7,.electronic-clock .digits div.three .d1,.electronic-clock .digits div.three .d2,.electronic-clock .digits div.three .d3,.electronic-clock .digits div.three .d5,.electronic-clock .digits div.three .d7,.electronic-clock .digits div.two .d1,.electronic-clock .digits div.two .d2,.electronic-clock .digits div.two .d3,.electronic-clock .digits div.two .d5,.electronic-clock .digits div.two .d6,.electronic-clock .digits div.zero .d1,.electronic-clock .digits div.zero .d3,.electronic-clock .digits div.zero .d4,.electronic-clock .digits div.zero .d5,.electronic-clock .digits div.zero .d6,.electronic-clock .digits div.zero .d7{opacity:1;filter:alpha(opacity=100)}
+.electronic-clock .digits div.dots{width:5px}
+.electronic-clock .digits div.dots:after{top:34px}

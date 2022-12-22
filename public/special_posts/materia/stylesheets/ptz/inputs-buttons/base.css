@@ -1,0 +1,4 @@
+.ptz--label{display:block;font-size:15px;line-height:18px}
+.ptz--btn,.ptz--input,.ptz--textarea{font-size:15px;line-height:18px;padding:7px 10px;border-radius:3px;vertical-align:top;border:1px solid rgba(0,0,0,.2)}
+.ptz--btn{text-align:center;white-space:nowrap;display:inline-block;cursor:pointer;background:#fff;transition:background-color .2s ease}
+.ptz--btn:hover{color:#000;background-color:#e3f2fd}

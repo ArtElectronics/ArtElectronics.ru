@@ -1,0 +1,40 @@
+- content_for :express_nav do
+  %p= link_to t('app.cabinet'), cabinet_url
+
+  - if current_user.has_role?(:blogs, :manage)
+    %p= link_to t(:manage, scope: :blogs), url_for([:manage, :blogs])
+
+= render partial: "shared/per_page"
+
+%br
+
+- content_for :full_width do
+  %p= link_to t(:new, scope: @klass.table_name), url_for([:new, model_name]), class: 'btn btn-info'
+
+  = paginate @pubs
+
+  %table.table.table-hover
+    %tr
+      %th= link_to 'ID ↕',         simple_sort_url(:id, params)
+      %th= link_to 'Заголовок ↕',  simple_sort_url(:title, params)
+      %th= link_to 'Просмотров ↕', simple_sort_url(:show_count, params)
+      %th= link_to 'Статус ↕',     simple_sort_url(:state, params)
+      %th= link_to 'UGC ↕',        simple_sort_url(:ugc, params)
+      %th Действия
+
+    - @pubs.each do |pub|
+      %tr{ class: { draft: :active, published: :success }[pub.state.to_sym] }
+        %td= pub.id
+        %td= pub.title
+        %td= pub.show_count
+        %td= { draft: 'Черновик', published: 'Опубликовано' }[pub.state.to_sym]
+        %td{ width: '70px', title: 'User generated content' }
+          %span{ title: 'Пользовательский контент' }= on_off_marker pub.ugc
+          %span{ title: 'Проверено модератором?' }= on_off_marker pub.moderated?
+
+        %td{ style: "width:285px" }
+          = link_to "Редактировать", url_for([:edit, pub]), class: 'btn btn-success btn-sm'
+          = link_to "Просмотр", url_for([pub]), class: 'btn btn-default btn-sm'
+          = link_to "Удалить",  url_for([pub]), method: :delete, data: { confirm: "Вы уверены, что хотите удалить объект?" }, class: 'btn btn-danger btn-sm'
+
+  = paginate @pubs

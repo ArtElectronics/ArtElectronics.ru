@@ -1,0 +1,73 @@
+!!! 5
+%html(lang="ru")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta{name: 'yandex-verification', content: '597611120fb4f804' }
+    -# %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    %title= content_for?(:title) ? yield(:title) : "ArtElectronics.ru"
+    = yield(:meta_data)
+
+    %link(href="http://artelectronics.ru/favicon.ico" rel="shortcut icon")
+    %meta(id="env_token" name="env_token" content="#{ Rails.env.to_s }")
+
+    = csrf_meta_tags
+    -# , { async: (:async if !Rails.env.development?) }
+    = javascript_include_tag :application
+    = stylesheet_link_tag    :application
+
+    - %w[ flipboard_culture flipboard_tech rss rss_full telegraf_full rambler ].each do |feed|
+      %link{ rel: :alternate, type: 'application/rss+xml', title: :RSS, href: "http://artelectronics.ru/#{ feed }.rss" }
+
+    = render partial: 'layouts/items/vk_init'
+    = yield :editor
+    = yield :js
+
+  %body
+    = render partial: 'layouts/items/fb_init'
+    = render partial: 'layouts/items/metrics'
+    = yield :swf_viewer
+
+    .body
+      - if content_for?(:special_posts_wide)
+        = render partial: 'the_notification/flash'
+        = render partial: "layouts/items/header"
+        = yield :special_posts_wide
+      - else
+        = render partial: 'the_notification/flash'
+        = render partial: "layouts/items/header"
+
+        - if content_for?(:full_width)
+          .content_holder
+            = yield :full_width
+
+            = yield :comments_main
+            = yield :the_audit_main
+            = yield :role_main
+
+            = yield
+
+        - else
+          .content_holder
+            = yield :special_post_manual
+            %table.content
+              %tr
+                %td.w760
+                  = render partial: 'the_notification/flash'
+                  = yield
+                %td.w240
+                  = yield :sidebar
+                  = render partial: 'layouts/items/vk_group'
+                  %br
+                  %br
+                  %br
+                  = render partial: 'layouts/items/fb_group'
+
+      .fguard
+    .app_preloader.hidden
+      = image_tag "/preloader.gif", nopin: :nopin
+    %footer
+      = render partial: "layouts/items/footer"
+
+    = yield :bottom_js

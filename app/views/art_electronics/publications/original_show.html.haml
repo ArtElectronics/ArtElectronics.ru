@@ -1,0 +1,82 @@
+= render partial: 'publications/viewer'
+= render partial: 'publications/special_posts_js'
+
+- content_for :js do
+  <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+
+- content_for :bottom_js do
+  - if @pub.id == 822
+    = render file: "#{ Rails.root }/public/special_posts/v01/scripts.js"
+
+- content_for :meta_data do
+  = render template: 'meta_data/posts/show', locals: { post: @pub }
+
+- top_banner  = raw Banner.for_location('top-728-90').published.sample.try(:insert)
+- side_banner = raw Banner.for_location('right-top-240-400').published.sample.try(:insert)
+
+- content_for :sidebar do
+  %br
+
+  - if side_banner.present?
+    %div{ style: 'border: 1px solid gray' }= side_banner
+    %br
+    %br
+
+  - if hubs = (@hub.try(:parent).try(:children) || Hub.with_slug(:blogs))
+    .posts.show_sidebar
+      %h3 Больше текстов
+      .recent
+        - recent_pubs = @pub.hub.pubs.where(hub: hubs).recent.published.includes(:hub).limit(20)
+        - recent_pubs.each do |pub|
+          - if @pub != pub
+            %section
+              %b= link_to pub.hub.title, hub_path(pub.hub)
+              %p= link_to pub.title, pub
+
+.posts.show
+
+  - if top_banner.present?
+    = top_banner
+    %br
+    %br
+
+  .hidden
+    id: #{ @pub.id }
+  .back= link_to raw("&laquo; Назад"), hub_url(@hub), title: "В рубрику: #{ @hub.title }"
+  .informer
+    %span.date
+      = raw @pub.pub_at
+    .counters= render partial: "publications/show_informer", locals: { pub: @pub }
+
+  - if current_user && (current_user.admin? || current_user.owner?(@pub))
+    %p= link_to t(:edit, scope: @pub.class.table_name), url_for([:edit, @pub])
+
+  %p.about_author
+    = render partial: "publications/author_link", locals: { pub: @pub }
+
+  - if @pub.is_a?(Post) && @pub.has_article_variants?
+    = render partial: "publications/links_to_attachments"
+
+  %h1= raw @pub.title
+
+  / SPECIAL or REGULAR POST?
+  - if @pub.id == 822
+    %iframe{ src: "/special_posts/v01/index.html", id: :pars, border: 0, seamless: :seamless, scrolling: :no, style: "width:745px;height:10200px;border:0"}
+    #m_ka
+  - else
+    .content_typography
+      = raw @pub.content
+
+%p.networks
+  = render partial: 'layouts/items/pinterest'
+  = render partial: 'layouts/items/vk_like'
+  = render partial: 'layouts/items/fb_like', locals: { item: @pub }
+  = raw " &nbsp; "
+  = render partial: 'layouts/items/twitter_btn'
+  = raw " &nbsp; "
+  = render partial: 'layouts/items/feedly_btn'
+
+= render partial: 'publications/tag_by_context', locals: { pub: @pub }
+
+- if @pub.comments_switcher == 'on'
+  = render partial: "the_comments/tree", locals: { commentable: @pub, comments_tree: @comments }

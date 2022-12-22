@@ -1,0 +1,6 @@
+- content_for :express_nav do
+  / %p= link_to t('authors.manage'), authors_manage_path
+  %p= link_to t('authors.lenta'), authors_path
+
+%h1= t('authors.new')
+= render('form')

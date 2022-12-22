@@ -1,0 +1,19 @@
+# NEW_RELIC_CONFIG_PATH=
+
+# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
+# .NET, PHP, Python and Node applications with deep visibility and low
+# overhead.  For more information, visit www.newrelic.com.
+#
+# Generated February 24, 2017, for version 3.18.1.330
+#
+# For full documentation of agent configuration options, please refer to
+# https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
+
+development:
+  log_level: info
+  app_name: AE_project (DEV)
+  license_key: 7d4ca4ba0e0a321639c3447a684ca16e12f49fdc
+
+  # NOTE: There is substantial overhead when running in developer mode.
+  # Do not use for production or load testing.
+  developer_mode: true

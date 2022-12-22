@@ -1,0 +1,25 @@
+= render partial: 'the_notification/form', locals: { object: @meta_data, format: :html }
+
+= form_for @meta_data, html: { role: :form } do |f|
+  %p
+    %b для страницы:
+    - holder_title = @holder.try(:title) || @holder.try(:name) || @holder.try(:login) || "Undefined title"
+    = link_to holder_title, url_for(@holder)
+    %br
+
+  %h3 Главные мета поля
+
+  - %w[ title keywords description author ].each do |fname|
+    .form-group
+      = f.label fname
+      = f.text_field fname, class: 'form-control'
+
+  %h3 OpenGraph поля
+
+  - %w[ og_title og_description og_image og_url og_type og_site_name ].each do |fname|
+    .form-group
+      = f.label fname
+      = f.text_field fname, class: 'form-control'
+
+  .form-group
+    = f.submit "Сохранить", class: 'btn btn-info'

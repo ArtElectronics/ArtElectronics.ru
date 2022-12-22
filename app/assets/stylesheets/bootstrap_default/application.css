@@ -1,0 +1,22 @@
+/*
+  *= require bootstrap
+  *= require font-awesome
+  *= require jquery-ui/datepicker
+
+  *= require tree
+  *= require sortable_tree
+  *= require expandable_tree
+
+  *= require ../../javascripts/vendors/select2/select2
+  *= require ../../javascripts/vendors/select2/select2_addons
+
+  *= require the_notification/vendors/toastr
+  *= require the_storages
+
+  *= require the_comments
+  *= require ./layout
+
+  *= require the_crop/the_crop
+  *= require jcrop/jquery.Jcrop
+  *= require ../art_electronics/sessions/new
+*/

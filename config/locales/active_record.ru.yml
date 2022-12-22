@@ -1,0 +1,44 @@
+ru:
+  activerecord:
+    models:
+      post: Публикация
+      user: Пользователь
+    attributes:
+      post:
+        friendly_id: "URL Адрес"
+        slug: "Короткий URL адрес"
+        main_image_content_type: "Тип главного изображения"
+        main_image_file_size:    "Размер главного изображения"
+        main_image: "Главное изображение"
+        title: "Загловок"
+      blog:
+        friendly_id: "URL Адрес"
+        slug: "Короткий URL адрес"
+        main_image_content_type: "Тип главного изображения"
+        main_image_file_size:    "Размер главного изображения"
+        main_image: "Главное изображение"
+        title: "Загловок"
+      page:
+        friendly_id: "URL Адрес"
+        slug: "Короткий URL адрес"
+        main_image_content_type: "Тип главного изображения"
+        main_image_file_size:    "Размер главного изображения"
+        main_image: "Главное изображение"
+        title: "Загловок"
+      author:
+        name: Имя
+        description: Описание
+        short_description: Краткое описание
+        user_id: Пользователь
+      user:
+        login: Логин
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        confirmation_token: Ключ активации
+        email: Email
+      comment:
+        raw_content: Текст комментария
+      attached_file:
+        attachment_file_name: Имя файла
+        attachment_file_size: Размер файла
+        attachment: Загружаемый файл

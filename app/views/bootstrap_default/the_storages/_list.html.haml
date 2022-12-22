@@ -1,0 +1,4 @@
+- attaches = storage.attached_files.nested_set
+
+%ol.sortable_tree.attached_files_list{ data: { max_levels: 1, rebuild_url: rebuild_attached_files_url } }
+  = sortable_tree attaches, render_module: AttachedFilesListHelper

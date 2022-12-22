@@ -1,0 +1,80 @@
+!!! 5
+%html(lang="ru")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "ArtElectronics.ru"
+    %link(href="http://artelectronics.ru/favicon.ico" rel="shortcut icon")
+    %meta(id="env_token" name="env_token" content="#{ Rails.env.to_s }")
+
+    = csrf_meta_tags
+    = stylesheet_link_tag    :bootstrap_default
+    = javascript_include_tag :bootstrap_default
+    = yield :editor
+
+  %body
+    = yield :the_crop
+    = yield :swf_viewer
+
+    .body.container
+      .mb15
+        .row
+          .col-md-12
+            = render partial: "bootstrap_default/layouts/items/header"
+            / = render partial: "layouts/items/sections"
+        .row
+          - if content_for?(:role_sidebar) || content_for?(:role_main)
+            = render partial: 'the_notification/flash'
+            .col-md-3
+              = yield :role_sidebar
+            .col-md-9
+              = render partial: 'the_notification/form', locals: { object: @role }
+              = yield :role_main
+          - elsif content_for?(:authors)
+            .col-md-12
+              = render partial: 'the_notification/flash'
+              = yield
+              = yield :authors
+          - elsif content_for?(:the_audit_main)
+            .col-md-12
+              = render partial: 'the_notification/flash'
+              = yield
+              = yield :the_audit_main
+          - elsif content_for?(:the_banners_main)
+            .col-md-12
+              = render partial: 'the_notification/flash'
+              = yield
+              = yield :the_banners_main
+          - elsif content_for?(:full_width)
+            .col-md-12
+              = render partial: 'the_notification/flash'
+              = render partial: "layouts/widgets/express_nav"
+              = yield
+              = yield :full_width
+          - else
+            .col-md-3
+              / = render partial: "layouts/items/search"
+              = render partial: "layouts/widgets/express_nav"
+              = yield :hubs_widget
+              = yield :sub_hubs_widget
+
+              = yield :sidebar
+
+              = yield :comments_sidebar
+              = yield :recent_comments_widget
+
+              = yield :tags_widget
+              = yield :tag_search_widget
+            .col-md-9
+              = render partial: 'the_notification/flash'
+              = yield
+              = yield :comments_main
+      .fguard
+    .footer.container
+      .row
+        .col-md-12
+          = render partial: "bootstrap_default/layouts/items/footer"
+
+    =# stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"

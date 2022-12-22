@@ -1,0 +1,5 @@
+- AppConfig.tag_contexts.each do |context|
+  .form-group
+    - id = "#{ context }_list"
+    = f.label id, t("publications.tags.context.#{ context }")
+    = f.text_field id, value: pub.send("inline_#{ context }_tags"), data: { tags: @tags[context].to_json }

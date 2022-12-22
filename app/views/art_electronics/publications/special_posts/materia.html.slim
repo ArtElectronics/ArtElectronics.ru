@@ -1,0 +1,25 @@
+- content_for :meta_data do
+  = render template: 'meta_data/posts/show', locals: { post: @pub }
+
+- content_for :special_posts_wide
+  iframe(src='//artelectronics.ru/special_posts/materia/' width='100%' height='900px' vspace='0' hspace='0' border='0' style='border:0')
+  br
+  br
+    .special-post--inv-content(style='overflow:hidden;height:10px;width:100%;margin-top:-30px;')
+      h1= raw @pub.title
+      .content= raw @pub.content
+  br
+  br
+  div(style='width:800px;margin:auto')
+    p.networks
+      = render partial: 'layouts/items/pinterest'
+      = render partial: 'layouts/items/vk_like'
+      = render partial: 'layouts/items/fb_like', locals: { item: @pub }
+
+    = render partial: 'publications/tag_by_context', locals: { pub: @pub }
+
+    - if @pub.comments_switcher == 'on'
+      = render partial: "the_comments/tree", locals: { commentable: @pub, comments_tree: @comments }
+
+    - 15.times do
+      br

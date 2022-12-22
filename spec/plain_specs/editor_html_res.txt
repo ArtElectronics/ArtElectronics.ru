@@ -1,0 +1,146 @@
+<h1>Sed ut perspiciatis unde</h1><h2>
+</h2>
+<p style="font-size: 16px; line-height: 25.600000381469727px;">
+  Sed ut <strong>perspiciatis</strong> unde <em>omnis</em> iste <u>natus</u> error sit <s>voluptatem</s> accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. x<sup>3&nbsp;</sup>y<sub>2</sub>
+</p>
+<h2>Lorem ipsum dolor sit amet</h2>
+<p>
+  <span style="font-size:20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+</p>
+<p>
+  <u><em><span style="font-family:verdana,geneva,sans-serif;"><span style="font-size:20px;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span></em></u>
+</p>
+<h3>Sed ut perspiciatis unde</h3>
+<p>
+  <noindex><a rel="nofollow" href="http://test.com">Sed ut perspiciatis</a></noindex> unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+</p>
+<h4>Sed ut perspiciatis unde</h4>
+<p>
+  Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+</p>
+<ol>
+  <li>Hello</li>
+  <li>World</li>
+  <li>Not war</li>
+  <li>Just Peace</li>
+</ol>
+<ul>
+  <li><span style="color:#FF0000;">Hello</span></li>
+  <li><span style="color:#FF0000;">World</span></li>
+  <li><span style="color:#FF0000;">Not war</span></li>
+  <li><span style="color:#FF0000;">Just Peace</span></li>
+</ul>
+<p>
+  quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+</p>
+<table style="width: 500px;" cellpadding="3" cellspacing="1" align="center" border="1">
+<thead>
+<tr>
+  <th scope="col" style="text-align: left;">
+    <span style="color:#008000;"><span style="font-weight: normal; text-align: start;">But I must explain to you how all this mistaken</span></span>
+  </th>
+  <th scope="col" style="text-align: left;">
+    <span style="color:#FF0000;"><span style="font-weight: normal; text-align: start;">No one rejects, dislikes, or avoids</span></span>
+  </th>
+  <th scope="col" style="text-align: left;">
+    <span style="color:#FFA500;"><span style="font-weight: normal; text-align: start;">because it is pleasure</span></span>
+  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <span style="color:#800080;">account of the system, and expound the actual&nbsp;</span>
+  </td>
+  <td>
+    <span style="color:#4B0082;">kes, or avoids pleasure itself, because it is pleasure</span>
+  </td>
+  <td>
+    <span style="color:#0000FF;">No one rejects, dislikes, or avoids&nbsp;</span>
+  </td>
+</tr>
+</tbody>
+</table>
+<p>
+  But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.
+</p>
+<p style="text-align: center;">
+  <span style="font-size:18px;"><span style="color: rgb(0, 0, 255);"><span style="background-color: rgb(230, 230, 250);">No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</span></span></span>
+</p>
+<br>
+<blockquote>
+  <p>
+    <span style="line-height: 1.6;">eat pleasure. To take a trivial example, which of us ever u</span>
+  </p>
+</blockquote>
+<p>
+  <span style="line-height: 1.6;">rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.</span>
+</p>
+<p style="text-align: center;">
+  <span style="line-height: 1.6;"><img title="Yjdfz" style="width: 200px; height: 261px; border-width: 2px; border-style: solid;" alt="Yjdfz" src="http://i.ucrazy.ru/files/i/2012.1.27/1327600550_bender-12.jpg" /></span>
+</p>
+<p>
+  <span style="line-height: 1.6;">To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</span>
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+<br>
+<br>
+
+<noindex><a href="http://site.com" rel="nofollow">Hello World</a></noindex>
+
+<pre>
+# config/initializers/paperclip_skip_media_type_spoof_detection_validator.rb
+
+<span style="font-size:11px;">require 'active_model/validations/presence'
+
+# class AttachedFile &lt; ActiveRecord::Base
+#   validates_attachment_content_type :attachment, content_type: /.*/
+#
+#   def skip_spoof_detection_list
+#     %w[ attachment ]
+#   end
+# end</span>
+
+<span style="font-size:12px;">module Paperclip
+  module Validators
+    class MediaTypeSpoofDetectionValidator &lt; ActiveModel::EachValidator
+      def validate_each(record, attribute, value)
+        if skip_list = record.try(:skip_spoof_detection_list)
+          return true if skip_list.include? attribute.to_s
+        end
+
+        adapter = Paperclip.io_adapters.for(value)
+        if Paperclip::MediaTypeSpoofDetector.using(adapter, value.original_filename).spoofed?
+          record.errors.add(attribute, :spoofed_media_type)
+        end
+      end
+    end
+  end
+end</span>
+</pre>
+
+<p>
+  ```<br />
+  &nbsp;&nbsp; ruby puts "Hello World!"<br />
+  &nbsp;&nbsp; puts "Hello World!"<br />
+  &nbsp;&nbsp; puts "Hello World!"<br />
+  ```
+</p>
+<br>

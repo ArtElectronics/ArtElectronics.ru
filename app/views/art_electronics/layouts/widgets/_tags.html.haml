@@ -1,0 +1,10 @@
+- tags = tags_to_ary( post )
+
+- unless tags.blank?
+  .panel.panel-success
+    .panel-heading
+      %h3 Тэги
+
+    .panel-body
+      - tags.each do |tag| 
+        %p= tag

@@ -1,0 +1,65 @@
+%header
+  .content_holder
+    %ul.left
+      %li.home= link_to '', root_url, title: "На главную"
+      %li.magazine
+        %section.js-magazine-nav-btn
+          %span Журнал
+        %strong= @hub.try(:title) || 'Главная'
+
+        %nav.hidden.js-magazine-nav.js-header-nav
+          %div{ level: 1 }= link_to 'Главная', root_url
+          - @sections = Hub.main_articles_hubs
+          = build_server_tree @sections, render_module: NavigationHubsTreeHelper
+
+      - about_klass = (@pub && @pub.is_a?(Page) && @pub.hub.has_slug?('about_project')) ? :current : nil
+      %li.about{ class: about_klass }
+        %section.js-about-nav-btn
+          %span О проекте
+        %strong post@artelectronics.ru
+
+        %nav.hidden.js-about-nav.js-header-nav
+          - if (page = Page.published.friendly_first('proekt-summary')).present?
+            - page_klass = (@pub && @pub.is_a?(Page) && @pub == page) ? :current : nil
+            %div{ level: 1 }= link_to page.title, page_url(page), class: page_klass
+
+          - if (page = Page.published.friendly_first('redaktsiya')).present?
+            - page_klass = (@pub && @pub.is_a?(Page) && @pub == page) ? :current : nil
+            %div{ level: 1 }= link_to page.title, page_url(page), class: page_klass
+
+          %div{ level: 1 }= link_to "Авторы", authors_path, class: (:current if controller_name == 'authors')
+
+          - if (page = Page.published.friendly_first('partners')).present?
+            - page_klass = (@pub && @pub.is_a?(Page) && @pub == page) ? :current : nil
+            %div{ level: 1 }= link_to page.title, page_url(page), class: page_klass
+
+      - blog_klass = (@hub.try(:slug) == 'blogs') ? :current : nil
+      %li.blog{ class: blog_klass }
+        %section= link_to 'Блог', hub_url(:blogs)
+
+    %ul.right
+      %li.userbar
+        %section
+          - if current_user
+            = link_to cabinet_url do
+              Кабинет (#{ current_user.login })
+          - else
+            = link_to 'Войти', new_user_session_path, class: :login
+      %li.search.js-search-btn
+        = link_to "", "#", title: "Поиск"
+
+    .search-bar.hidden.js-search-bar
+      = form_tag search_path, method: :post, data: { role: :search } do |f|
+        = text_field_tag 'search_query', params[:squery], class: 'form-control search_query', placeholder: "Что ищем?", data: { role: :search_query }
+
+        / = check_box_tag 'search_posts', true, params[:sp], data: { role: :search_posts }
+        / По постам
+
+        / = check_box_tag 'search_blogs', true, params[:sb], data: { role: :search_blogs }
+        / По блогам
+
+        = submit_tag 'Поиск', class: 'btn btn-default'
+
+/ %li= link_to t('devise.sessions.logout'), destroy_user_session_path, method: :delete
+/ %li= link_to  'Регистрация', new_user_registration_path
+/ %li= link_to  'Вход', new_user_session_path

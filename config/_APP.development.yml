@@ -1,0 +1,92 @@
+app:
+  default_locale: en
+  time_zone: 'Moscow'
+
+  secret_key_base: '00000'
+  secret_token:    '00000'
+
+mailer:
+  # smtp, sandmail, test, file, mailcatcher, letter_opener
+  service: smtp
+
+  host: 'localhost:3000'
+  admin_email: 'admin@artelectronics.dev'
+
+  smtp:
+    default:
+      user_name: admin@artelectronics.dev
+      password:  password
+
+      authentication: plain
+      enable_starttls_auto: true
+
+      address: 'smtp.yandex.ru'
+      domain:  'yandex.ru'
+      port:    25
+
+  sandmail:
+    location:  '/usr/sbin/sendmail'
+    arguments: '-i -t'
+
+  mailcatcher:
+    address: 'localhost'
+    port: 1025
+
+redis:
+  port: 6379
+  host: redis
+
+sidekiq:
+  namespace: artelectronics.dev
+
+action_cable:
+  adapter_params:
+    # adapter: async
+    adapter: redis
+    url: redis://redis:6379
+
+  worker_pool_size: 4
+  mount_path: 'ws://localhost:3000/app-cable'
+  disable_request_forgery_protection: false
+  allowed_request_origins: http://localhost:3000
+
+oauth:
+  vkontakte:
+    tokens:
+      - '0000000'
+      - '0000000'
+    options:
+      display: popup
+
+  facebook:
+    tokens:
+      - '0000000'
+      - '0000000'
+    options:
+      scope: 'public_profile,user_friends,email'
+      display: popup
+
+  twitter:
+    tokens:
+      - '0000000'
+      - '0000000'
+
+  google_oauth2:
+    tokens:
+      - '0000000'
+      - '0000000'
+    options:
+      scope: 'email, profile, plus.me'
+      prompt: select_account
+      image_aspect_ratio: square
+      image_size: 50
+      display: popup
+      skip_jwt: true
+
+  odnoklassniki:
+    tokens:
+      - '0000000'
+      - '0000000'
+    options:
+      app_public: '0000000'
+      scope: 'VALUABLE_ACCESS'

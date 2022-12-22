@@ -1,0 +1,29 @@
+- if current_user.try(:admin?)
+  - content_for :express_nav do
+    %p= link_to t('authors.edit'), edit_author_path(@author)
+    %p= link_to t('authors.manage'), manage_authors_path
+    %p= link_to t('authors.lenta'), authors_path
+
+%h1= t('authors.show')
+
+%table.table
+  %tbody
+    %tr
+      %td
+      %td
+        = image_tag @author.avatar.url :big
+    %tr
+      %td
+        %strong= t('authors.name')
+      %td
+        %strong= @author.name
+    %tr
+      %td
+        %strong= t('authors.short_description')
+      %td
+        = raw @author.short_description
+    %tr
+      %td
+        %strong= t('authors.description')
+      %td
+        = raw @author.description

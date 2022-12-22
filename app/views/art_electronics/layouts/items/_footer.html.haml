@@ -1,0 +1,110 @@
+.content_holder
+  %table
+    %tr
+      %td.footer_nav
+        %h3 Журнал
+
+        %nav.footer_tree
+          %div{ level: 1 }= link_to 'Главная', root_url
+          - @sections = Hub.main_articles_hubs
+          = build_server_tree @sections, render_module: NavigationHubsTreeHelper
+      %td.footer_links
+        %h3 Разделы
+
+        %div= link_to 'Future-текст', hub_url(:future)
+        %div= link_to 'Авторы', authors_url
+        %div= link_to 'Архив',  archive_numbers_url
+        %div= link_to 'Блог', hub_url(:blogs)
+
+      %td.footer_contacts
+        %h3 Контакты
+
+        %section
+          %h4 Павел Шулешко
+          %strong Продюсер и основатель
+          %p.email= mail_to "akela@artelectronics.ru", nil, encode: :javascript
+
+        %section
+          %h4 Дженнет Атаева
+          %strong Редактор
+          %p.email= mail_to "djennet@artelectronics.ru", nil, encode: :javascript
+
+        %section
+          %p.email= mail_to "post@artelectronics.ru", nil, encode: :javascript
+          %strong Почта для общих вопросов
+
+        %section
+          %p.phone <small>+7 812</small> 499-49-20
+          %strong Телефон/Факс
+
+      %td.additional
+        %h3 О проекте
+
+        %section
+          - if about_hub = Hub.with_slug(:about_project)
+            - about_hub.pages.reversed_nested_set.published.each do |page|
+              - page_klass = (@post && @post.is_a?(Page) && @post == page) ? :current : nil
+              %div= link_to page.title, page_url(page), class: page_klass
+            -# %div= link_to 'Google+', 'https://plus.google.com/+ArtelectronicsRu', rel: :publisher
+
+            - if seo_section = Hub.friendly_where(:rezyume).published.first
+              %div= link_to seo_section.title, seo_section
+
+
+          / %div= link_to 'Партнеры', '#'
+          / %div= link_to 'Ваши предложения', '#'
+          / %div= link_to 'Реклама', '#'
+
+        %section
+
+          %h4 Артэлектроникс в соц.сетях
+
+          %p.social_networks
+            %noindex
+              = link_to '', 'http://vk.com/artelectronics', target: :_blank, rel: :nofollow, class: :vk
+              = link_to '', 'https://www.facebook.com/pages/Art-Electronics/147583648606014', target: :_blank, rel: :nofollow, class: :fb
+              = link_to '', 'https://twitter.com/ArtElectronicsF', target: :_blank, rel: :nofollow, class: :tw
+              = link_to '', 'https://plus.google.com/103329090348301480601', target: :_blank, rel: 'publisher', class: :gp
+              = link_to '', 'http://www.pinterest.com/artelectronics', target: :_blank, rel: :nofollow, class: :pt
+
+            / image_tag "AE/social_networks.gif"
+
+          %br
+          .footer_subscribe
+            %h4 Подписка на Дайджест AE
+            = render partial: 'subscribers/subscribe_form'
+
+  %section.description
+    %p &copy; 2001 &mdash; #{ Time.new.year } ООО &laquo;Арт Электроникс Проджект&raquo;. Все права защищены.
+    %p Сайт может содержать контент, не предназначенный для лиц младше 18-ти лет. Копирование материалов сайта возможно только с указанием полной активной ссылки на сайт artelectronics.ru.
+
+    %p
+      <strong>ArtElectronics.ru</strong> &mdash; это интернет-журнал о самых обсуждаемых трендах будущего: освоении космоса, искусственном разуме и новейших технологиях.
+      Интерактивные future-статьи, новости современного актуального искусства, кино, музыки, дизайна, литературы, архитектуры. Новинки электроники. Новейшие цифровые технологии.
+      Анонсы событий в мире современного актуального искусства. Интервью с художниками, писателями, футурологами
+
+    .hidden
+      <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?3032952"></script>
+      <noscript>
+      <a href="http://top100.rambler.ru/navi/3032952/">
+      <img src="http://counter.rambler.ru/top100.cnt?3032952" alt="Rambler's Top100" border="0" />
+      </a>
+      </noscript>
+
+      -#
+        <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?2951454"></script>
+        <noscript>
+        <a href="http://top100.rambler.ru/navi/2951454/"><img src="http://counter.rambler.ru/top100.cnt?2951454" alt="Rambler's Top100" border="0" /></a>
+        </noscript>
+
+-#
+  / %table.table
+  /   %tr
+  /     %td
+  /       = link_to 'Пользователи', users_url
+  /   - if !(spages = system_pages).blank?
+  /     %tr
+  /       %td
+  /         %ul.nav.nav-pills.nav-justified
+  /           - spages.each do |page|
+  /             %li= link_to page.title, page_url(page.slug)

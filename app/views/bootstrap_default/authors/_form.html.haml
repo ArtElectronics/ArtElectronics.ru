@@ -1,0 +1,35 @@
+= render partial: 'publications/editor'
+
+= form_for(@author) do |f|
+  = render partial: 'the_notification/form', locals: { object: @author }
+
+  .form-group
+    = image_tag @author.avatar.url, width: 150
+
+  .form-group
+    = f.label :avatar, t('authors.avatar')
+    = f.file_field :avatar
+
+  .form-group
+    = f.label :first_letter, 'Буква в списке'
+    = f.text_field :first_letter, class: 'form-control', maxlength: 1, style: 'width:70px;text-transform:uppercase'
+
+  .form-group
+    = f.label :user_id, 'Привязанный пользователь'
+    - options = options_for_select(User.all.map{|u| [ "#{ u.id } => #{ u.username }" , u.id ] }, @author.user_id)
+    = f.select :user_id, options, { include_blank: true }, autocomplete: :off, class: 'form-control input-medium'
+
+  .form-group
+    = f.label :name, t('authors.name')
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :short_description, t('authors.short_description')
+    = f.text_area :short_description, class: :redactor_content, id: :redactor_intro
+
+  .form-group
+    = f.label :description, t('authors.description')
+    = f.text_area :description, class: :redactor_content, id: :redactor_content
+
+  .form-group
+    = f.submit t('authors.save'), class: 'btn btn-info'

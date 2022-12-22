@@ -1,0 +1,16 @@
+%h4= t('.new_file')
+
+= form_for AttachedFile.new, multipart: true, html: { role: :form, multipart: true, data: { role: :file_uploader_form } } do |f|
+  = hidden_field_tag 'storage_id',   storage.to_param
+  = hidden_field_tag 'storage_type', storage.class
+  %table.table.table-bordered
+    %tr
+      %td.warning
+        = file_field_tag 'files[]', class: 'btn btn-info', multiple: true, autocomplete: :off, data: { role: :multiple_file_upload }
+    %tr
+      %td#drug_and_drop_files{ style: 'background:#ffcc66;border:3px dashed gray;cursor: move;'}
+        %br
+        %p
+          %b Выберите файлы или перетащите файлы для загрузки в этот блок
+        %br
+        %span@files-uploading-progress-bar{ style: "border-radius:4px;background:#d9534f;display:inline-block;height:15px;width:0%;" }

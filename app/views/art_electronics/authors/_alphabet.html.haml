@@ -1,0 +1,23 @@
+.alphabet
+  %span.title
+    = link_to 'Все авторы:', authors_path
+
+  - # en
+  - alphabet = Author.alphabet
+
+  - if alphabet.first.any?
+    - alphabet.first.each do |letter|
+      - if letter.mb_chars.downcase == params[:letter].to_s.mb_chars.downcase
+        %b= link_to letter, author_by_letter_path(letter)
+      - else
+        = link_to letter, author_by_letter_path(letter)
+
+    %span.delimiter
+      |
+
+  - # ru
+  - alphabet.last.each do |letter|
+    - if letter.mb_chars.downcase == params[:letter].to_s.mb_chars.downcase
+      %b= link_to letter, author_by_letter_path(letter)
+    - else
+      = link_to letter, author_by_letter_path(letter)

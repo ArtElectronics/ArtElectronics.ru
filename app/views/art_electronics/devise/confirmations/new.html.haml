@@ -1,0 +1,9 @@
+%h3 Получить инструкции для активации учетной записи
+
+= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+  = render partial: 'the_notification/form', locals: { object: resource, format: :json }
+  .form-group
+    = f.label :email
+    = f.email_field :email, autofocus: true, class: 'form-control input-lg'
+  .form-group
+    = f.submit "Получить инструкции еще раз", class: 'btn btn-default'

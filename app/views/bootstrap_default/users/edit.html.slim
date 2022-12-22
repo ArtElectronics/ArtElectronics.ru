@@ -1,0 +1,7 @@
+- content_for :express_nav do
+  p= link_to t('app.cabinet'), cabinet_url
+  p= link_to "Моя страница", url_for(@user)
+
+h1 Редактировать профиль
+br
+= render 'users/form'

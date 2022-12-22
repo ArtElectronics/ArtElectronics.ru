@@ -1,0 +1,9 @@
+<%
+  # CGI.escape
+  canonical_url = if item.created_at < Time.new(2017, 02, 25)
+    request.original_url.to_s.gsub('https://', 'http://')
+  else
+    request.original_url
+  end
+%>
+<span class="fb-like" data-href="<%= canonical_url %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>

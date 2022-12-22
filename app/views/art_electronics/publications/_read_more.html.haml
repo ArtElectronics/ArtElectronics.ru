@@ -1,0 +1,5 @@
+%p.read_more
+  - if !pub.content.blank?
+    = link_to raw(t 'pubs.read_more'), url_for(pub)
+  - else
+    = link_to raw(t 'pubs.to_comments'), "#{ url_for(pub) }#comments"

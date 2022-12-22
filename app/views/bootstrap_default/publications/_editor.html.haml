@@ -1,0 +1,14 @@
+- content_for :editor do
+  :javascript
+    var CKEDITOR_BASEPATH = "/javascripts/ckeditor/";
+
+  = javascript_include_tag "ckeditor/ckeditor"
+
+  - unless current_user.has_role?(:editor, :advanced)
+    :javascript
+      CKEDITOR.config.customConfig = 'user.js';
+
+  = javascript_include_tag "bootstrap_default/addons/ckeditor_custom_handlers"
+
+  :javascript
+    $(function(){ CkeditorOnPage.init() })

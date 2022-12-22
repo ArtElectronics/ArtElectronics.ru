@@ -1,0 +1,22 @@
+- unless selector_hubs.blank?
+  - selected_hub = object.try(:hub)
+  - klass_name   = object.ctrl_name.singularize
+
+  - options    = options_for_select(publication_states, @pub.state)
+  - field_name = "#{ klass_name }[hub_id]"
+
+  - if (active_hubs = selector_hubs.select{|hub| !hub.optgroup? }).one?
+    .form-group.hub_selector
+      .row
+        .col-md-12
+          = label_tag :hub_id, 'Будет опубликовано в разделе:'
+      .row
+        .col-md-8
+          = hidden_field_tag field_name, active_hubs.first.id
+          = raw selector_hubs.map(&:title).join(' &raquo; ')
+  - else
+    .form-group.hub_selector
+      .row
+        .col-md-12= label_tag :hub_id, t('pubs.select_hub')
+      .row
+        .col-md-8= select_tag field_name, grouped_nested_options(selector_hubs, selected: selected_hub), class: :nested_options

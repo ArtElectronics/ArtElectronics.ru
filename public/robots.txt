@@ -1,0 +1,30 @@
+User-Agent: Yandex
+Allow: /yandex.rss
+
+Host: https://artelectronics.ru
+
+# YANDEX
+User-Agent: Yandex
+
+Disallow: /hubs/architectural-fantasy-architectural-fantasy
+Disallow: /hubs/vecherniy-posetitel-vecherniy-posetitel
+Disallow: /hubs/design-design
+Disallow: /hubs/future-future
+Disallow: /hubs/murcock-murcock
+
+Disallow: /users/
+Disallow: /search/
+Disallow: /*?page
+
+# ANY
+User-Agent: *
+
+Disallow: /users/
+Disallow: /search/
+Disallow: /*?page
+
+Disallow: /hubs/architectural-fantasy-architectural-fantasy
+Disallow: /hubs/vecherniy-posetitel-vecherniy-posetitel
+Disallow: /hubs/design-design
+Disallow: /hubs/future-future
+Disallow: /hubs/murcock-murcock

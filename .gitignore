@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+# Ignore bundler config
+.bundle
+
+config/ENV/production/*
+
+log
+tmp
+shared
+
+db/_REDIS
+db/_MYSQL
+db/_SPHINX
+
+db/*.db
+db/*.sqlite3
+
+config/_SPHINX
+
+# Public files
+public/konkurs
+public/assets
+public/system
+public/uploads
+public/old_uploads
+public/special_posts/tatlin_postcards/*.png

@@ -1,0 +1,18 @@
+- if pub.is_a?(Post)
+  - if pub.authors.any?
+    = I18n.t :authors_count, count: pub.authors.count
+    = raw pub.authors.map{ |author| link_to author.name, author_path(author) }.join(', ')
+  - else
+    = I18n.t :authors_count, count: 1
+
+    - if (author = pub.user.author).present?
+      = link_to author.name, author_path(author)
+    - else
+      = link_to pub.user.login, user_url(pub.user)
+- else
+  = I18n.t :authors_count, count: 1
+
+  - if (author = pub.user.author).present?
+    = link_to author.name, author_path(author)
+  - else
+    = link_to pub.user.login, user_url(pub.user)

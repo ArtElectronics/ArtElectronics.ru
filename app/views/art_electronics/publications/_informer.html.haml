@@ -1,0 +1,25 @@
+.line
+  %br
+  = render partial: "publications/author_link", locals: { pub: pub }
+
+  = link_to "#{ url_for(pub) }#comments", class: :comments_count do
+    = pub.comments_sum
+
+  = link_to pub, class: :show_count do
+    = pub.show_count.to_i.next
+
+.line
+  - tags   = tags_by_context pub, :word
+  - names  = tags_by_context pub, :name
+  - titles = tags_by_context pub, :title
+  - tags = tags | names | titles
+  - if !tags.blank?
+    .tags.base= raw tags.join ', '
+
+-#
+  / - if pub.published_at
+  /   %b= t 'pubs.published_at'
+  /   = pub.published_at.strftime('%d.%m.%Y')
+  / - if pub.respond_to? :comments
+  /   %b= t 'pubs.comments'
+  /   = link_to pub.comments_sum, show_url(pub, :comments)

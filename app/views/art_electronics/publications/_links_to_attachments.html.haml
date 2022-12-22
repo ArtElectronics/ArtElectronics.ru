@@ -1,0 +1,6 @@
+.future_text_links
+  - if @pub.has_future_text?
+    = link_to t('.flash_version'), '#', class: "btn btn-default flash_version"
+
+  - if @pub.has_pdf?
+    = link_to t('.pdf_version'), @pub.pdf_file, class: "btn btn-default", rel: :nofollow

@@ -1,0 +1,21 @@
+development:
+  host: mysql
+  adapter: mysql2
+
+  database: artelectronics
+  username: rails
+  password: qwerty
+
+  encoding: utf8
+  timeout: 5000
+
+production:
+  host: mysql
+  adapter: mysql2
+
+  database: artelectronics
+  username: rails
+  password: qwerty
+
+  encoding: utf8
+  timeout: 5000

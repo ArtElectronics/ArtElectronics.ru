@@ -1,0 +1,37 @@
+.viewer_block{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  background: gray;
+
+  .holder{
+    position: absolute;
+    top: 2%; left: 2%;
+    z-index: 1001;
+    height: 97%;
+    width: 96%;
+  }
+
+  #viewer{
+    z-index: 1000;
+  }
+
+  .viewer_close_message{
+    display: block;
+    z-index: 2000;
+    position: absolute;
+    border-radius: 30px;
+    top: -12px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid black;
+    background: white;
+
+    color: black;
+    font-size: 30px;
+    line-height: 24px;
+  }
+  i{ margin-left: 2.5px; line-height: 25px; }
+}

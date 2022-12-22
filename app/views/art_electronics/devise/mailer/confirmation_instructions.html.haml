@@ -1,0 +1,10 @@
+%h3{ style: arial + fs18 } Вас приветствует future-журнал ArtElectronics.ru
+%p{ style: arial + fs18 } Что бы активировать вашу учетную запись для адреса <b>#{ @resource.unconfirmed_email || @resource.email }</b> перейдите по указанной ниже ссылке
+
+%table{ table, tbg('#d9593d') }
+  %tr
+    %td{ td }
+      = link_to 'Активировать мою учетную запись', confirmation_url(@resource, confirmation_token: @token), style: arial + fs18 + fc('#ffffff', true) + p10 + lh300
+
+%p{ style: arial + fs18 }
+  С уважением, Art Electronics!

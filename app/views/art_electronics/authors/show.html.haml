@@ -1,0 +1,21 @@
+.authors.index
+  %h1= t('authors.list')
+  %br
+  = render partial: "authors/alphabet"
+  .author.ob
+    .image_block
+      = image_tag @author.avatar.url :big
+    .info_block
+      %h3= @author.name
+      - if current_user && current_user.admin?
+        %p= link_to 'Редактировать автора', edit_author_path(@author)
+
+      - if @author.short_description.present?
+        %p= raw @author.short_description
+      - if @author.description.present? && (@author.description.to_s.size > 20)
+        %p= raw @author.description
+      - if @author.posts.any?
+        .author_posts
+          %ul.authors_posts_list
+            - @author.posts.order(id: :desc).each do |post|
+              %li= link_to post.title, post_url(post)

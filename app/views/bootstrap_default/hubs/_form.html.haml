@@ -1,0 +1,71 @@
+- content_for :editor do
+  %script
+    var CKEDITOR_BASEPATH = "/javascripts/ckeditor/";
+
+  = javascript_include_tag "ckeditor/ckeditor"
+  = javascript_include_tag "vendors/ckeditor/init"
+
+= form_for @hub, html: { enctype: "multipart/form-data", role: :form } do |f|
+  = render partial: 'the_notification/form', locals: { object: @hub }
+
+  = hidden_field_tag 'hub_id',    @hub.id
+  = hidden_field_tag 'hub_klass', @hub.class
+
+  .form-group
+    = f.label :title, t('pubs.title')
+    = f.text_field :title, class: 'form-control'
+
+  / = render partial: "shared/top_fields", locals: { f: f, object: @pub, selector_hubs: @selector_hubs }
+
+  .form-group
+    = f.label :raw_intro, t('pubs.intro')
+    = f.text_area :raw_intro, class: :redactor_intro
+
+  .form-group
+    - options = options_for_select(hub_pubs_types, @hub.pubs_type)
+    .row
+      .col-md-12
+        = f.label  :pubs_type, t('hubs.pubs_type')
+    .row
+      .col-md-5
+        = f.select :pubs_type, options, {}, class: 'form-control input-medium'
+
+  - if !@hub.new_record?
+    .form-group
+      - options = options_for_select(publication_states, @hub.state)
+      .row
+        .col-md-12= f.label  :state, t('pubs.state')
+      .row
+        .col-md-6= f.select :state, options, {}, class: 'form-control input-medium'
+
+  .form-group
+    .checkbox
+      %label
+        = f.check_box :optgroup
+        = t('hubs.optgroup')
+
+  .form-group
+    .actions
+      = f.submit t('pubs.save'), class: 'btn btn-danger btn-lg'
+
+= render partial: 'shared/pub_stats', locals: { object: @hub }
+
+- unless @hub.new_record?
+  .panel.panel-default
+    .panel-heading
+      %h4 Управление URL
+    .panel-body
+      = form_for @hub, html: { enctype: "multipart/form-data", role: :form } do |f|
+        .form-group
+          %p
+            <b>SLUG</b> - символьная метка страницы, которая автоматически формируется при создании страницы на основе правил транслитерации.
+          %p
+            Иногда для нужд продвижения может потребоваться изменить SLUG страницы.
+            %b Крайне не рекомендуется менять SLUG после публикации страницы.
+
+          = f.label :slug, 'SLUG'
+          = f.text_field :slug, class: 'form-control'
+
+        .form-group
+          .actions
+            = f.submit t('pubs.save'), class: 'btn btn-danger btn-lg'

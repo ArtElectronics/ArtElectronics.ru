@@ -1,0 +1,50 @@
+= render partial: "shared/per_page"
+%br
+- content_for :full_width do
+  .alert.alert-danger
+    %p Данная страница не предназначена для непосредственного редактирования Мета данных различных объектов сайта
+    %p Страницу следует использовать как источник информации о заполненых Мета Полях объектов и времени редактирования
+
+  .alert.alert-warning
+    %p Управление Мета Данными можно выполнить зайдя на страницу редактирования конкретного объекта
+
+  = paginate @meta_datum
+
+  %table.table.table-hover
+    %tr
+      %th= link_to 'ID↕', simple_sort_url(:id, params)
+      %th= link_to 'Заголовок↕', simple_sort_url(:title, params)
+
+      %th= link_to 'D↕',   simple_sort_url(:description, params), title: :description
+      %th= link_to 'KW↕',  simple_sort_url(:keywords, params),    title: :keywords
+      %th= link_to 'AUT↕', simple_sort_url(:author, params),      title: :author
+
+      %th= link_to 'OG_T↕',    simple_sort_url(:og_title, params),       title: :og_title
+      %th= link_to 'OG_D↕',    simple_sort_url(:og_description, params), title: :og_description
+      %th= link_to 'OG_IMG↕',  simple_sort_url(:og_image, params),       title: :og_image
+      %th= link_to 'OG_URL↕',  simple_sort_url(:og_url, params),         title: :og_url
+      %th= link_to 'OG_TYPE↕', simple_sort_url(:og_type, params),        title: :og_type
+      %th= link_to 'OG_SITE↕', simple_sort_url(:og_site_name, params),   title: :og_site_name
+
+      %td= link_to "Тип держателя", simple_sort_url(:holder_type, params)
+      %td= link_to "Обновлено↕", simple_sort_url(:updated_at, params)
+      %th Действия
+
+    - @meta_datum.each do |meta_data|
+      %tr
+        %td= meta_data.id
+        %td= meta_data.title
+
+        %td= on_off_marker meta_data.description
+        %td= on_off_marker meta_data.keywords
+        %td= on_off_marker meta_data.author
+
+        - %w[ og_title og_description og_image og_url og_type og_site_name ].each do |fname|
+          %td= on_off_marker meta_data.send(fname)
+
+        %td= meta_data.holder_type
+        %td= meta_data.updated_at.to_s(:db)
+        %td{ style: "width:285px" }
+          = link_to "Редактировать", url_for([:edit, meta_data]), class: 'btn btn-success btn-sm'
+
+  = paginate @meta_datum

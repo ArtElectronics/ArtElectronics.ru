@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Мыслящая материя</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="javascripts/base/jquery-2.1.4.min.js"></script>
+    <script src="javascripts/base/jquery.data-role.js"></script>
+    <script src="javascripts/base/log.js"></script>
+    <script src="javascripts/base/fullscreen--canvas.js"></script>
+    <script src="javascripts/app/jquery.nanoscroller.js"></script>
+    <script src="javascripts/app/js_helpers.js"></script>
+    <script src="javascripts/app/space-lines.js"></script>
+    <script src="javascripts/app/clock-loop.js"></script>
+    <script src="javascripts/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/ptz/reset.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ptz/base.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ptz/framework.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ptz/inputs-buttons/base.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ptz/inputs-buttons/sizes.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/electronic-clock.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/layouts/slides.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/layouts/nanoscroller.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/layouts/landing/layout.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/landing-01/main.css" media="screen">
+    <meta property="og:image" content="images/rails-logo.jpg">
+    <meta property="og:title" content="the-teacher, Ruby on Rails development">
+    <meta property="og:description" content="Ruby on Rails, web development">
+    <meta property="og:site_name" content="the-teacher.github.io">
+    <meta property="og:author" content="Ilya N. Zykin (zykin-ilya@ya.ru)">
+    <meta property="og:type" content="article">
+    <meta property="article:Section" content="Ruby on Rails">
+    <meta property="article:Name" content="the-teacher, Ruby on Rails">
+    <meta property="article:published_time" content="2015-03-22T00:00:00+03:00">
+    <meta property="article:modified_time" content="2015-03-22T00:00:00+03:00">
+    <!--if lt IE 9
+    script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+
+    -->
+  </head>
+  <body class="ofh">
+    <div data-role="slider-screen" class="nobr">
+      <div class="iblock">
+        <div data-slide-id="index" data-role="fullscreen--canvas" class="fullscreen--canvas slide--title">
+          <canvas style="position:absolute;top:0;left:0;opacity:0.8"></canvas>
+          <div class="electronic-clock light">
+            <div data-role="story-generator" class="shadow-blink digits nobr tac">
+              <div data-role="hours-1"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+              <div data-role="hours-2"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+              <div data-role="dots" class="dots"></div>
+              <div data-role="minutes-1"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+              <div data-role="minutes-2"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+              <div data-role="dots" class="dots"></div>
+              <div data-role="seconds-1"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+              <div data-role="seconds-2"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span><span class="d6"></span><span class="d7"></span></div>
+            </div>
+          </div>
+          <div data-role="story-generator" style="cursor:pointer" class="tac mt20 posrel"><img src="./images/bg-dark--title.png"></div><a href="#" class="bg-dark--ae-logo"><img src="./images/bg-dark--ae-logo.png"></a>
+          <div class="bg-dark--info"><img src="./images/bg-dark--info.png"></div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="info.html" data-role="fullscreen--canvas" class="fullscreen--canvas slide--info">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt150">
+            <div class="w100p">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography slide--info-typo">
+                    <h1 class='fs30 tac mb0'>Журнал Art Electronics</h1>
+                    <div class='fs20 tac'>представляет опыт интерактивного текста</div>
+                    <div class='fs20 tac'>«Изменение биологической основы человека и другие виды мыслящей материи будущего»</div>
+                    <br>
+                    <br>
+                    <div class="taj">
+                      <div>Перед вами нелинейный текст в линейном времени.</div>
+                      <br>
+                      <div>Чтение не предполагает безусловно определенного («линейного») следования фрагментов, которое было бы единственно верным. Где начало и где конец текста – безразлично. Выбор первого фрагмента (сделанный часами на титульной странице) случаен. Дальше можно читать, следуя новым случайным указаниям часов – для этого надо нажать кнопку <span class='ffg'>&Sigma;</span> и вернуться на титульную страницу. Или использовать ссылки в тексте. К уже прочитанным фрагментам возможен возврат с помощью кнопок <span class='ffg'>&Omega;</span> (назад) и <span class='ffg'>&Xi;</span> (вперед).</div>
+                      <br>
+                      <div>Иногда в литературе наступает усталость от текста, написанного линейно, в одном измерении, которое элементарно продиктовано «листом бумаги». Иными словами, возмущает сам факт, что текст можно писать лишь от начала к концу, мысли или описания событий могут только следовать друг за другом, даже если они противятся этому в сюжете или ассоциативном контенте, даже если их хронология безразлична. Но, оставаясь в плену у листа бумаги, текст обречен быть одномерным. Лет сорок тому назад французские структуралисты были от этого в отчаянии какое-то время. Как бы то ни было, естественный порядок ассоциаций нелинеен (и значит, именно нелинейный текст порой совершенен). Любая мысль может вызвать массу ассоциаций, которые совсем не связаны прямым следованием. Напротив, они сплетаются или нанизываются друг на друга спонтанно и синхронно, создавая множество измерений этой мысли. Лист бумаги искажает ее. Однако свободен электронный текст.</div>
+                      <br>
+                      <div>Одна из метафор времени у Борхеса – «сад расходящихся тропок». Иногда это вполне адекватное определение текста.</div>
+                      <br>
+                      <div>Книга Алеся Мищенко рисует будущее таким, как его видит или пытается угадать сегодня массовое сознание. Автор, вольно или невольно, создал именно такой контекст для своих мыслей и выводов. Тем увлекательнее читателю будет сопоставлять их со своими собственными ожиданиями и опасениями.</div>
+                      <br>
+                      <br>
+                    </div>
+                    <div class="tac"><img src="./images/QR.jpg"><br>
+                      <br>
+                      <div>Автор: Алесь Мищенко</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="slider-screen" class="nobr">
+      <div class="iblock">
+        <div data-slide-id="Люди_и_древние_рыбы._От_ненормальности_к_ново.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--07">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Люди и древние рыбы</h1>
+                    <a name="452"><span></span></a>
+                    <div><a name="452"><span style="color: #010101;">Технологии глобально меняют окружающую среду и вмешиваются в ход&nbsp;</span></a><a href="Люди и динозавры. Вымереть или измениться.html" shape="rect" style="color: #69aa35;">эволюции жизни на земле</a><span style="color: #010101;">. Сегодня человечество приспосабливается к тому, что само натворило вчера - так раскручивается маховик прогресса, который изменит самого человека. Как показывает моделирование, проведенное автором, это типичный сценарий, по которому эволюция выходит на новый уровень. Каким будет новый человек?&nbsp;</span><a href="Потомок человечества.html" shape="rect" style="color: #69aa35;">И будет ли он человеком?</a>
+                    </div>
+                    <br>
+                    <div><span style="color: #010101;">Нынешний человек - переходный вид, роль которого удивительно похожа на роль древних кистеперых рыб, что явились переходным видом между водными и сухопутными формами жизни...</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Давным-давно жили на Земле кистеперые рыбы (фактически они отличались от остальных лишь тем, что их плавники были особенно сильными). Экологические проблемы, с которыми столкнулись тогда все рыбы, были под стать нашим: глобальное потепление, пересыхающие водоемы. Кое-кто из рыб уже подумывал дышать воздухом (их стали называть двоякодышащими). Кистеперые же рыбы, наоборот, не хотели оставлять родную водную стихию и стали понемногу перебираться из одного пересыхающего водоема в другой.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Поначалу они, возможно, «радовались», что нашли способ остаться рыбами навсегда. Однако постепенно их сильные плавники, созданные для плавания, но слишком часто задействованные для ходьбы, уже перестали быть плавниками. Их попытки остановить свою эволюцию привели, как ни парадоксально, к тому, что они совершили один из самых больших эволюционных скачков в истории Земли. Они превратились в первых сухопутных животных, освоив мир, считавшийся непригодным для обитания.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Где же у человека эти «ненормально сильные плавники», которые, как ему кажется, он употребляет для выживания, хотя на самом деле они послужат его превращению в</span> <a href="Потомок человечества.html" shape="rect" style="color: #69aa35;">совершенно новый вид</a>?</div>
+                    <br>
+                    <div><span style="color: #010101;">Для человека это — его</span> <a href="evernote:///view/92920537/s470/95deb401-6e6d-40b6-8396-47fc4f67644c/95deb401-6e6d-40b6-8396-47fc4f67644c/" shape="rect" style="color: #69aa35;">сознание</a><span style="color: #010101;">&nbsp;и процесс мышления. Именно с помощью этих «плавников» человек осваивает совершенно новый мир. Не только человечество, но и каждый человек «нащупывает» и создает свой внутренний мир (кстати, тут важно выбрать «правильный мир»). В любом случае, этот мир гораздо более удивительный, чем тот мир, который освоили первые сухопутные животные.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Сознание</span><span style="color: #010101;">&nbsp;&nbsp;</span><span style="color: #010101;">и мышление развилось у древних людей как «побочный продукт» возникновения языка. Хочешь уметь общаться с себе подобными на языке абстрактных слов и понятий — будь добр, научись и манипулировать этими словами и понятиями в своем собственном мозгу.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Язык и связанное с ним&nbsp;</span><a href="evernote:///view/92920537/s470/95deb401-6e6d-40b6-8396-47fc4f67644c/95deb401-6e6d-40b6-8396-47fc4f67644c/" shape="rect" style="color: #69aa35;">сознание</a><span style="color: #010101;">&nbsp;</span><span style="color: #010101;">были задуманы природой как инструмент коллективного выживания групп людей. Благодаря этому инструменту выживания, человек, казалось бы, может оставаться человеком сколь угодно долго — этот инструмент достаточно хорош, чтобы людям не приходилось развивать какие-либо другие приспособления для выживания (как это делали двоякодышащие рыбы).&nbsp;</span><span style="color: #010101;">Началось&nbsp;</span><a href="Развитие мысли вместо эволюции.html" shape="rect" style="color: #69aa35;">развитие мыследеятельности вместо развития других систем организма</a>&nbsp;и, к<span style="color: #010101;">азалось бы, эволюция человека должна на этом остановиться — действительно, зачем отращивать когти, если можно запомнить и рассказать всем о том, как изготовить каменный топор?</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Конечно, каждый шаг развития сознания, каждую новую идею, можно свести к задачам коллективного выживания людей. Это подобно тому, как объяснять каждый сухопутный шаг кистеперой рыбы стремлением остаться в водной стихии. Однако наступает момент, когда невозможно отличить, был ли этот сухопутный шаг сделан всё еще ради стремления достичь нового водоема или уже для того, чтобы лучше освоиться на суше.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Так и у человека, постепенно, язык, сознание и мышление перестали служить лишь задачам выживания. Появилась философия, вслед за ней абстрактные науки. Появились религия, культура, искусство… Сегодня мир человеческого сознания всё больше и больше отрывается от потребностей человеческого тела.&nbsp;</span><a href="Человек между мыслью и жизнью.html" shape="rect" style="color: #69aa35;">Их пути расходятся и человек оказывается между этими двумя мирами</a>.<span style="color: #010101;">&nbsp;Кстати, по некоторым теориям происхождения человека, мы — потомки сумасшедшего племени, ненормальных обезьян, которые, получив в руки тот самый каменный топор, не стали его использовать для устранения конкурентов. Поэтому и выжили. Так оно было или нет, но очевидно, что наше «сумасшествие», ненормальность с точки зрения животных стремлений, постоянно растет.&nbsp;</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Важнейший перелом, после которого наше «выздоровление» уже стало невозможно — это момент, когда человек стал больше отождествлять себя не со своим телом (Жизнью), а со своим внутренним миром (Мыслью).&nbsp;</span><a href="Человек перестает быть живым существом.html" shape="rect" style="color: #69aa35;">Этот перелом начался в промежутке 5–15 тыс. лет назад</a>&nbsp;и закончился в эпоху позднего христианства.&nbsp;<span style="color: #010101;">Например, раннехристианские источники говорят о воскрешении умерших (то есть, тел), а более поздние — уже о бессмертии душ (то есть, внутренних миров).&nbsp;</span></div>
+                    <br>
+                    <div><a href="evernote:///view/92920537/s470/95deb401-6e6d-40b6-8396-47fc4f67644c/95deb401-6e6d-40b6-8396-47fc4f67644c/" shape="rect" style="color: #69aa35;">Сознание</a>&nbsp;<span style="color: #010101;">человека начинает осознавать себя как самостоятельное, независимое от тела, явление. Это осознание и понимание приведет его к пониманию возможности его&nbsp;</span><a href="Когда душа покинет тело..html" shape="rect" style="color: #69aa35;">отделения от тела</a><span style="color: #010101;">. Оно, с учетом роста технологий, может стать возможностью, а с учетом стремительно меняющегося мира, — необходимостью.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Эволюция человека — это уже не эволюция Жизни (медицина давно отменила естественный отбор), а эволюция Мысли. Исследовать законы этой эволюции, понять, что движет человеком как мыслящим существом — одна из задач этой книги. И, если Вы взяли в руки именно ее, а не, например, книгу о вкусной и здоровой пище, значит Вами движет не только желание выжить, но и желание развиваться. А задумывались ли Вы,</span> <a href="Потомок человечества.html" shape="rect" style="color: #69aa35;">к чему приведет человечество это развитие</a>?</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Развитие мысли вместо эволюции.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--11">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Развитие мысли вместо эволюции</h1>
+                    <div><a name="394">Появление нервной системы, а затем примитивной мыслительной деятельности обеспечивает живой организм средствами для коррекции окружающей среды и своего поведения в ней. Жизнь получает возможность адаптироваться не в процессе </a><a target="_blank" style="color: #69aa35;" shape="rect" href="Люди и динозавры. Вымереть или измениться.html">эволюции и отбора приспособленных форм</a>,&nbsp;а «бескровным путем», <a href='Цели мыслящеи материи.html'>изменяя поведение форм жизни</a> или состояние окружающей среды. Подобный способ изменения эффективнее, чем любые другие средства адаптации. Древний человек научился делать оружие гораздо быстрее, чем животные смогли бы отрастить когти или зубы в ходе эволюции. Опережая остальные системы организма, мысль эволюционирует все более и более автономно.&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="Строительный материал мысли.html">Фактически, нервная ткань явилась тем материалом, из которого природа начала строить новую, мыслящую, материю</a>.&nbsp;</div>
+                    <br>
+                    <div>Когда-то отряд высших приматов практически полностью сконцентрировался на развитии моделей своего поведения. Свидетельство этому, в частности, в отсутствии у них серьезного «оружия» (тех же зубов и когтей). Главными причинами развития мыслящей материи именно на базе нервной системы высших приматов были: развитый мозг; наличие общественной жизни; руки, свободные для исследования окружающего мира. Так, развитие коры головного мозга позволило им сначала запоминать (условные рефлексы), а затем и манипулировать (мыслительная деятельность) моделями своего поведения. Общественная жизнь стимулировала появление языка, который явился основой сознания (манипулирования абстрактными понятиями).
+                    <br><br>Таким образом, в человеке почти полностью сформировавшаяся самостоятельная мыслящая материя пошла по пути чистого совершенствования мыслительной деятельности. <a target="_blank" style="color: #69aa35;" shape="rect" href="Человек перестает быть живым существом.html">В промежутке 4&ndash;30 тыс. лет назад человек уже необратимо стал на путь превращения в мыслящую материю</a>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Информационное поле планеты.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--02">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Информационное поле планеты</h1>
+                    <div>Среди <a href='Электронныи рабочии.html'>технологий будущего</a> есть одна, которая уже сейчас достигла предела развития — это беспроводные технологии. В позапрошлом веке информация освободилась от проводов благодаря изобретению радио. В прошлом веке радио и телевидение стали основным методом передачи информации в направлении «от информационного центра — человеку».
+                    <br><br>Еще более выгодными оказались разработки беспроводной передачи информации в направлении «от человека — человеку», то есть мобильные телефоны. А теперь беспроводной интернет втягивает в информационное поле все - и людей, и вещи.  Он становится всё более и более точной виртуальной копией реального мира. Идет «великое переселение» человека в этот виртуальный мир<span style="color: rgb(45, 79, 201);">:</span> работа, досуг, дружба переносятся из реального мира в интернет.
+                    <br><br>Этот мир существует параллельно реальному, игнорируя расстояния и другие ограничения, которые остаются в последнем. Пресловутое информационное поле делается новой реальностью. И в этой реальности будет <a href='Киборги будущего.html'>развиваться человечество</a>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Когда люди перестанут быть людьми.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--05">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Когда люди перестанут быть людьми</h1>
+                    <div><a name="426"><span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><span style="color: #010101;"></span></span></a><a href="Потомок человечества.html" shape="rect" style="color: #69aa35;" target="_blank">Эволюция после человека</a><span style="color: #010101;">&nbsp;может показаться утопией.</span> <span style="color: #010101;">К тому же, у </span><span style="color: #010101;">нового вида материи будут</span> <a href="Определение мыслящеи материи.html" shape="rect" style="color: #69aa35;" target="_blank">свои, не похожие на жизнь, свойства</a>.</div>
+                    <br>
+                    <div><span style="color: #010101;">Однако, хотим мы того или нет, эволюция идет путем создания условий для существования&nbsp;</span><a href="Новые носители сознания.html" shape="rect" style="color: #69aa35;" target="_blank">мысли, независимой ни от жизни</a><span style="color: #010101;">, ни от внешних условий. Об этом свидетельствуют как анализ современного развития человечества, так и общий анализ вариантов развития и усложнения типов организации материи.&nbsp;</span><span style="color: #010101;">
+                    <br><br>Именно это - путь к</span><span style="color: #010101;">&nbsp;</span><a href="Идеальное состояние мыслящеи материи.html" shape="rect" style="color: #69aa35;" target="_blank">идеальному состоянию мыслящей материи</a>&nbsp;и и<span style="color: #010101;">менно этот путь позволит человечеству выжить. Человек сегодня приблизился не только к разгадке тайны жизни, но и к возможности создания новых типов жизни и сознания - в неизбежном и довольно близком будущем. Это огромная ответственность, и человечество должно быть готово к ней.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Те&nbsp;</span><a href="Люди и динозавры. Вымереть или измениться.html" shape="rect" style="color: #69aa35;" target="_blank">динозавры, которые «не побоялись» кардинально измениться</a><span style="color: #010101;">, не вымерли, а превратились в птиц. Судите сами, что лучше - остаться реликтовыми людьми или, как древним птицам, покинуть свое гнездо и отправиться в свой первый полет, к новым горизонтам?&nbsp;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Человек перестает быть живым существом.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--14">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Человек перестает быть живым существом</h1>
+                    <div><a name="327"><span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"></span></a><a href="Развитие мысли вместо эволюции.html" shape="rect" style="color: #69aa35;">Мыслительная деятельность дала человеку настолько сильные средства выживания, что эволюция мысли фактически заменила собой эволюцию жизни</a>.&nbsp;Этот процесс стал необратимым в&nbsp;промежутке между 30 и 4 тысячами лет тому назад. В это время человек «отрёкся» от живой материи - он стал идентифицировать себя не со своей жизнью (телом), а&nbsp;со своей&nbsp;мыслью (сознанием или душой).
+                    <br><br>Первая дата (начало формирования мыслящей материи 30&nbsp;тыс.&nbsp;лет назад) относится к первым ритуальным погребениям — свидетельству того, что смерть стала восприниматься мистически. Самое древнее из погребений, имеющее достоверный религиозный характер, находится на территории нынешней Чехии – это могила шамана, жившего за 30 тыс. лет до нашей эры и похороненного соплеменниками с явной надеждой на жизнь после смерти.</div>
+                    <div>Однако сама по себе эта надежда еще фокусируется на теле. К примеру, человекообразные обезьяны не сразу покидают своих умерших соплеменников, надеясь, что жизнь вернется к ним. Ту же надежду на оживление тела можно наблюдать и сегодня у некоторых африканских племён, ухаживающих несколько дней за своими покойниками - словно они всё ещё живы.&nbsp;</div>
+                    <br>
+                    <div>Поэтому вторая дата (завершение формирования мыслящей материи 4&nbsp;тыс.&nbsp;лет назад) связана с появлением <a href="-Наука и мифы о сознании.html" shape="rect" style="color: #69aa35;">мифов о сознании</a><span style="color: #2d4fc9;">, точнее</span> мифов о&nbsp;загробной жизни, независимой от оживления тела. Шумерские рассказы об ищущем бессмертия царе Гильгамеше, написанные около 4,1 тыс. лет назад, уже содержат описания загробного мира. Египетские тексты с описанием воскрешения Озириса, датируемые 4,4 тыс. лет до н. э., найдены в ранних пирамидах. Позже появится индийская концепция переселения душ.</div>
+                    <br>
+                    <div>Образно говоря, мысль отделилась от живой материи, когда понятие «вечная жизнь» стало связываться с вечной мыслительной деятельностью, а не с вечным процессом жизнедеятельности. Человек с этого момента стал первым <span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">(<a href="Новые хозяева планеты..html" shape="rect" style="color: #69aa35;">в будущем, возможно, не единственным</a>)</span> носителем&nbsp;еще не до конца сформировавшейся мыслящей материи — существом, которое заботится и связывает свое «Я» уже не с живой, а именно с мыслящей материей. Именно с появлением человека цели и пути мыслительной деятельности и жизнедеятельности впервые расходятся<span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">:&nbsp;<a href="Определение мыслящеи материи.html" >живая материя становится мыслящей</a>.</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="slider-screen" class="nobr">
+      <div class="iblock">
+        <div data-slide-id="Потомок человечества.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--10">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Потомок человечества</h1>
+                    <div><a name="470">Текущая стадия развития человечества уже не подчиняется законам </a><a href="Люди и динозавры. Вымереть или измениться.html" shape="rect" style="color: #69aa35;">эволюции живой материи</a> (нечто подобное произошло, например, когда, с появлением первых микроорганизмов,&nbsp;<a href="-Родственники целлофановых мешков.html" shape="rect">химическую эволюцию сменила биологическая</a>). П<span style="widows: 1;">о<span style="color: rgb(1, 1, 1);">ведение</span></span> нового типа материи не описывают корректно ни биология, ни психология, ни экология. Более того, человек однажды перестанет быть единственным носителем этой «мыслящей материи». Какой она будет в других, не-человеческих носителях?</div>
+                    <br>
+                    <div>Жизнь последние 2 млрд. лет развития уступает свои функции мысли. Иными словами, нужна новая <span style="color: #010101;">н</span><a href="evernote:///view/92920537/s470/3df0753c-67f8-447e-bc19-68e9277cf718/3df0753c-67f8-447e-bc19-68e9277cf718/" shape="rect" style="color: #69aa35;">аука о мыслящей материи</a><span style="color: #010101;">. И новая мораль.</span></div>
+                    <br>
+                    <div style="widows: 1;">
+                    <div><span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><span style="color: #010101;">Как и с</span> <a href="Люди_и_древние_рыбы._От_ненормальности_к_ново.html" shape="rect" style="color: #69aa35;">превращением плавников в лапы у древних кистепёрых рыб</a>, все изменения человеческого вида, все попытки создания альтернативных носителей мыслящей материи будут на первых порах восприниматься как нечто ненормальное, и даже — аморальное. Потому что соответствующие моральные и юридические рамки еще не созданы. (Хотя они уже существуют для случаев вживления микроэлектродов в мозг или блокирования мозгового центра удовольствий и привыканий). Очень скоро общество создаст нормы для клонирования человека, а потом и для применения других биотехнологий. Конечно, есть опасность, что эти нормы будут негуманными или противоречащими правам человека. Тем важнее говорить о них сейчас.</span></div></div>
+                    <br>
+                    <div>Человек, однако, сможет не только вновь активизировать свою эволюцию, но и кардинально изменить ее принцип, уйдя от «случайных мутаций» к «целенаправленному дизайну».</div>
+                    <br>
+                    <div style="widows: 1;">
+                    <div><span style="color: #010101;">А мыслящая материя уже не будет «разумной жизнью», она будет контролировать ноосферу, располагая более совершенными, чем жизнь, носителями.</span></div>
+                    <br>
+                    <div><span style="color: #000000;">Многим это может показаться делом далекого будущего.&nbsp;Но некоторые признаки можно усмотреть уже в</span> <a href="evernote:///view/92920537/s470/704323a4-44e2-4aa2-ba07-de4eb19d4d48/704323a4-44e2-4aa2-ba07-de4eb19d4d48/" shape="rect" style="color: #69aa35;">технологиях 21-го века</a>.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Киборги будущего.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--03">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Киборги будущего</h1>
+                    <div>
+                    <a name="388"><span></span></a>
+                    <div><a name="388">Итак, произошла революция в обработке информации. Кроме того, кибернетике и биотехнологиям стала доступна организация материи на микро- и наноуровнях, найдены способы вносить </a><a style="color: #69aa35;" shape="rect" href="Клоны и генетически измененные люди.html">изменения в ДНК человека</a><span style="color: #010101;">.</span> Все это сейчас воспринимается скорее как моменты эволюции человека (ведущие к появлению его нового вида), чем как нечто, предвещающее скорый конец этой эволюции.</div>
+                    <br>
+                    <div>Между тем, по прогнозам Джона Блэкфорда, к 2020 году компьютер стоимостью до $1000 станет равен по мощности мозгу человека, а к 2050 &mdash; интелл<span style="color: #010101;">екту всего человечества.</span> <span style="color: #000000;">В начале века, когда был сделан этот прогноз, он казался фантастичным. Однако сегодня технологии интеллектуальной обработки информации уже справляются практически со всеми «человеческими» задачами.<br><br>Скоро появятся при</span><span style="color: rgb(1, 1, 1);">нципиально новые квантовые и оптические компьютеры. К созданию молекулярных компьютеров, которые, подобно живой материи, используют молекулы для хранения информации и проведения вычислений, вплотную приблизилась компания Hewlett-Packard</span> и ученые Калифорнийского университета в Лос-Анджелесе. И<span style="color: #000000;">менно соединение <a shape="rect" href="-Мыслящая материя проектирующий разум и созда.html"><span style="color: #41ad1c;">интеллекта и возможности действия на молекулярном уровне</span></a> станут основой&nbsp;мыслящей материи будущего.</span>
+                    </div>
+                    <br>
+                    <div>Согласно прогнозам, до 2030 года человеческий мозг будет оцифрован. Далее последуют попытки записать сознание на искусственный носитель. Естественно, что, как и в случае с клонированием человека, эти попытки рано или поздно увенчаются успехом. Мы живем на пороге не только отрыва сознания человека от тела, но и создания «чистой мысли», <span style="color: #010101;">меняющей свои носители, а следовательно, независимой от них.</span></div>
+                    <br>
+                    <div><span style="color: #010101;">С</span>озданы первые электронные имплантанты, вживляемые в мозг для коррекции деятельности нервной системы. По прогнозам Роберта Гиффорда, к 2030 году нанороботы смогут проникать во все клетки тела. Сначала их будут использовать для лечения&nbsp;и улучшения организма, а также для создания галлюцинаций под контролем компьютера (виртуальной реальности). В дальнейшем они смогут реализовать функции всех систе<span style="color: #010101;">м организма, превращая его в совершенное, вечное биокибернетическое тело.&nbsp;</span></div>
+                    <br>
+                    <div><span style="color: #010101;">Иными словами, становится возможным не только&nbsp;</span><a style="color: #69aa35;" shape="rect" href="Когда душа покинет тело..html">вечное существование сознания на альтернативных мозгу носителях</a><span style="color: #010101;">, но и&nbsp;</span><a style="color: #69aa35;" shape="rect" href="Бессмертные люди..html">вечное существование самого человеческого тела</a><span style="color: #010101;">. Превращение человека в мыслящую материю, в ноосферный «чистый разум» не будет резким кардинальным превращением людей в киборгов &mdash; роботов с человеческим сознанием. Оно будет происходить постепенно<span style="color: #0000ff;">.</span> <span style="color: #0000ff;">И</span> оно уже началось.</span>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Цели мыслящеи материи.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--12">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Цели мыслящей материи</h1>
+                    <div><a name="401"><span style="text-align: -webkit-left; color: #010101;">Один из «стандартных» фантастических сюжетов прошлого века:&nbsp;</span></a><a target="_blank" style="color: #69aa35;" shape="rect" href="Нашествие_роботов.html">взбунтовавшиеся роботы</a> силой «улучшают» людей - делают их безупречно рациональными, лишенными эмоциональных порывов и слабостей. (А люди, несмотря ни на что, хотят остаться собой).
+                    <br>Не хочу никого пугать, но всё будет именно так. Потому что цель мыслящей материи &mdash; улучшить жизнь&nbsp;или освободиться от неё.</div>
+                    <div>Всё так и есть уже сейчас, потому что&nbsp;мыслящая материя - это мы сами.&nbsp;</div>
+                    <br>
+                    <div>Это мы непрерывно хотим улучшить живую материю (то есть собственное тело) или, в крайнем случае, избавиться от него. И началось это давно.&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="Строительный материал мысли.html">Мысль зародилась внутри жизни</a>&nbsp;и пока продолжает существовать только в ней. Жизнь&nbsp;на данном этапе является необходимой частью <a target="_blank" style="color: #69aa35;" shape="rect" href="Структура мыслящеи материи..html">структуры мыслящей материи</a>,&nbsp;единственным посредником между мыслящей материей и окружающим миром. Посредством своего носителя мысль может контролировать любую материю, но эффективность контроля зависит от того, насколько независима мысль от своего носителя.&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/004b5e57-2849-42a3-bf19-1f6d90c67801/004b5e57-2849-42a3-bf19-1f6d90c67801/">Человек, в этом смысле, пока далеко не лучший носитель</a>.&nbsp;Идеальным носителем для мыслящей материи является материя, полностью подконтрольная мысли, сама же не оказывающая на мысль никакого влияния. Мысль не должна слабеть или исчезать от того, что материя, в которой она располагается, плохо функционирует.</div>
+                    <br>
+                    <div>Поэтому целью мыслящей материи является контроль над живой материей. Так&nbsp;она стремится к своему&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="Идеальное состояние мыслящей материи.html">идеальному состоянию</a>&nbsp;(люди, впрочем, называют это «беречь себя»). В будущем&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/145c3189-7471-4c5b-bfa3-aa550929a26f/145c3189-7471-4c5b-bfa3-aa550929a26f/">биотехнологии</a> превратят жизнь в более совершенный носитель, вплоть до создания живой материи, которая не будет деградировать со временем, искусственным путем.</div>
+                    <br>
+                    <div>Однако мыслящая материя стремится вместе с тем <a target="_blank" style="color: #69aa35;" shape="rect" href="Когда душа покинет тело..html">избавиться от носителя в принципе</a>. Человек хочет освободить сознание от содержащего его тела. <a target="_blank" style="color: #69aa35;" shape="rect" href="Человек между мыслью и жизнью.html">Неутолимость этого стремления трагична для человека как мыслящего существа</a>.</div>
+                    <br>
+                    <div><span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">Эти две цели едины и отражают стремление мыслящей материи увеличивать свое влияние на окружающий мир и уменьшать свою зависимость от него. Что будет представлять собой сформировавшаяся мыслящая материя? Результаты моделирования ее развития приводят нас к следующему ее&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="Определение мыслящеи материи.html">определению</a>.</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Определение мыслящеи материи.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--09">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Определение мыслящей материи</h1>
+                    <a name="466"><span><div>Организованная материя — это любая часть материи, у которой энтропия меньше, чем у окружающей среды, то есть частицы в ней ведут себя более упорядоченно.</div></span></a>
+                    <br>
+                    <div><a name="466">Простейший пример — кристалл. Другой пример — это живая клетка,&nbsp;</a><a href="Люди и динозавры. Вымереть или измениться.html" shape="rect" style="color: #69aa35;" target="_blank">эволюция которой длится последние 3&nbsp; млрд.&nbsp; лет</a>. При этом информация о том, как устроены ("организованы" кристалл или клетка, идентична им самим и вне их не существует.</div>
+                    <br>
+                    <div>Мыслящая материя — это вид организованной материи,&nbsp;<a href="Строительный материал мысли.html" shape="rect" style="color: #69aa35;" target="_blank">появившийся совсем недавно</a>.&nbsp;Способы ее организации создаются и развиваются отдельно от нее самой. В частности, это подразумевает моделирование организованной материи не путем экспериментирования с ней, а независимо от нее. Другими словами, организованная материя является мыслящей, если она как бы состоит из двух независимых частей: информации о том, как должна быть организована эта материя, и собственно сама организованная материя. Наличие таких двух частей подразумевает передачу информации от «информационной» к «организуемой» части. Заметим, что, конечно, полная&nbsp;независимость от организованной материи - это&nbsp;<a href="Идеальное состояние мыслящей материи.html" shape="rect" style="color: #69aa35;" target="_blank">идеальное состояние мыслящей материи</a>, реализующееся с той или иной степенью точности.</div>
+                    <br>
+                    <div>На первый взгляд, <a href='Идеальное состояние мыслящеи материи.html'>мыслящая материя</a> — очень громоздкая вещь: моделировать нужно в одном месте, затем переносить результаты в другое место и как-то их применять. Не лучше ли сразу всё делать там, где это нужно? Не лучше, если моделировать получается быстрее, чем экспериментировать. И если естественная эволюция знает лишь путь проб и ошибок, эксперимента, то мысль способна к построению модели, предваряющей действие. Поэтому громоздкая&nbsp;на первый взгляд&nbsp;<a href="Структура мыслящеи материи..html" shape="rect" style="color: #69aa35;" target="_blank">структура мыслящей материи</a>&nbsp;обеспечивает её ускоренное развитие.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Человек между мыслью и жизнью.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--13">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Человек между мыслью и жизнью</h1>
+                    <div><a name="390"></a><a href="Когда люди перестанут быть людьми.html">Расхождение путей тела и сознания</a> выражается в потере человеком ощущения гармонии, смысла существования. Ускоренное развитие мысли и остановка эволюции жизни диктуют нам экзистенциальные настроения, которая сменятся лишь по мере «взросления» <a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/3df0753c-67f8-447e-bc19-68e9277cf718/3df0753c-67f8-447e-bc19-68e9277cf718/">мыслящей материи</a>&nbsp;и освобождения ее от оков живой материи. Человек давно не видит смысла в своем развитии, совершенствовании своей мысли, и затем ее внезапной и бесследной остановке. Другими словами, <a href="Цели мыслящеи материи.html">мыслящая материя в человеке ощущает свою бесцельность.</a></div>
+                    <br>
+                    <div>Человек носит на себе клетку своего тела, одновременно боясь ее потерять и томясь в ней. Он видит мир лишь в узкую прорезь своих пяти чувств, которую ему предоставляет устройство клетки, одновременно жалея о ее узости и боясь покинуть ее. Он одинок и пытается общаться через всё ту же амбразуру своих чувств и реакций организма. И чем дальше человек развивается как мыслитель, тем более он осознает оторванность своих устремлений от устремлений своего тела и тем болезненнее осознает свою от него зависимость. Так птица, сидящая в клетке, не замечает ее, а птица, пытающаяся летать, узнает о клетке с каждым новым падением: «Кто умножает знания, тот умножает скорбь».</div>
+                    <br>
+                    <div><a target="_blank" shape="rect" href="-Бунт умных контейнеров.html">Природа, задумавшая разум как средство успешного распространения ДНК, просчиталась.</a> Человек бесповоротно ступил на путь развития в качестве <a href='Идеальное состояние мыслящеи материи.html'>мыслящей материи</a>. Но, находясь в самом его начале, глубоко несчастен, так как несвободен. Как Прометей, человек распят между землей и небом. Однако,&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/e1f047f7-101c-4a34-af48-7dd1e7211f4f/e1f047f7-101c-4a34-af48-7dd1e7211f4f/">постоянно дополняя или заменяя свое тело</a>, он пойдет дальше, эволюционируя уже как чистая мыслящая материя. Она будет иметь<a target="_blank" style="color: #69aa35;" shape="rect" href="Структура мыслящей материи..html">&nbsp;ту же структуру, что и сознание человека</a>, но располагаться на более совершенных носителях, и, вероятно, достигнет своего <a href="Идеальное состояние мыслящеи материи.html">идеального состояния</a>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="slider-screen" class="nobr">
+      <div class="iblock">
+        <div data-slide-id="Идеальное состояние мыслящеи материи.html" data-role="slide-4 fullscreen--canvas" class="fullscreen--canvas slide--01">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Идеальное состояние мыслящей материи</h1>
+                    <div>К чему, к какому идеальному состоянию <a href='Цели мыслящеи материи.html'>стремится мыслящая материя</a>? Речь должна идти о полной независимости мыслящей информации от окружающей ее материи. Сейчас сознание человека (его «мыслящая информация») зависит от деятельности мозга. Возможно ли, чтобы мыслящая информация находилась «вне материального мира» и при этом активно влияла на него? Мы называем сознание «внутренним миром», подчеркивая этим, что он отделен от мира внешнего.</div>
+                    <br>
+                    <div>Идеальное начало не зависит от окружающей его материи в неоплатонической модели мира, созданной Плотином в III веке н. э. Наоборот, материя от него зависит: оно производит некоторые «эманации», с помощью которых меняет окружающий его материальный мир. Это похоже на структуру мыслящей материи. «Эманации» можно назвать «осуществлениями планов». Идеальное начало можно назвать «мыслящей информацией». (Плотин дал ему имя «Единое»). Анализ возможности освобождения мыслящей информации от материи приводит нас к тому, что это состояние «свободы» предстает и как начало, и как предел эволюции вселенной.</div>
+                    <br>
+                    <div>Развитие живой материи спонтанно. Способ контроля и организации материи находится в ней же (ДНК, ферменты, гормоны и т. д.). Она не может «сначала подумать, а потом сделать» — эволюция биосферы идет методом проб и ошибок, в миллионы раз медленнее эволюции мыслительной деятельности. Алгоритм, по которому передается генетическая информация, не был смоделирован предварительно, он создан непосредственно в процессе передачи генетической информации. Этот алгоритм никогда не существовал вне своей материи — вещества ДНК.</div>
+                    <br>
+                    <div>Другое дело — мыслительная деятельность <a href='Когда люди перестанут быть людьми.html'>человека</a>. По своему <a href='Определение мыслящеи материи.html'>определению</a>, она создает способы контроля окружающей среды и самоконтроля внутри изолированного от окружающего мира набора электрохимических процессов, называемого cознанием. И человек осознает себя в тот момент, когда находит для себя самого место в своем логическом мире осознанных предметов.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Нашествие_роботов.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--08">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Нашествие роботов</h1>
+                    <div><a name="446">Сегодня, как полагают, наиболее прибыльны </a><a href="Информационное поле планеты.html" shape="rect" style="color: #69aa35;" target="_blank">технологии беспроводной передачи данных.</a> По прогнозам, дальше на пике окажется <a href="Робот-бизнесмен.html" shape="rect" style="color: #69aa35;" target="_blank">межкорпоративная электронная торговля и «интернетификация» бизнеса.</a> А затем - <a href="Электронный рабочии.html">роботы:</a> в 20-х&nbsp;годах нашего века они займут все ниши производства. Кроме того, они станут выполнять множество бытовых функций. О них, об их марках будут говорить, как сейчас об автомобилях (кто-то будет предпочитать немецкие модели, кто-то японские...). Корея, как и в случае с автомобилями, предвидя острую конкуренцию с японцами, запустила специальную национальную программу по робототехнике, объединив в ней усилия тридцати корпораций.</div>
+                    <br>
+                    <div>К слову, самый человекообразный на сегодня робот живет в Корее — это робот-женщина по имени Ever-1, способная распознавать эмоции человека и отвечать на них. Ее силиконовая кожа неотличима на ощупь от человеческой. Однажды ее «потомки» станут альтернативой для холостяков. Шутки шутками, но я уверен, что в 20-х годах такие роботы, как Ever-1, будут успешно конкурировать на «рынке невест». А против механических жиголо не будет шансов у мужчин.
+                    <br>Романтичным останется лишь то, что в роботах такого рода будут акцентированы именно человеческие качества (иначе они разделят участь вытесненных другими роботами рабочих). Во всем остальном конкурировать с ними будет бесполезно. Финансовое состояние избранника/избранницы не будет иметь значения: со сменой капитализма на новый информационный строй деньги потеряют свою роль критерия успешности (как ее потерял титул с уходом&nbsp; феодализма). <a href="evernote:///view/92920537/s470/9677b3e9-f102-41a2-9e82-84324ab22aa0/9677b3e9-f102-41a2-9e82-84324ab22aa0/" shape="rect" style="color: #69aa35;" target="_blank">У общества будущего</a> <span style="color: rgb(0, 0, 255);">б</span>удут другие ценности.&nbsp;</div>
+                    <br>
+                    <div>Итак, к 2030&nbsp;году средний компьютер будет превосходить человеческий мозг. Это значит, что довольно скоро наступит ситуация, когда роботы станут умнее человека, но по-прежнему будут иметь гораздо меньше прав. Фантасты любят описывать бунт роботов. Однако мне это напоминает сюжет одного рассказа, прочитанного в детстве — о том, как взбунтовались животные в зоопарке. Некритичному детскому сознанию все здесь казалось логичным, но сейчас я вспоминаю и думаю: «а зачем?». У людей и роботов нет причин для конфликта. Скорее возникнет эволюция отношений. Применительно к зоопарку это означает постепенное изменение самой его концепции.
+                    <br>Сначала в роли животных в зоопарке будут роботы, а потом сами люди... Кстати, в современных зоопарках животные видят себя в свободном вольере, а людей — загнанными в узкие проходы за решеткой. Всё зависит от точки зрения. В любом случае это будет взаимовыгодное сосуществование, симбиоз, а вовсе не конкуренция. Люди постепенно будут отдавать роботам всё больше власти, тем самым превращаясь в&nbsp;обитателей хорошего зоопарка.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Люди, зараженные программируемыми вирусами.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--06">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Люди, зараженные программируемыми вирусами</h1>
+                    <a name="346"><span><div>Как известно, конфликт между нами и <a href='Человек перестает быть живым существом.html'>людьми будущего</a> - один из наиболее волнующих фантастич<span style="color: rgb(1, 1, 1);">еских сюжетов.&nbsp;</span></div></span></a>
+                    <br>
+                    <div><a name="346"><span style="color: #010101;"><span style="color: #0000ff;">К</span>ак будут выглядеть&nbsp;</span><span style="color: #010101;">люди будущего? Какие</span> </a><a href="evernote:///view/92920537/s470/e1f047f7-101c-4a34-af48-7dd1e7211f4f/e1f047f7-101c-4a34-af48-7dd1e7211f4f/" shape="rect" style="color: #69aa35;" target="_blank">технологии изменят биологический вид человека</a><span style="color: #010101;">?
+                    <br>Можно суммировать сказанное: вернее всего, это кибернетика, которая вплотную подошла к реализации сознания на альтернативных носителях. И, в союзе с ней, биология, которой без ограничений станет доступно действие в наномасштабах.&nbsp;</span>Приборы <span style="color: rgb(1, 1, 1);">наноуровня похожи в большей степени на живые микроорганизмы, воспроизводящие себя и, подобно вирусам, взаимодействующие с человеческим организмом, помогая ему и расширяя его возможнос</span>ти. Сознание и тело человека, «заразившегося» такими вирусами <span style="color: rgb(0, 0, 255);">-</span> <a href="-Медицина будущего сверхчеловек и далее.html" shape="rect">наноассемблерами, — будут трансформироваться.</a><span style="font-size: 11px;">&nbsp;</span></div>
+                    <br>
+                    <div><span style="color: rgb(1, 1, 1);">«Программируемые» вирусы уже</span> используются: при некоторых нарушениях иммунного механизма гены, «не доставшиеся» ребенку при рождении, помещаются в вирус, способный проникать внутрь лимфатических клеток и менять их поведение. Однако наука стоит на пороге не только создания рукотворных программируемых вирусов, но и возможности управлять поведением ДНК в принципе: первые опыты по контролю над поведением ДНК уже проводятся, например, группой Симана в Университет<span style="color: rgb(1, 1, 1);">е Нью-Йорка.&nbsp;</span><a href="Порошок, пожирающий_мир.html" shape="rect" style="color: #69aa35;" target="_blank">По прогнозам, именно медицина будет рынком сбыта и двигателем нанотехнологий будущего</a>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Электронныи рабочии.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--15">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Электронный рабочий</h1>
+                    <div><a name="433">На заводах по всему миру сейчас работает уже более миллиона роботов. Большинство из них всё еще используется для выполнения простых действий типа «перенести» или «прикрутить». Однако по мнению руководителей многих компаний, роботам выгодно доверять всё более сложные роли. Для многих производств замена роботов прошлого поколения на более интеллектуальные модели «со зрением» сохраняет от 2 тыс. до 15 тыс. долларов каждую минуту.
+                    <br><br>Именно рост интеллекта роботов, а не увеличение их количества приносит основной доход. Только развитие уже упомянутого «зрения роботов» приносит сейчас ежегодно почти 2&nbsp;млрд. долларов, и этот рынок растет на 10% в год. При этом общий рынок робототехники, по прогнозам, будет к 2020&nbsp;году самым крупным из высокотехнологичных рынков и составит более 400&nbsp;млрд. долларов.
+                    <br><br>Итак, вполне вероятно, что на фирмах будущего вмешательство <a href='Человек между мыслью и жизнью.html'>человека</a> будет минимальным. Программа оптимизации бизнеса будет принимать текущие решения и, после получения электронной подписи менеджера, эти решения будут направляться напрямую на склад машинам-погрузчикам или на завод роботам-рабочим. Кажется, что человеку вообще нет места в будущем. Но&nbsp;</a><a target="_blank" style="color: #69aa35;" shape="rect" href="Порошок, пожирающий_мир.html">это не совсем так</a>.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iblock">
+        <div data-slide-id="Клоны и генетически измененные люди.html" data-role="slide-01-02 fullscreen--canvas" class="fullscreen--canvas slide--04">
+          <div data-role="article-repeat" class="slide-controls--repeat">&Sigma;</div>
+          <div data-role="article-prev" class="slide-controls--prev">&Omega;</div>
+          <div data-role="article-next" class="slide-controls--next">&Xi;</div>
+          <div class="slide-controls--logo"><img src="./images/bg-dark--ae-logo-0.png"></div>
+          <div class="mt50">
+            <div class="w100p slide--sub-holder">
+              <div class="nano w80p">
+                <div class="nano-content">
+                  <div class="br-on article-content--typography">
+                    <h1>Клоны и генетически измененные люди</h1>
+                    <div>
+                    <div>
+                    <a name="351"></a><a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/e1f047f7-101c-4a34-af48-7dd1e7211f4f/e1f047f7-101c-4a34-af48-7dd1e7211f4f/">Технологии изменения человека</a>&nbsp;обещают стать в будущем наиболее прибыльной среди всех&nbsp;наукоёмких&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="evernote:///view/92920537/s470/704323a4-44e2-4aa2-ba07-de4eb19d4d48/704323a4-44e2-4aa2-ba07-de4eb19d4d48/">технологий</a>. Клонирование человека, бесполезное само по себе (и пока неосуществленное) вызывает ажиотаж. Такие околонаучные центры, как&nbsp;Clonaid и лаборатория Северино Антинори, сделали себе на этом имя.</div>
+                    <br>
+                    <div>Однако в этой области идут и реальные исследования. Так, американская компания ACT объявила о первом в мировой истории клонировании эмбриона человека. Ученым из Advanced Cell Technology Inc. (Вустер, штат Массачусетс) удалось добиться развития клонированного человеческого эмбриона до шести клеток.
+                    <br><br>По мнению Рудольфа Джениша,&nbsp;профессора Массачусетского Технологического Университета и одного из мировых лидеров в области регуляции экспрессии генов и клонирования животных, клоны склонны к нарушениям механизмов регуляции генов, поэтому они пока живут меньше, склонны к ожирению&nbsp;и имеют другие проблемы со здоровьем.
+                    <br><br>Однако вспомним: по словам Яна Вилмута, клонировавшего знаменитую овцу Долли, эксперимент удался только с 250-го раза, а попыток подпольного клонирования человека было на сегодняшний день&nbsp;сделано значительно меньше. И заметим, что сама <a target="_blank" shape="rect" href="-Математическая модель репродукции ДНК.html">математическая модель репродукции и эволюции ДНК</a><span style="font-size: 11px;">&nbsp;</span>достаточно проста.</div>
+                    <br>
+                    <div>Клонирование подобно рекламной акции, устроенной человечеством, чтобы продемонстрировать самому себе собственную научную мощь. Однако те же технологии очень скоро позволят человеку не только копировать, но и изменять себя так же легко, как он изменяет и улучшает программы созданных им&nbsp;<a target="_blank" style="color: #69aa35;" shape="rect" href="Нашествие_роботов.html">роботов</a>.
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

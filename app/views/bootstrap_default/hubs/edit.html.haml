@@ -1,0 +1,11 @@
+- content_for :express_nav do
+  %p= link_to t('app.cabinet'), cabinet_url
+  %p= link_to t('hubs.show'), url_for(@hub)
+  %p= link_to t('hubs.manage'), url_for([:manage, :hubs])
+  %p= link_to "Мета Данные", [:edit, @hub.meta_data], class: 'btn btn-info', style: 'background-color:#db65af'
+
+%h1= t 'hubs.edit'
+
+= render 'hubs/form'
+= render partial: 'the_storages/form', locals: { storage: @hub }
+= render partial: 'the_storages/list', locals: { storage: @hub }
