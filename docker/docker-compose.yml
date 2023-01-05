@@ -1,13 +1,9 @@
 #
-# docker compose -f docker-compose.yml up
-# docker compose -f docker-compose.yml down
+# dev: docker compose -f docker-compose.yml up
+# PLATFORM=arm APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up
+# PLATFORM=amd APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up -d
 #
-# PLATFORM=amd docker compose -f docker-compose.yml pull
-# PLATFORM=amd docker compose -f docker-compose.yml up
-# PLATFORM=amd docker compose -f docker-compose.yml down
-#
-# docker exec -ti artelectronics-psql-1 /bin/bash
-# docker exec -ti artelectronics-rails-1 /bin/bash
+# docker exec -ti artelectronics-rails-1 bash
 version: '3.8'
 
 name: artelectronics
@@ -20,6 +16,7 @@ services:
     # https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
     # (this is just an example, not intended to be a production configuration)
     command: --default-authentication-plugin=mysql_native_password
+    user: ${RUN_AS:-root}
     # restart: always
     environment:
       MYSQL_ROOT_PASSWORD: qwerty
@@ -34,34 +31,59 @@ services:
   # command: redis-server --save 60 1 --loglevel warning
   redis:
     image: redis:7.0.5-alpine
+    user: ${RUN_AS:-root}
     volumes:
       - ../db/_REDIS:/data
       - ../shared:/shared
 
-  # docker exec -ti artelectronics-sphinx-1 ash
-  # docker exec artelectronics-sphinx-1 indexer --config /opt/sphinx/conf/sphinx.conf --all
+  # sidekiq_web:
+  #   image: iamteacher/sidekiq:web.arm64
+  #   environment:
+  #     REDIS_URL: redis://redis:6379
+  #     SIDEKIQ_USER: admin
+  #     SIDEKIQ_PASSWORD: qwerty
+  #   ports:
+  #     - 3030:3030
+  #   depends_on:
+  #     - redis
+
   # port: 36307
+  #
+  # docker exec -ti artelectronics-sphinx-1 ash
+  #
+  # docker exec artelectronics-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf
+  # docker exec artelectronics-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate
+  #
   sphinx:
     image: macbre/sphinxsearch:3.4.1
+    user: ${RUN_AS:-root}
     environment:
       - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
     volumes:
-      - ../db/_SPHINX:/opt/sphinx/index
       - ../config/_SPHINX:/opt/sphinx/conf
+      - ../db/_SPHINX:/opt/sphinx/index
       - ../shared:/shared
     mem_limit: 512m
 
-  # rails s -p 3000 -b 0.0.0.0
   # port 3000
+  #
+  # docker exec -ti artelectronics-rails-1 bash
+  #
+  # RAILS_ENV=development bundle exec rake ts:configure
+  # docker exec artelectronics-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate
+  #
+  # bundle exec rails s -p 3000 -b 0.0.0.0
+  # bundle exec puma -C config/PUMA.production.rb
+  #
   rails:
     tty: true
     stdin_open: true
     image: iamteacher/artelectronics.ru:webapp.${PLATFORM:-arm}64
     volumes:
-      - ../:/home
+      - ../:/home/lucky/app
+      - ../shared:/shared
+      - ../db/SPNINX:/opt/sphinx/index
     ports:
-      - 3002:3000
-    # depends_on:
-    #   - psql
-    #   - redis
-    #   - sphinx
+      - ${APP_PORT:-3000:3000}
+    depends_on:
+      - mysql

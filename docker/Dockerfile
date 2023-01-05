@@ -3,14 +3,20 @@
 # docker build -t iamteacher/artelectronics.ru:webapp.arm64 -f Dockerfile ../ --build-arg PLATFORM=arm
 
 ARG PLATFORM
-FROM iamteacher/eastflower.ru:webapp.${PLATFORM}64
+FROM iamteacher/rails4:2022.${PLATFORM}64
 
-SHELL ["/bin/bash", "--login", "-c"]
-WORKDIR /home
+USER lucky
 
-RUN ~/.rbenv/shims/gem update --system '3.0.9'
+RUN gem update --system '3.0.9'
+RUN gem install bundler -v 1.17.3 --verbose --no-document
 
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+RUN git config --global --add safe.directory /home/lucky/app
+RUN mkdir /home/lucky/app
 
-RUN /root/.rbenv/shims/bundle
+WORKDIR /home/lucky/app
+
+COPY Gemfile /home/lucky/app/Gemfile
+COPY Gemfile.lock /home/lucky/app/Gemfile.lock
+
+RUN bundle
+EXPOSE 3000/tcp

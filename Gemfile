@@ -69,7 +69,7 @@ gem 'sanitize', '3.0.0'
 gem 'rails_autolink', '1.1.6'
 gem 'state_machine', '1.2.0'
 gem 'RedCloth', '4.2.9', require: 'redcloth'
-gem 'acts-as-taggable-on', "3.0.2"
+gem 'acts-as-taggable-on', "3.4"
 
 gem 'awesome_nested_set', '3.0.0'
   # git: "https://github.com/collectiveidea/awesome_nested_set",

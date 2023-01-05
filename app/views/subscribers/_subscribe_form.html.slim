@@ -1,12 +1,12 @@
-.subscribe_form
-  = form_tag add_subscriber_path, remote: true, data: { role: :JODY_form } do
-    .form-group
-      = text_field_tag :email, nil, placeholder: t('subscribers.form_placeholder'), class: 'form-control input-lg'
-    .form-group
-      = submit_tag "Получать Дайджест AE", class: 'btn btn-default'
+/ .subscribe_form
+/   = form_tag add_subscriber_path, remote: true, data: { role: :JODY_form } do
+/     .form-group
+/       = text_field_tag :email, nil, placeholder: t('subscribers.form_placeholder'), class: 'form-control input-lg'
+/     .form-group
+/       = submit_tag "Получать Дайджест AE", class: 'btn btn-default'
 
-      div(style='font-size:12px;margin-top:7px;margin-left:3px;')
-        | Активных подписчиков:
-        '
-        - cache("mail_chimp_active_subscribers", expires_in: 30.minutes) do
-          b= MailChimpModel.total
+/       div(style='font-size:12px;margin-top:7px;margin-left:3px;')
+/         | Активных подписчиков:
+/         '
+/         - cache("mail_chimp_active_subscribers", expires_in: 30.minutes) do
+/           b= MailChimpModel.total

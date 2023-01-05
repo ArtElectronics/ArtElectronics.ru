@@ -175,8 +175,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.0.2)
-      rails (>= 3, < 5)
+    acts-as-taggable-on (3.4.0)
+      activerecord (>= 3.2, < 5)
     arel (6.0.4)
     autoprefixer-rails (5.2.1)
       execjs
@@ -493,7 +493,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.9)
-  acts-as-taggable-on (= 3.0.2)
+  acts-as-taggable-on (= 3.4)
   autoprefixer-rails (= 5.2.1)
   awesome_nested_set (= 3.0.0)
   better_errors (= 2.0.0)

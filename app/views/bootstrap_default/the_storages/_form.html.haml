@@ -4,9 +4,9 @@
   = hidden_field_tag 'storage_id',   storage.to_param
   = hidden_field_tag 'storage_type', storage.class
   %table.table.table-bordered
-    %tr
-      %td.warning
-        = file_field_tag 'files[]', class: 'btn btn-info', multiple: true, autocomplete: :off, data: { role: :multiple_file_upload }
+    -# %tr
+    -#   %td.warning
+    -#     = file_field_tag 'files[]', class: 'btn btn-info', multiple: true, autocomplete: :off, data: { role: :multiple_file_upload }
     %tr
       %td#drug_and_drop_files{ style: 'background:#ffcc66;border:3px dashed gray;cursor: move;'}
         %br
