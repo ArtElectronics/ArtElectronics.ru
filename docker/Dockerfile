@@ -1,7 +1,10 @@
 #
-# docker build -t iamteacher/artelectronics.ru:webapp.amd64 -f Dockerfile ../ --build-arg PLATFORM=amd
 # docker build -t iamteacher/artelectronics.ru:webapp.arm64 -f Dockerfile ../ --build-arg PLATFORM=arm
-
+# docker build -t iamteacher/artelectronics.ru:webapp.amd64 -f Dockerfile ../ --build-arg PLATFORM=amd
+#
+# docker push iamteacher/artelectronics.ru:webapp.arm64
+# docker push iamteacher/artelectronics.ru:webapp.amd64
+#
 ARG PLATFORM
 FROM iamteacher/rails4:2022.${PLATFORM}64
 
