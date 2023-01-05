@@ -73,7 +73,7 @@ services:
   # docker exec artelectronics-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate
   #
   # bundle exec rails s -p 3000 -b 0.0.0.0
-  # bundle exec puma -C config/PUMA.production.rb
+  # bundle exec puma -C config/_PUMA.production.rb
   #
   rails:
     tty: true
