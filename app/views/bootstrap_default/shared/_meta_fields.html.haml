@@ -1,0 +1,10 @@
+.form-group.meta_block
+  = link_to '#' do
+    = t 'pubs.seo_meta_info'
+    %i.icon-arrow-down
+
+.form-group.meta_fields.hidden
+  - %w[ slug author keywords description copyright].each do |name|
+    .form-group
+      = f.label t(".#{name}")
+      = f.text_field name, class: 'form-control'

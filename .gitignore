@@ -10,7 +10,7 @@ config/ENV/production/*
 
 log
 tmp
-shared
+/shared
 
 db/_REDIS
 db/_MYSQL

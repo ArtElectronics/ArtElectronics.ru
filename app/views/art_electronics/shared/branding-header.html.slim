@@ -1,0 +1,105 @@
+/ ruby:
+/   product_items = [
+/     [
+/     'http://stereo-shop.ru/products/geksakopter-skeye-hexa-drone-trndlabs',
+/     'Гексакоптер Skeye'
+/     ],[
+/     'http://stereo-shop.ru/products/nastol-nyy-zhestkiy-disk-lacie-d2-usb-3-0-3-tb',
+/     'Настольный жесткий диск LaCie d2'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-christofle-sphere-1-tb-zhestkiy-disk',
+/     'Жесткий диск LaCie Christofle Sphere'
+/     ],[
+/     'http://stereo-shop.ru',
+/     'Stereo-Shop.ru'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-cloudbox-9000343ek-2tb-setevoy-nakopitel',
+/     'Сетевой накопитель LaCie CloudBox'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-mirror-usb-3-0-1-tb-9000574-vneshniy-zhestkiy-disk',
+/     'Внешний жесткий диск LaCie Mirror'
+/     ],[
+/     'http://stereo-shop.ru',
+/     'Stereo-Shop.ru'
+/     ],[
+/     'http://stereo-shop.ru/products/naushniki-parrot-zik-by-philippe-starck-v-1-0-rozovoe-zoloto',
+/     'Наушники Parrot Zik by Philippe Starck'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-porsche-design-9000304-vneshniy-zhestkiy-disk-usb-3-0-500-gb',
+/     'Внешний жесткий диск LaCie Porsche Design'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-ruggedkey-usb-3-0-16-gb-flash-nakopitel',
+/     'Flash-накопитель LaCie RuggedKey'
+/     ],[
+/     'http://stereo-shop.ru',
+/     'Stereo-Shop.ru'
+/     ],[
+/     'http://stereo-shop.ru/product_categories/audiokabeli',
+/     'Аудиокабели O2A Isoda Electric'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-porsche-design-desktop-drive-5-tb-9000480ek-nastol-nyy-zhestkiy-disk',
+/     'Настольный жесткий диск LaCie Porsche Design Desktop Drive'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-culbuto-usb-3-0-16-gb-flash-nakopitel',
+/     'Flash-накопитель LaCie Culbuto'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-rugged-mini-usb-3-0-500-gb-7200rpm-301556-vneshniy-zhestkiy-disk',
+/     'Внешний жесткий диск LaCie Rugged'
+/     ],[
+/     'http://stereo-shop.ru',
+/     'Stereo-Shop.ru'
+/     ],[
+/     'http://stereo-shop.ru/products/lacie-fuel-1-tb-besprovodnoy-zhestkiy-disk-9000436ek',
+/     'Беспроводной жесткий диск LaCie Fuel'
+/     ],[
+/     'http://stereo-shop.ru/products/gps-treker-tractive',
+/     'GPS-трекер для домашних животных'
+/     ]
+/   ]
+
+ruby:
+  product_items = [
+    ['https://stereo-shop.ru/shop_categories/fotoapparaty'],
+    ['https://stereo-shop.ru/products/besprovodnaya-as-sony-srs-x11-chernyj'],
+    ['https://stereo-shop.ru/products/audiosistema-sony-ht-ct390'],
+    ['https://stereo-shop.ru'],
+    ['https://stereo-shop.ru/products/naushniki-sony-mdr-xd150-chernyj'],
+    ['https://stereo-shop.ru/products/sony-mhc-v11-muzykalnyj-tsentr'],
+    ['https://stereo-shop.ru'],
+    ['https://stereo-shop.ru/products/karta-pamyati-microsd-sony-sr64uy3at-64-gb'],
+    ['https://stereo-shop.ru/products/naushniki-sony-mdr-ex15lp-chernyj'],
+
+    ['https://stereo-shop.ru/products/naushniki-sony-mdr-zx660ap-chernyj'],
+    ['https://stereo-shop.ru'],
+    ['https://stereo-shop.ru/products/mp3-pleer-sony-nwz-b183f-zolotoj'],
+    ['https://stereo-shop.ru/products/naushniki-sony-mdr-zx310ap-chernyj'],
+    ['https://stereo-shop.ru/products/besprovodnaya-as-sony-srs-xb3-chernyj'],
+    ['https://stereo-shop.ru/products/besprovodnaya-as-sony-srs-xb2-chernyj'],
+    ['https://stereo-shop.ru'],
+    ['https://stereo-shop.ru/products/fotoapparat-sony-alpha-ilce-5000lw-belyj'],
+    ['https://stereo-shop.ru/products/naushniki-sony-mdr-ex150-belyj']
+  ]
+
+.branding--top_holder
+  - product_items.count.times do |i|
+    - url   = product_items[i].first
+    - title = 'stereo-shop.ru'
+    = link_to '', "#{ url }?ae-sony=#{i.next}", class: "branding--link branding--link-#{i.next}", title: title, target: :_blank
+
+  .branding--header
+    .branding--header-logo
+      = link_to 'http://stereo-shop.ru', title: 'Stereo Shop' do
+        = image_tag '/branding/stereo-fashon.png'
+
+    .branding--header-text
+      / .branding--text-item Доставка позиций SONY под заказ в течение 2-х недель
+      .branding--text-item Жесткий контроль качества обслуживания
+      .branding--text-item Технические консультации
+      .branding--text-item Доставка по всей России
+
+    .branding--header-contacts
+      .branding--text-item Контакты
+      .branding--text-item 8 (495) 134-09-51
+      .branding--text-item 8 (812) 499-49-20
+      .branding--text-item
+        = link_to 'stereo-shop.ru', 'http://stereo-shop.ru', title: 'stereo-shop.ru', target: :_blank
