@@ -4,7 +4,7 @@
 # PLATFORM=amd APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up -d
 #
 # docker exec -ti artelectronics-rails-1 bash
-version: '3.8'
+# version: '3.8'
 
 name: artelectronics
 
