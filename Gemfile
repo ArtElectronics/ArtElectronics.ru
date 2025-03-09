@@ -156,9 +156,9 @@ gem 'the_role_management_panel',
   branch: 'master'
 
 gem "the_comments",
-  # path: '../the_comments'
-  git: 'https://github.com/the-trash/the_comments',
-  branch: 'master'
+  path: './GEMS/the_comments'
+  # git: 'https://github.com/the-trash/the_comments',
+  # branch: 'master'
 
 group :development, :test do
   # gem 'thin'

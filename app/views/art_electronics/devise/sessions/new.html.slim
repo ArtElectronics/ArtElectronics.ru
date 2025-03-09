@@ -1,22 +1,25 @@
 - content_for :full_width do
   .sessions.new
-    h3.center Войти/Зарегистрироваться через соц. сети
-    .social_login
-      = link_to '', user_omniauth_authorize_path(:vkontakte),     class: :vk
-      = link_to '', user_omniauth_authorize_path(:facebook),      class: :fb
-      = link_to '', user_omniauth_authorize_path(:twitter),       class: :tw
-      = link_to '', user_omniauth_authorize_path(:google_oauth2), class: :gp
+    h3.center Вход для сотрудников
+    / .social_login
+      =# link_to '', user_omniauth_authorize_path(:vkontakte),     class: :vk
+      =# link_to '', user_omniauth_authorize_path(:facebook),      class: :fb
+      =# link_to '', user_omniauth_authorize_path(:twitter),       class: :tw
+      =# link_to '', user_omniauth_authorize_path(:google_oauth2), class: :gp
 
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: :signin, class: :hidden, remote: true, data: { type: :json } }) do |f|
         = hidden_field_tag 'user[oauth_data]', '', id: :oauth_data, autocomplete: :off
 
     .delimiter
-      span ИЛИ
+      / span ИЛИ
 
     table.login_table
       tr
-        td.w50pr
+        td
           h3 Войти
+          p(style="font-size: 20px") Вход в систему только для сотрудников компании.
+          p(style="font-size: 20px") Если вы не являетесь сотрудником компании, то вы не сможете Зарегистрироваться или Войти в систему.
+
           = form_for(resource, as: resource_name, url: session_path(resource_name), remote: true, html: { id: :login, data: { type: :json }, 'data-role' => 'JODY_form' } ) do |f|
             .form-group
               = f.label :email, 'Email'
@@ -32,22 +35,22 @@
                   = f.check_box :remember_me, { checked: true }
                   ' &nbsp;
                   span.remember_me= t('devise.sessions.remember_me')
-        td.w50pr
-          h3 Зарегистрироваться
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: nil, role: :form, remote: true, data: { type: :json } }) do |f|
-            .form-group
-              = f.label :email, 'Email'
-              = f.text_field :email, autofocus: true, class: 'form-control input-lg', id: :reg_email, autocomplete: :off
-            .form-group
-              = f.label :password, 'Пароль'
-              = f.password_field :password, class: 'form-control input-lg'
-            .form-group
-              = f.submit t('devise.registrations.sign_up'), class: 'btn btn-default'
+        / td.w50pr
+        /   h3 Зарегистрироваться
+        /   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: nil, role: :form, remote: true, data: { type: :json } }) do |f|
+        /     .form-group
+        /       = f.label :email, 'Email'
+        /       = f.text_field :email, autofocus: true, class: 'form-control input-lg', id: :reg_email, autocomplete: :off
+        /     .form-group
+        /       = f.label :password, 'Пароль'
+        /       = f.password_field :password, class: 'form-control input-lg'
+        /     .form-group
+        /       = f.submit t('devise.registrations.sign_up'), class: 'btn btn-default'
 
-            = hidden_field_tag 'user[oauth_data]', '', id: :oauth_data, autocomplete: :off
+        /     = hidden_field_tag 'user[oauth_data]', '', id: :oauth_data, autocomplete: :off
       tr
         td.session_shared_links(colspan=2)
           - if devise_mapping.recoverable?
             p= link_to "Забыли пароль?", new_password_path(resource_name)
-          - if devise_mapping.confirmable?
-            p= link_to "Нужно подтвердить учетную запись?", new_confirmation_path(resource_name)
+          / - if devise_mapping.confirmable?
+          /   p= link_to "Нужно подтвердить учетную запись?", new_confirmation_path(resource_name)

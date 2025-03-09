@@ -120,22 +120,20 @@ GIT
       the_string_to_slug (~> 1.2)
 
 GIT
-  remote: https://github.com/the-trash/the_comments
-  revision: 5992b861f88100ed49058afad623b0d744fcc055
-  branch: master
-  specs:
-    the_comments (2.3.1)
-      state_machine (~> 1.2.0)
-      the_simple_sort (~> 0.0.2)
-      the_sortable_tree (~> 2.5.0)
-
-GIT
   remote: https://github.com/twbs/bootstrap-sass
   revision: 54317e5c02a4915e7a5def3a3e94cc2738a51ed3
   branch: 54317e5c02a4915e7a5def3a3e94cc2738a51ed3
   specs:
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
+
+PATH
+  remote: GEMS/the_comments
+  specs:
+    the_comments (2.3.1)
+      state_machine (~> 1.2.0)
+      the_simple_sort (~> 0.0.2)
+      the_sortable_tree (~> 2.5.0)
 
 GEM
   remote: https://rubygems.org/

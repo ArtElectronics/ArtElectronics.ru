@@ -38,13 +38,13 @@
         %section= link_to 'Блог', hub_url(:blogs)
 
     %ul.right
-      %li.userbar
-        %section
-          - if current_user
-            = link_to cabinet_url do
-              Кабинет (#{ current_user.login })
-          - else
-            = link_to 'Войти', new_user_session_path, class: :login
+      -# %li.userbar
+      -#   %section
+      -#     - if current_user
+      -#       = link_to cabinet_url do
+      -#         Кабинет (#{ current_user.login })
+      -#     - else
+      -#       = link_to 'Войти', new_user_session_path, class: :login
       %li.search.js-search-btn
         = link_to "", "#", title: "Поиск"
 

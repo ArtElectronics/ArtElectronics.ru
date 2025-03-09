@@ -68,13 +68,13 @@
       = raw @pub.content
 
 %p.networks
-  = render partial: 'layouts/items/pinterest'
+  =# render partial: 'layouts/items/pinterest'
   = render partial: 'layouts/items/vk_like'
-  = render partial: 'layouts/items/fb_like', locals: { item: @pub }
+  =# render partial: 'layouts/items/fb_like', locals: { item: @pub }
   = raw " &nbsp; "
-  = render partial: 'layouts/items/twitter_btn'
+  =# render partial: 'layouts/items/twitter_btn'
   = raw " &nbsp; "
-  = render partial: 'layouts/items/feedly_btn'
+  =# render partial: 'layouts/items/feedly_btn'
 
 = render partial: 'publications/tag_by_context', locals: { pub: @pub }
 
