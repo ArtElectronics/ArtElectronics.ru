@@ -32,6 +32,9 @@ stop:
 down:
 	docker compose -f ./docker/docker-compose.yml down
 
+shell:
+	docker compose -f ./docker/docker-compose.yml exec rails bash
+
 ########################################################################
 # DUMP DATA 
 ########################################################################
