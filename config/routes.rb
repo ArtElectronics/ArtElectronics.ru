@@ -129,7 +129,7 @@ Rails.application.routes.draw do
   end
 
   # Users
-  resources :users, only: %w[ index show edit update ] do
+  resources :users, only: %w[ edit update ] do
     patch  :change_email
     patch  :change_password
 

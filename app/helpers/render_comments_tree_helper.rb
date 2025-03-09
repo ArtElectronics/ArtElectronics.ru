@@ -66,7 +66,6 @@ module RenderCommentsTreeHelper
           <div id='comment_#{@comment.anchor}' class='comment #{@comment.state}' data-comment-id='#{@comment.to_param}'>
             <div>
               #{ avatar }
-              #{ userbar }
               <div class='cbody'>#{ @comment.content }</div>
               #{ reply }
             </div>
