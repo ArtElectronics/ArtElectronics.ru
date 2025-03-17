@@ -1,6 +1,11 @@
 # cloudflare.com
 # gkillich@gmail.com
 # iamteacher/artelectronics.ru
+
+# Admin site
+# post@artelectronics.ru
+# uhfyb,eleotuj
+
 digitalocean:
 	@echo "login: killich"
 	@echo "email: zykin-ilya@yandex.ru"
@@ -19,6 +24,9 @@ root_shell:
 lucky_shell:
 	@echo "password: 6BmohMp5h3YXsB94sG"
 	ssh lucky@open-cook.ru
+
+# git remote add origin lucky@open-cook.ru:/home/lucky/BARE/artelectronics.ru-bare
+
 
 up:
 	docker compose -f ./docker/docker-compose.yml up

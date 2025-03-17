@@ -127,7 +127,7 @@
   %h4= t '.users_and_roles'
 
   .list-group
-    = link_to t('.users'), users_url, class: 'list-group-item'
+    -# = link_to t('.users'), users_url, class: 'list-group-item'
     = link_to t('.roles'), admin_roles_url, class: 'list-group-item'
 
 - if @user.has_role?(:archives, :manage)
